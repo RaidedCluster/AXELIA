@@ -125,6 +125,7 @@ shape = SubResource( 4 )
 script = ExtResource( 8 )
 
 [node name="SceneTransitionRect" type="ColorRect" parent="SceneTransitionRect"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
