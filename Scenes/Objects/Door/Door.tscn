@@ -1,0 +1,82 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Scenes/Objects/Door/Door.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/Objects/Door/Door_Front_1_Closed.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Objects/Door/Door_Front_2_Open.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/Objects/Door/Door_Front_3_Mid.png" type="Texture" id=4]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 2 ) ],
+"loop": false,
+"name": "close",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 4 ), ExtResource( 3 ) ],
+"loop": false,
+"name": "open",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": false,
+"name": "closed",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": false,
+"name": "opened",
+"speed": 10.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 80.3795, 69.6708 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 39.7835, 30.6856 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 18.7304, 30.8356 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 47.8705, 30.9433 )
+
+[node name="Door" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="DoorSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "closed"
+offset = Vector2( 0, 42 )
+
+[node name="DoorArea" type="Area2D" parent="."]
+position = Vector2( 0, -31.1127 )
+
+[node name="InteractionAreaFront" type="CollisionShape2D" parent="DoorArea"]
+position = Vector2( -0.447511, 239.146 )
+shape = SubResource( 2 )
+
+[node name="InteractionAreaBack" type="CollisionShape2D" parent="DoorArea"]
+position = Vector2( 0.389892, 36.8312 )
+shape = SubResource( 2 )
+
+[node name="PermanentCollision" type="StaticBody2D" parent="."]
+position = Vector2( 0, -31.1127 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="PermanentCollision"]
+position = Vector2( -88.1989, 137.419 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="PermanentCollision"]
+position = Vector2( 88.5484, 137.578 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PermanentCollision"]
+position = Vector2( 43.8406, 137.946 )
+shape = SubResource( 4 )
+
+[node name="DoorCloseCollision" type="StaticBody2D" parent="."]
+position = Vector2( 0, -31.1127 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorCloseCollision"]
+position = Vector2( 0, 137.827 )
+shape = SubResource( 5 )

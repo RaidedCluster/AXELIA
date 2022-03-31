@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Grid aligned tiles.png-31d27083c799b253168b36f6d3aed1df.stex"
+path="res://.import/Door_Front_1_Closed.png-5c67f43e816f395cd96e8b3441ed6ea0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Level/Grid aligned tiles.png"
-dest_files=[ "res://.import/Grid aligned tiles.png-31d27083c799b253168b36f6d3aed1df.stex" ]
+source_file="res://Sprites/Objects/Door/Door_Front_1_Closed.png"
+dest_files=[ "res://.import/Door_Front_1_Closed.png-5c67f43e816f395cd96e8b3441ed6ea0.stex" ]
 
 [params]
 
