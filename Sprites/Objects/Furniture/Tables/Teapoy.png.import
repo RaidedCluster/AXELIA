@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Doormat.png-88a095cea70cdb410532239a11555c12.stex"
+path="res://.import/Teapoy.png-229f08d3300151ddfeca47df7f129122.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Objects/Doormat.png"
-dest_files=[ "res://.import/Doormat.png-88a095cea70cdb410532239a11555c12.stex" ]
+source_file="res://Sprites/Objects/Furniture/Tables/Teapoy.png"
+dest_files=[ "res://.import/Teapoy.png-229f08d3300151ddfeca47df7f129122.stex" ]
 
 [params]
 
