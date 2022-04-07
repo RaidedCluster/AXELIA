@@ -15,8 +15,13 @@ func _process(delta):
 		var bodies=doorInteraction.get_overlapping_bodies()
 		for body in bodies:
 			if body.get_name()==PLAYERNAME:
-				doorAnimation.play("open") if ((doorAnimation.animation=="closed") or (doorAnimation.animation=="close")) else doorAnimation.play("close")
-				doorCloseCollision.disabled = not doorCloseCollision.disabled
-				doorOpenCollision.disabled = not doorOpenCollision.disabled
+				if (doorAnimation.animation=="closed") or (doorAnimation.animation=="close"):
+					doorAnimation.play("open")
+					doorCloseCollision.disabled=true
+					doorOpenCollision.disabled=false
+				else:
+					doorAnimation.play("close")
+					doorCloseCollision.disabled=false
+					doorOpenCollision.disabled=true
 func _on_body_enter(body):
 	print(body.get_name()+" has entered the area.")
