@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Floorcore-b-room-up.png-934430b7133dc38f6feb19087d33d71d.stex"
+path="res://.import/Snowdrop-Withered.png-d6eb92c8b929f50d9cebb05cd8664bd0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Objects/Robots/Floorcore-b-room-up.png"
-dest_files=[ "res://.import/Floorcore-b-room-up.png-934430b7133dc38f6feb19087d33d71d.stex" ]
+source_file="res://Sprites/Objects/Misc/Snowdrop-Withered.png"
+dest_files=[ "res://.import/Snowdrop-Withered.png-d6eb92c8b929f50d9cebb05cd8664bd0.stex" ]
 
 [params]
 

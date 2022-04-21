@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Floorcore-b-room-left.png-77ac76acf7453221b516cd594d634459.stex"
+path="res://.import/Swivel-Chair-Front.png-f1ed07e840326c6275b378e8c416f561.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Objects/Robots/Floorcore-b-room-left.png"
-dest_files=[ "res://.import/Floorcore-b-room-left.png-77ac76acf7453221b516cd594d634459.stex" ]
+source_file="res://Sprites/Objects/Furniture/Swivel Chair/Swivel-Chair-Front.png"
+dest_files=[ "res://.import/Swivel-Chair-Front.png-f1ed07e840326c6275b378e8c416f561.stex" ]
 
 [params]
 

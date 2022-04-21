@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/RoombaChargingPod-1-Off.png-b69d64840016a081b1510e44a7fd7eeb.stex"
+path="res://.import/Toilet.png-7bc18c8776b8c3827b3ccb30a9137931.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Objects/Robots/RoombaChargingPod-1-Off.png"
-dest_files=[ "res://.import/RoombaChargingPod-1-Off.png-b69d64840016a081b1510e44a7fd7eeb.stex" ]
+source_file="res://Sprites/Objects/Bathroom/Toilet.png"
+dest_files=[ "res://.import/Toilet.png-7bc18c8776b8c3827b3ccb30a9137931.stex" ]
 
 [params]
 

@@ -14,6 +14,10 @@ config/name="AXELIA"
 run/main_scene="res://Scenes/Title_Screen.tscn"
 config/icon="res://UI/icon.png"
 
+[debug]
+
+settings/fps/force_fps=60
+
 [display]
 
 window/size/width=1280

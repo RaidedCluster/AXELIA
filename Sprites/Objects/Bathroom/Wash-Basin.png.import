@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Floorcore-b-room-down.png-0778a76cc92f83b0f3847ef05c4c63ee.stex"
+path="res://.import/Wash-Basin.png-8e5f6b716d8f5291e3e6dc1b082fa4bf.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Objects/Robots/Floorcore-b-room-down.png"
-dest_files=[ "res://.import/Floorcore-b-room-down.png-0778a76cc92f83b0f3847ef05c4c63ee.stex" ]
+source_file="res://Sprites/Objects/Bathroom/Wash-Basin.png"
+dest_files=[ "res://.import/Wash-Basin.png-8e5f6b716d8f5291e3e6dc1b082fa4bf.stex" ]
 
 [params]
 
