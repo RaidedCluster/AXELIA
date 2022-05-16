@@ -1,0 +1,75 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Scenes/Objects/Electric Sliding Door/Electric Sliding Door.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/Objects/Electric Sliding Door/ElectricSlidingDoor_Opening_3.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Objects/Electric Sliding Door/ElectricSlidingDoor_Opening_4.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/Objects/Electric Sliding Door/ElectricSlidingDoor_Opened_5.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/Objects/Electric Sliding Door/ElectricSlidingDoor_Opening_2.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/Objects/Electric Sliding Door/ElectricSlidingDoor_Closed_1.png" type="Texture" id=6]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 4 ), ExtResource( 3 ), ExtResource( 2 ), ExtResource( 5 ), ExtResource( 6 ) ],
+"loop": false,
+"name": "close",
+"speed": 16.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 5 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": false,
+"name": "open",
+"speed": 16.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": false,
+"name": "closed",
+"speed": 16.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": false,
+"name": "opened",
+"speed": 16.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 43.1324, 34.3339 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 73.4271, 34.5548 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 96, 69.6708 )
+
+[node name="Electric Sliding Door" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="DoorSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "closed"
+offset = Vector2( 0, 42 )
+
+[node name="PermanentCollision" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PermanentCollision"]
+position = Vector2( -116.566, 104 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="PermanentCollision"]
+position = Vector2( 116.873, 104 )
+shape = SubResource( 2 )
+
+[node name="DoorCloseCollision" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorCloseCollision"]
+position = Vector2( 0, 104 )
+shape = SubResource( 3 )
+
+[node name="DoorArea" type="Area2D" parent="."]
+position = Vector2( 0, -31.1127 )
+
+[node name="InteractionAreaFront" type="CollisionShape2D" parent="DoorArea"]
+position = Vector2( -0.447511, 239.146 )
+shape = SubResource( 4 )
+
+[node name="InteractionAreaBack" type="CollisionShape2D" parent="DoorArea"]
+position = Vector2( 0, 31.1127 )
+shape = SubResource( 4 )
