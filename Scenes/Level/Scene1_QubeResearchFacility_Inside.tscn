@@ -1199,11 +1199,9 @@ position = Vector2( 1472, -12600 )
 
 [node name="Camera" parent="." instance=ExtResource( 22 )]
 position = Vector2( 256, -298 )
-frame = 1
 
 [node name="Camera2" parent="." instance=ExtResource( 22 )]
 position = Vector2( 1600, -298 )
-frame = 1
 
 [node name="Elevator Extrusion" parent="." instance=ExtResource( 18 )]
 position = Vector2( 927, 950 )
