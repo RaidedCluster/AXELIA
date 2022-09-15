@@ -121,7 +121,7 @@ tile_data = PoolIntArray( -5898240, 14, 0, -5898212, 11, 0, -5832704, 14, 0, -58
 position = Vector2( 928, 607 )
 
 [node name="Camera2D" type="Camera2D" parent="YSort/Player"]
-position = Vector2( 0.141602, 99.8031 )
+position = Vector2( 4.32134e-07, 97 )
 current = true
 zoom = Vector2( 1.4, 1.4 )
 smoothing_enabled = true
@@ -1199,9 +1199,11 @@ position = Vector2( 1472, -12600 )
 
 [node name="Camera" parent="." instance=ExtResource( 22 )]
 position = Vector2( 256, -298 )
+frame = 1
 
 [node name="Camera2" parent="." instance=ExtResource( 22 )]
 position = Vector2( 1600, -298 )
+frame = 1
 
 [node name="Elevator Extrusion" parent="." instance=ExtResource( 18 )]
 position = Vector2( 927, 950 )
@@ -1212,3 +1214,7 @@ position = Vector2( -0.056152, 0 )
 tile_set = ExtResource( 3 )
 format = 1
 tile_data = PoolIntArray( -5963776, 5, 0, -5963748, 4, 0, -5767168, 20, 0, -5767140, 13, 0, -5111801, 9, 0, -5046244, 12, 0, -4456448, 20, 0, -4456441, 21, 0, -4194276, 16, 0, -3801088, 20, 0, -3801081, 21, 0, -3276772, 12, 0, -3276758, 22, 0, -3145728, 20, 0, -3145721, 21, 0, -2490368, 20, 0, -2490361, 21, 0, -2424804, 16, 0, -2424790, 25, 0, -1835008, 20, 0, -1835001, 11, 0, -1769472, 21, 0, -1572831, 20, 0, -1572824, 13, 0, -1507300, 12, 0, -1507295, 11, 0, -917504, 25, 0, -917476, 16, 0, -917471, 5, 0, -851935, 20, 0, -851928, 13, 0, -720889, 4, 0, -720875, 5, 0, -393216, 20, 0, -393209, 13, 0, -393195, 20, 0, -393188, 13, 0, -65529, 10, 0, -65525, 11, 0, -65519, 10, 0, -65515, 11, 0, 393216, 21, 0, 983040, 27, 0 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( 908, 708 )
+scale = Vector2( 91.6, 50.8 )

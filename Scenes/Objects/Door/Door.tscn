@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scenes/Objects/Door/Door.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Objects/Door/Door_Front_1_Closed.png" type="Texture" id=2]
@@ -29,7 +29,10 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 80.3795, 69.6708 )
+extents = Vector2( 80.3795, 32.9973 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 80, 67 )
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 39.7835, 30.6856 )
@@ -50,14 +53,16 @@ offset = Vector2( 0, 42 )
 
 [node name="DoorArea" type="Area2D" parent="."]
 position = Vector2( 0, -31.1127 )
+collision_layer = 2
+collision_mask = 2
 
 [node name="InteractionAreaFront" type="CollisionShape2D" parent="DoorArea"]
-position = Vector2( -0.447511, 239.146 )
+position = Vector2( 0, 200.113 )
 shape = SubResource( 2 )
 
-[node name="InteractionAreaBack" type="CollisionShape2D" parent="DoorArea"]
-position = Vector2( 0.389892, 36.8312 )
-shape = SubResource( 2 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorArea"]
+position = Vector2( 0, 39.1127 )
+shape = SubResource( 6 )
 
 [node name="PermanentCollision" type="StaticBody2D" parent="."]
 position = Vector2( 0, -31.1127 )

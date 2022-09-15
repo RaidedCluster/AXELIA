@@ -12,9 +12,9 @@ func _ready():
 
 func _process(delta):
 	if Input.is_action_just_pressed("ui_accept"):
-		var bodies=doorInteraction.get_overlapping_bodies()
-		for body in bodies:
-			if body.get_name()==PLAYERNAME:
+		var areas=doorInteraction.get_overlapping_areas()
+		for area in areas:
+			if area.get_name()=="Interaction Area":
 				if (doorAnimation.animation=="closed") or (doorAnimation.animation=="close"):
 					doorAnimation.play("open")
 					doorCloseCollision.disabled=true

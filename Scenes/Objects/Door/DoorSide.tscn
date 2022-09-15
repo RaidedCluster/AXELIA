@@ -29,7 +29,7 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 132.96, 127.595 )
+extents = Vector2( 88.6942, 127.595 )
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 22.6836, 59.8562 )
@@ -52,9 +52,11 @@ animation = "closed"
 offset = Vector2( 0, 16 )
 
 [node name="DoorArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DoorArea"]
-position = Vector2( -0.888489, -80.4411 )
+position = Vector2( 6.86169, -81.385 )
 shape = SubResource( 2 )
 
 [node name="PermanentCollision" type="StaticBody2D" parent="."]

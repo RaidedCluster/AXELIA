@@ -12,6 +12,7 @@ var state = MOVE
 var velocity = Vector2.ZERO
 
 onready var animationPlayer=$AnimationPlayer
+onready var currentAnimation=animationPlayer.current_animation
 onready var animationTree=$AnimationTree
 onready var animationState=animationTree.get("parameters/playback")
 
