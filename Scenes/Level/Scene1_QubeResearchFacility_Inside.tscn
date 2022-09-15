@@ -121,6 +121,7 @@ tile_data = PoolIntArray( -5898240, 14, 0, -5898212, 11, 0, -5832704, 14, 0, -58
 position = Vector2( 928, 607 )
 
 [node name="Camera2D" type="Camera2D" parent="YSort/Player"]
+pause_mode = 2
 position = Vector2( 4.32134e-07, 97 )
 current = true
 zoom = Vector2( 1.4, 1.4 )
@@ -519,7 +520,7 @@ position = Vector2( 2410, -3016 )
 position = Vector2( 2584, -3056 )
 
 [node name="Water Purifier" parent="YSort" instance=ExtResource( 49 )]
-position = Vector2( 2665, -3033 )
+position = Vector2( 2660, -3033 )
 
 [node name="Round Table" parent="YSort" instance=ExtResource( 51 )]
 position = Vector2( 2128, -2757 )
@@ -637,7 +638,7 @@ position = Vector2( 278, -1652 )
 position = Vector2( 356, -1648 )
 
 [node name="Water Purifier2" parent="YSort" instance=ExtResource( 49 )]
-position = Vector2( 280, -1628 )
+position = Vector2( 275, -1632 )
 
 [node name="TrashBin15" parent="YSort" instance=ExtResource( 15 )]
 position = Vector2( 96, -1624 )

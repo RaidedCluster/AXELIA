@@ -31,16 +31,16 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 80.3795, 32.9973 )
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 80, 67 )
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 39.7835, 30.6856 )
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 18.7304, 30.8356 )
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 47.8705, 30.9433 )
 
 [node name="Door" type="Node2D"]
@@ -62,26 +62,26 @@ shape = SubResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DoorArea"]
 position = Vector2( 0, 39.1127 )
-shape = SubResource( 6 )
+shape = SubResource( 3 )
 
 [node name="PermanentCollision" type="StaticBody2D" parent="."]
 position = Vector2( 0, -31.1127 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="PermanentCollision"]
 position = Vector2( -88.1989, 137.419 )
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="PermanentCollision"]
 position = Vector2( 88.5484, 137.578 )
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PermanentCollision"]
 position = Vector2( 43.8406, 137.946 )
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 
 [node name="DoorCloseCollision" type="StaticBody2D" parent="."]
 position = Vector2( 0, -31.1127 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DoorCloseCollision"]
 position = Vector2( 0, 137.827 )
-shape = SubResource( 5 )
+shape = SubResource( 6 )

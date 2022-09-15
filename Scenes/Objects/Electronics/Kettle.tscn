@@ -4,4 +4,4 @@
 
 [node name="Kettle" type="Sprite"]
 texture = ExtResource( 1 )
-offset = Vector2( 0, 33 )
+offset = Vector2( 0, 60 )
