@@ -5,7 +5,6 @@ onready var doorInteraction=$DoorArea
 onready var doorCollision=$DoorCloseCollision/CollisionShape2D
 
 func _ready():
-	connect("body_entered",self,"_on_body_enter")
 	connect("process",self,"_process")
 
 func _process(delta):
@@ -15,5 +14,3 @@ func _process(delta):
 			if area.get_name()=="Interaction Area":
 					doorAnimation.play("open") if ((doorAnimation.animation=="closed") or (doorAnimation.animation=="close")) else doorAnimation.play("close")
 					doorCollision.disabled = not doorCollision.disabled
-func _on_body_enter(body):
-	print(body.get_name()+" has entered the area.")

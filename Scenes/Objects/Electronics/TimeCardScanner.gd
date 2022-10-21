@@ -1,17 +1,17 @@
-extends StaticBody2D
+extends Sprite
 
-onready var TrashBinInteraction=$InteractionArea
+onready var TimeCardScannerInteraction=$InteractionArea
 
 func _ready():
 	connect("interacted",self,"_process")
 
 func _process(delta):
 	if Input.is_action_just_pressed("ui_accept"):
-		var areas=TrashBinInteraction.get_overlapping_areas()
+		var areas=TimeCardScannerInteraction.get_overlapping_areas()
 		for area in areas:
 			if area.get_name()=="Interaction Area":
 				get_tree().paused = true
-				var new_dialog=Dialogic.start('TrashBin')
+				var new_dialog=Dialogic.start('TimeCardScanner')
 				new_dialog.pause_mode=Node.PAUSE_MODE_PROCESS
 				add_child(new_dialog)
 				new_dialog.connect("timeline_end",self,"resume")

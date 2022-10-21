@@ -3,8 +3,7 @@ extends Sprite
 onready var TableTabletInteraction=$InteractionArea
 
 func _ready():
-	connect("body_entered",self,"_on_body_enter")
-	connect("process",self,"_process")
+	connect("interacted",self,"_process")
 
 func _process(delta):
 	if Input.is_action_just_pressed("ui_accept"):
@@ -19,3 +18,4 @@ func _process(delta):
 
 func resume(timeline_name):
 	get_tree().paused = false
+	disconnect("interacted",self,"_process")

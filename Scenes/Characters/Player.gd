@@ -3,6 +3,7 @@ extends KinematicBody2D
 const ACCELERATION = 1000
 const MAX_SPEED = 250
 const FRICTION = 7000
+signal interacted(body)
 
 enum {
 	MOVE
@@ -11,6 +12,7 @@ enum {
 var state = MOVE
 var velocity = Vector2.ZERO
 
+onready var interactionArea=$"Interaction Pivot/Interaction Area"
 onready var animationPlayer=$AnimationPlayer
 onready var currentAnimation=animationPlayer.current_animation
 onready var animationTree=$AnimationTree
@@ -41,3 +43,5 @@ func move_state(delta):
 func move():
 	velocity = move_and_slide(velocity)
 
+func _on_Interaction_Area_body_entered(body):
+	emit_signal("interacted",body)

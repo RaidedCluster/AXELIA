@@ -3,7 +3,6 @@ extends StaticBody2D
 onready var VendingMachineInteraction=$InteractionArea
 
 func _ready():
-	connect("body_entered",self,"_on_body_enter")
 	connect("process",self,"_process")
 
 func _process(delta):
@@ -19,3 +18,4 @@ func _process(delta):
 
 func resume(timeline_name):
 	get_tree().paused = false
+	disconnect("interacted",self,"_process")
