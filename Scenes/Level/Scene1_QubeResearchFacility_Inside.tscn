@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=2]
+[gd_scene load_steps=68 format=2]
 
 [ext_resource path="res://Scenes/Characters/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Sprites/Tileset/BaseTilemap.tres" type="TileSet" id=2]
@@ -62,12 +62,43 @@
 [ext_resource path="res://Scenes/Objects/Electronics/Seraphim Turret/Seraphim Turret Left.tscn" type="PackedScene" id=60]
 [ext_resource path="res://Scenes/Objects/Electronics/Seraphim Turret/Seraphim Turret Right.tscn" type="PackedScene" id=61]
 [ext_resource path="res://Sprites/Objects/Furniture/Storage/Cabinet.png" type="Texture" id=62]
+[ext_resource path="res://Scenes/SceneTransitionRect.gd" type="Script" id=63]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 40, 24 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 16, 24 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "Fade_In"
+tracks/0/type = "value"
+tracks/0/path = NodePath("SceneTransitionRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Fade_Out"
+tracks/0/type = "value"
+tracks/0/path = NodePath("SceneTransitionRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
+}
 
 [node name="QRF" type="Node2D"]
 
@@ -1255,3 +1286,19 @@ position = Vector2( -0.056152, 0 )
 tile_set = ExtResource( 3 )
 format = 1
 tile_data = PoolIntArray( -5963776, 5, 0, -5963748, 4, 0, -5767168, 20, 0, -5767140, 13, 0, -5111801, 9, 0, -5046244, 12, 0, -4456448, 20, 0, -4456441, 21, 0, -4194276, 16, 0, -3801088, 20, 0, -3801081, 21, 0, -3276772, 12, 0, -3276758, 22, 0, -3145728, 20, 0, -3145721, 21, 0, -2490368, 20, 0, -2490361, 21, 0, -2424804, 16, 0, -2424790, 25, 0, -1835008, 20, 0, -1835001, 11, 0, -1769472, 21, 0, -1572831, 20, 0, -1572824, 13, 0, -1507300, 12, 0, -1507295, 11, 0, -917504, 25, 0, -917476, 16, 0, -917471, 5, 0, -851935, 20, 0, -851928, 13, 0, -720889, 4, 0, -720875, 5, 0, -393216, 20, 0, -393209, 13, 0, -393195, 20, 0, -393188, 13, 0, -65529, 10, 0, -65525, 11, 0, -65519, 10, 0, -65515, 11, 0, 393216, 21, 0, 983040, 27, 0 )
+
+[node name="SceneTransitionRect" type="CanvasLayer" parent="."]
+script = ExtResource( 63 )
+
+[node name="SceneTransitionRect" type="ColorRect" parent="SceneTransitionRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SceneTransitionRect"]
+anims/Fade_In = SubResource( 3 )
+anims/Fade_Out = SubResource( 4 )
