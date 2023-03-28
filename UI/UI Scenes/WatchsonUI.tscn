@@ -1,0 +1,132 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://UI/UI Scenes/WatchsonUI.gd" type="Script" id=1]
+[ext_resource path="res://UI/UI Sprites/Watchson/WUI/Q.png" type="Texture" id=2]
+[ext_resource path="res://UI/UI Sprites/Watchson/WUI/Radar.png" type="Texture" id=3]
+[ext_resource path="res://UI/UI Sprites/Watchson/WUI/Question.png" type="Texture" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "qube_fade"
+length = 1.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("QUBE:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 1.1, 1.3 ),
+"transitions": PoolRealArray( 5.85634, 1, 3.4822, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "question_fade_in"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Question:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.701961 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "question_fade_out"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Question:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.701961 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "radar_fade_in"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Radar:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.701961 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "radar_fade_out"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Radar:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.701961 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "wui_fade_out"
+length = 0.2
+
+[node name="WatchsonUI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/qube_fade = SubResource( 1 )
+anims/question_fade_in = SubResource( 2 )
+anims/question_fade_out = SubResource( 3 )
+anims/radar_fade_in = SubResource( 4 )
+anims/radar_fade_out = SubResource( 5 )
+anims/wui_fade_out = SubResource( 6 )
+
+[node name="QUBE" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.017261 )
+texture = ExtResource( 2 )
+
+[node name="Radar" type="TextureButton" parent="."]
+modulate = Color( 1, 1, 1, 0.701961 )
+margin_left = -128.0
+margin_top = -128.0
+margin_right = 128.0
+margin_bottom = 128.0
+texture_normal = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Question" type="TextureButton" parent="."]
+visible = false
+margin_left = -129.0
+margin_top = -128.0
+margin_right = 127.0
+margin_bottom = 128.0
+texture_normal = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

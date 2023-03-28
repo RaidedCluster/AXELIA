@@ -45,3 +45,4 @@ func move():
 
 func _on_Interaction_Area_body_entered(body):
 	emit_signal("interacted",body)
+

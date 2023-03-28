@@ -1,0 +1,74 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://UI/UI Scenes/Inventory.gd" type="Script" id=1]
+[ext_resource path="res://UI/UI Sprites/Inventory/Inventory-Base.png" type="Texture" id=2]
+[ext_resource path="res://UI/UI Sprites/Inventory/Inventory-Panel-Selected.png" type="Texture" id=3]
+[ext_resource path="res://UI/UI Sprites/Inventory/Inventory-Panel.png" type="Texture" id=4]
+[ext_resource path="res://UI/UI Sprites/Inventory/Inventory-Panel-Activated.png" type="Texture" id=5]
+[ext_resource path="res://UI/UI Sprites/Watchson/QUBE Watchson.png" type="Texture" id=6]
+[ext_resource path="res://UI/Watchson/Watchson.tscn" type="PackedScene" id=7]
+
+[node name="Inventory" type="Control"]
+margin_left = 872.0
+margin_top = 32.0
+margin_right = 872.0
+margin_bottom = 32.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Base" type="Sprite" parent="."]
+position = Vector2( 179.2, 89.6 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 2 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 19.2
+margin_top = 38.6
+margin_right = 507.2
+margin_bottom = 194.6
+rect_scale = Vector2( 0.65, 0.65 )
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slot1" type="TextureButton" parent="HBoxContainer"]
+margin_right = 160.0
+margin_bottom = 156.0
+focus_mode = 0
+enabled_focus_mode = 0
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 3 )
+
+[node name="Slot2" type="TextureButton" parent="HBoxContainer"]
+margin_left = 164.0
+margin_right = 324.0
+margin_bottom = 156.0
+focus_mode = 0
+enabled_focus_mode = 0
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 3 )
+
+[node name="Slot3" type="TextureButton" parent="HBoxContainer"]
+margin_left = 328.0
+margin_right = 488.0
+margin_bottom = 156.0
+focus_mode = 0
+enabled_focus_mode = 0
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 3 )
+
+[node name="WatchsonSprite" type="Sprite" parent="."]
+position = Vector2( 72.2001, 90.5999 )
+scale = Vector2( 0.175078, 0.175078 )
+texture = ExtResource( 6 )
+
+[node name="Watchson" parent="." instance=ExtResource( 7 )]
+position = Vector2( -872, 672 )

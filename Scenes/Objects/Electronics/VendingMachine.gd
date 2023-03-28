@@ -1,5 +1,16 @@
 extends StaticBody2D
 
+var outline_enabled = false
+var outline_shader_material = preload("res://UI/UI Sprites/outline.tres")
+
+func set_outline(enable):
+	if enable and not outline_enabled:
+		self.material=outline_shader_material
+		outline_enabled = true
+	elif not enable and outline_enabled:
+		self.material=null
+		outline_enabled = false
+
 onready var VendingMachineInteraction=$InteractionArea
 
 func _ready():

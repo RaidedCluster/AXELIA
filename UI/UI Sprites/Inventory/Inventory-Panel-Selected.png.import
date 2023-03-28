@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/icon.png-d44ad423496976af115f803f6386bc82.stex"
+path="res://.import/Inventory-Panel-Selected.png-233ba54721fcafcd45ac700586e685ef.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI/icon.png"
-dest_files=[ "res://.import/icon.png-d44ad423496976af115f803f6386bc82.stex" ]
+source_file="res://UI/UI Sprites/Inventory/Inventory-Panel-Selected.png"
+dest_files=[ "res://.import/Inventory-Panel-Selected.png-233ba54721fcafcd45ac700586e685ef.stex" ]
 
 [params]
 

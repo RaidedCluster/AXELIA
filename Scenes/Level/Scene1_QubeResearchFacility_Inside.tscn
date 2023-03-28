@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=2]
+[gd_scene load_steps=69 format=2]
 
 [ext_resource path="res://Scenes/Characters/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Sprites/Tileset/BaseTilemap.tres" type="TileSet" id=2]
@@ -63,6 +63,7 @@
 [ext_resource path="res://Scenes/Objects/Electronics/Seraphim Turret/Seraphim Turret Right.tscn" type="PackedScene" id=61]
 [ext_resource path="res://Sprites/Objects/Furniture/Storage/Cabinet.png" type="Texture" id=62]
 [ext_resource path="res://Scenes/SceneTransitionRect.gd" type="Script" id=63]
+[ext_resource path="res://UI/UI Scenes/Inventory.tscn" type="PackedScene" id=64]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 40, 24 )
@@ -166,6 +167,10 @@ zoom = Vector2( 1.4, 1.4 )
 smoothing_enabled = true
 smoothing_speed = 3.0
 
+[node name="PosPlaceholder" type="Node2D" parent="YSort/Player"]
+position = Vector2( 0, 97 )
+z_index = 1
+
 [node name="Door" parent="YSort" instance=ExtResource( 5 )]
 position = Vector2( 257.549, -266.047 )
 
@@ -200,7 +205,7 @@ scale = Vector2( -1, 1 )
 position = Vector2( 1723.66, 128.598 )
 
 [node name="FloorCore B-Room Charger" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 1783.86, 108.946 )
+position = Vector2( 1784, 104 )
 
 [node name="FloorCore B-Room2" parent="YSort" instance=ExtResource( 9 )]
 position = Vector2( 1721, -5491 )
@@ -242,10 +247,10 @@ position = Vector2( 110.413, 51.1748 )
 position = Vector2( 802.958, 62.5822 )
 
 [node name="Time Card Scanner" parent="YSort" instance=ExtResource( 23 )]
-position = Vector2( 398, -240 )
+position = Vector2( 405, -240 )
 
 [node name="Time Card Scanner2" parent="YSort" instance=ExtResource( 23 )]
-position = Vector2( 1752, -240 )
+position = Vector2( 1750, -240 )
 
 [node name="Qudroid" parent="YSort" instance=ExtResource( 24 )]
 position = Vector2( 928, -61 )
@@ -1245,7 +1250,8 @@ position = Vector2( 2155, -12034 )
 position = Vector2( 2475, -12033 )
 
 [node name="Snowdrop3" parent="YSort" instance=ExtResource( 26 )]
-position = Vector2( 1587, -1714 )
+position = Vector2( 1480, 602.964 )
+offset = Vector2( 107, -2291.96 )
 
 [node name="Snowdrop4" parent="YSort" instance=ExtResource( 26 )]
 position = Vector2( 1587, -2176 )
@@ -1269,13 +1275,23 @@ position = Vector2( 392, -12599 )
 [node name="Seraphim Turret Right" parent="YSort" instance=ExtResource( 61 )]
 position = Vector2( 1472, -12600 )
 
+[node name="UI" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="Inventory" parent="UI" instance=ExtResource( 64 )]
+margin_left = 904.0
+margin_top = 0.0
+margin_right = 904.0
+margin_bottom = 0.0
+
 [node name="Camera" parent="." instance=ExtResource( 22 )]
 position = Vector2( 256, -298 )
-frame = 1
+
+[node name="Camera3" parent="." instance=ExtResource( 22 )]
+position = Vector2( -280, -1637 )
 
 [node name="Camera2" parent="." instance=ExtResource( 22 )]
-position = Vector2( 1600, -298 )
-frame = 1
+position = Vector2( 1600, -296 )
 
 [node name="Elevator Extrusion" parent="." instance=ExtResource( 18 )]
 position = Vector2( 927, 950 )
@@ -1291,6 +1307,7 @@ tile_data = PoolIntArray( -5963776, 5, 0, -5963748, 4, 0, -5767168, 20, 0, -5767
 script = ExtResource( 63 )
 
 [node name="SceneTransitionRect" type="ColorRect" parent="SceneTransitionRect"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -1302,3 +1319,5 @@ __meta__ = {
 [node name="AnimationPlayer" type="AnimationPlayer" parent="SceneTransitionRect"]
 anims/Fade_In = SubResource( 3 )
 anims/Fade_Out = SubResource( 4 )
+
+[editable path="Camera2"]

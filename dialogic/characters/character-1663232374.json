@@ -8,14 +8,14 @@
 	"name": "Noah",
 	"nickname": "",
 	"nickname_bool": false,
-	"offset_x": 0,
+	"offset_x": 850,
 	"offset_y": 0,
 	"portraits": [
 		{
 			"name": "Default",
-			"path": ""
+			"path": "res://Sprites/Characters/Noah Portrait.png"
 		}
 	],
-	"scale": 100,
+	"scale": 18,
 	"theme": "theme-1663222845.cfg"
 }

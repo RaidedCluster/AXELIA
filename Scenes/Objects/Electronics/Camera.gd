@@ -1,13 +1,24 @@
-extends AnimatedSprite
+extends StaticBody2D
 
-const PLAYERNAME="Player"
-onready var cameraRange=$Area2D
+signal caught
+
+onready var detection_area = $DetectionArea
+
+var outline_enabled = false
+var outline_shader_material = preload("res://UI/UI Sprites/outline.tres")
+
+func set_outline(enable):
+	if enable and not outline_enabled:
+		self.material=outline_shader_material
+		outline_enabled = true
+	elif not enable and outline_enabled:
+		self.material=null
+		outline_enabled = false
 
 func _ready():
-	connect("process",self,"_process")
-	
-func _process(delta):
-	var bodies=cameraRange.get_overlapping_bodies()
-	for body in bodies:
-			if body.get_name()==PLAYERNAME:
-				print("Caught")
+	detection_area.connect("body_entered", self, "_on_DetectionArea_body_entered")
+
+func _on_DetectionArea_body_entered(body):
+	if body.name == "Player": # Replace "Player" with the actual name of the player node
+		emit_signal("caught")
+		print("caught")

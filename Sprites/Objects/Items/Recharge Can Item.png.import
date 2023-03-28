@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/axelia.png-a7ace8203c9d0014c8bcbe540d2b6f87.stex"
+path="res://.import/Recharge Can Item.png-2ca1b27bfa59bcf6c68973aa6aeb76e7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI/axelia.png"
-dest_files=[ "res://.import/axelia.png-a7ace8203c9d0014c8bcbe540d2b6f87.stex" ]
+source_file="res://Sprites/Objects/Items/Recharge Can Item.png"
+dest_files=[ "res://.import/Recharge Can Item.png-2ca1b27bfa59bcf6c68973aa6aeb76e7.stex" ]
 
 [params]
 

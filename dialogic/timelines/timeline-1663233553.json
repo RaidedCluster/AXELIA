@@ -1,8 +1,8 @@
 {
 	"events": [
 		{
-			"animation": "1-fade_in.gd",
-			"animation_length": 0.2,
+			"animation": "2-fade_in_up.gd",
+			"animation_length": 0.7,
 			"change_mirror_portrait": false,
 			"change_z_index": false,
 			"character": "character-1663232374.json",
@@ -28,7 +28,7 @@
 		},
 		{
 			"event_id": "dialogic_022",
-			"transition_duration": 0.2
+			"transition_duration": 0.7
 		}
 	],
 	"metadata": {
