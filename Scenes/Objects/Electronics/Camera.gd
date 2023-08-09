@@ -21,4 +21,6 @@ func _ready():
 func _on_DetectionArea_body_entered(body):
 	if body.name == "Player": # Replace "Player" with the actual name of the player node
 		emit_signal("caught")
-		print("caught")
+
+func utility():
+	print("Camera Utility")
