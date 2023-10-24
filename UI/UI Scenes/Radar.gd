@@ -40,17 +40,29 @@ func _input(event):
 
 func _on_radar_area_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.pressed and event.button_index == BUTTON_LEFT:
+		var global_mouse_position = get_global_mouse_position()
 		for body in radar_area.get_overlapping_bodies():
 			if body.is_in_group("hackable"):
-				var global_mouse_position = get_global_mouse_position()
-				var sprite = body.get_node("AnimatedSprite") # Replace "AnimatedSprite" with the actual node name if different
-				var texture = sprite.get_frame_texture()
-				if texture:
-					var local_rect = texture.get_rect()
-					var global_bounding_rect = Rect2(body.global_position - local_rect.size / 2, local_rect.size)
-					if global_bounding_rect.has_point(global_mouse_position):
-						body.utility()
-						break
+				var local_rect
+				if body.has_node("Sprite"):
+					var sprite_node = body.get_node("Sprite")
+					local_rect = sprite_node.texture.get_size()
+				elif body.has_node("AnimatedSprite"):
+					var anim_sprite_node = body.get_node("AnimatedSprite")
+					var frame = anim_sprite_node.frames.get_frame(anim_sprite_node.animation, anim_sprite_node.frame)
+					local_rect = frame.get_size()
+				else:
+					continue  # Skip if neither Sprite nor AnimatedSprite
+				
+				var global_bounding_rect = Rect2(body.global_position - local_rect / 2, local_rect)
+				
+				if global_bounding_rect.has_point(global_mouse_position):
+					body.utility()
+					deactivate_radar()  # Deactivate the radar here
+					break
+
+
+
 
 
 

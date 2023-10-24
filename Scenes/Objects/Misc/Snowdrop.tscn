@@ -1,18 +1,19 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Sprites/Objects/Misc/Snowdrop-Alive.png" type="Texture" id=1]
 [ext_resource path="res://Sprites/Objects/Misc/Snowdrop-Withered.png" type="Texture" id=2]
+[ext_resource path="res://UI/VisbilityNotifier/VisibilityNotifier2D.tscn" type="PackedScene" id=3]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 2 ) ],
-"loop": true,
-"name": "withered",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 1 ) ],
 "loop": true,
 "name": "alive",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "withered",
 "speed": 5.0
 } ]
 
@@ -20,3 +21,7 @@ animations = [ {
 frames = SubResource( 1 )
 animation = "withered"
 offset = Vector2( 0, 25 )
+
+[node name="VisibilityNotifier2D" parent="." instance=ExtResource( 3 )]
+position = Vector2( 4, 24.1818 )
+scale = Vector2( 2.8, 3.98182 )

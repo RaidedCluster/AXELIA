@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Sprites/Objects/Electronics/TimeCardScanner.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Objects/Electronics/TimeCardScanner.gd" type="Script" id=2]
+[ext_resource path="res://UI/VisbilityNotifier/VisibilityNotifier2D.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8.63622, 8 )
@@ -18,3 +19,7 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
 position = Vector2( 0, 32 )
 shape = SubResource( 1 )
+
+[node name="VisibilityNotifier2D" parent="." instance=ExtResource( 3 )]
+position = Vector2( 9.77516e-06, 28 )
+scale = Vector2( 4, 2.8 )

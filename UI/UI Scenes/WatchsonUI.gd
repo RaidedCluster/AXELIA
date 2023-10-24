@@ -1,14 +1,18 @@
 extends Control
 
 signal radar_button_pressed
+signal fade_out_completed
 
 enum Mode {RADAR, QUESTION}
 var active_mode = Mode.RADAR
 var startup_finished = false
+var isLogoAnimationPlayed = false
 
 func start_up():
-	play_qube_fade()
-	yield($AnimationPlayer, "animation_finished")
+	if not isLogoAnimationPlayed:
+		play_qube_fade()
+		yield($AnimationPlayer, "animation_finished")
+		isLogoAnimationPlayed = true
 	play_radar_fade_in()
 	startup_finished = true
 
@@ -57,13 +61,11 @@ func _process(delta):
 func on_radar_button_pressed():
 	emit_signal("radar_button_pressed")
 
-func on_question_button_pressed():
-	# Add the code for the event that happens when the question button is clicked
-	pass
-
 func wui_fade_out():
+	print("Fade-out started.")
 	$AnimationPlayer.play("wui_fade_out")
-	
+	yield($AnimationPlayer, "animation_finished")
+	emit_signal("fade_out_completed")    
 
 func _ready():
 	$Radar.visible = false
@@ -86,4 +88,3 @@ func on_question_mouse_entered():
 
 func on_question_mouse_exited():
 	$Question.modulate = Color(1, 1, 1, 0.7)
-

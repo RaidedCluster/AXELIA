@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Sprites/Objects/Furniture/Storage/Cabinet-Side.png" type="Texture" id=1]
+[ext_resource path="res://UI/VisbilityNotifier/VisibilityNotifier2D.tscn" type="PackedScene" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 40, 32 )
@@ -14,3 +15,7 @@ offset = Vector2( 0, 170 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 160 )
 shape = SubResource( 1 )
+
+[node name="VisibilityNotifier2D" parent="." instance=ExtResource( 2 )]
+position = Vector2( 9.53674e-07, 168 )
+scale = Vector2( 6.4, 8 )

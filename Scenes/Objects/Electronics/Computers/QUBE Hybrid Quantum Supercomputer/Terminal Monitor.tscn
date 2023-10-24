@@ -1,18 +1,19 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Sprites/Objects/Electronics/Computers/QUBE Hybrid Quantum Supercomputer/Terminal-Monitor.png" type="Texture" id=1]
 [ext_resource path="res://Sprites/Objects/Electronics/Computers/QUBE Hybrid Quantum Supercomputer/Terminal-Monitor-Axelia.png" type="Texture" id=2]
+[ext_resource path="res://UI/VisbilityNotifier/VisibilityNotifier2D.tscn" type="PackedScene" id=3]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 2 ) ],
-"loop": true,
-"name": "On",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 1 ) ],
 "loop": false,
 "name": "Off",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "On",
 "speed": 5.0
 } ]
 
@@ -20,3 +21,7 @@ animations = [ {
 frames = SubResource( 1 )
 animation = "Off"
 offset = Vector2( 0, 75 )
+
+[node name="VisibilityNotifier2D" parent="." instance=ExtResource( 3 )]
+position = Vector2( 0, 72 )
+scale = Vector2( 16.7625, 9.2 )

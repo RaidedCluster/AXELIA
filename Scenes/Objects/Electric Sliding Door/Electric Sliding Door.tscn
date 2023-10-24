@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scenes/Objects/Electric Sliding Door/Electric Sliding Door.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Objects/Electric Sliding Door/ElectricSlidingDoor_Opening_3.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Sprites/Objects/Electric Sliding Door/ElectricSlidingDoor_Opened_5.png" type="Texture" id=4]
 [ext_resource path="res://Sprites/Objects/Electric Sliding Door/ElectricSlidingDoor_Opening_2.png" type="Texture" id=5]
 [ext_resource path="res://Sprites/Objects/Electric Sliding Door/ElectricSlidingDoor_Closed_1.png" type="Texture" id=6]
+[ext_resource path="res://UI/VisbilityNotifier/VisibilityNotifier2D.tscn" type="PackedScene" id=7]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -14,14 +15,14 @@ animations = [ {
 "name": "close",
 "speed": 16.0
 }, {
-"frames": [ ExtResource( 6 ), ExtResource( 5 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ],
-"loop": false,
-"name": "open",
-"speed": 16.0
-}, {
 "frames": [ ExtResource( 6 ) ],
 "loop": false,
 "name": "closed",
+"speed": 16.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 5 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": false,
+"name": "open",
 "speed": 16.0
 }, {
 "frames": [ ExtResource( 4 ) ],
@@ -73,3 +74,7 @@ shape = SubResource( 4 )
 [node name="InteractionAreaBack" type="CollisionShape2D" parent="DoorArea"]
 position = Vector2( 0, 31.1127 )
 shape = SubResource( 4 )
+
+[node name="VisibilityNotifier2D" parent="." instance=ExtResource( 7 )]
+position = Vector2( 4, 84 )
+scale = Vector2( 19.6, 22 )

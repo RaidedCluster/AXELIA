@@ -3,5 +3,6 @@
 [ext_resource path="res://Fonts/JetBrains Mono/JetBrainsMono-Bold.ttf" type="DynamicFontData" id=1]
 
 [resource]
-size = 29
+resource_local_to_scene = true
+size = 70
 font_data = ExtResource( 1 )

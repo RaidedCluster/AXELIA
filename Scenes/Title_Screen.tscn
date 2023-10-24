@@ -52,9 +52,6 @@ tracks/0/keys = {
 
 [node name="Title_Screen" type="Control"]
 script = SubResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Title BG" type="Sprite" parent="."]
 position = Vector2( 640, 360 )

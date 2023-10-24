@@ -1,19 +1,20 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Sprites/Objects/Electronics/FLIPPO_e-ReaderStand_Full.png" type="Texture" id=1]
 [ext_resource path="res://Sprites/Objects/Electronics/FLIPPO_e-ReaderStand_8.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/Objects/Electronics/FLIPPO_e-ReaderStand.gd" type="Script" id=3]
+[ext_resource path="res://UI/VisbilityNotifier/VisibilityNotifier2D.tscn" type="PackedScene" id=4]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 1 ) ],
-"loop": true,
-"name": "Full",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 2 ) ],
 "loop": true,
 "name": "8",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "Full",
 "speed": 5.0
 } ]
 
@@ -42,3 +43,7 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
 position = Vector2( 0, 80 )
 shape = SubResource( 3 )
+
+[node name="VisibilityNotifier2D" parent="." instance=ExtResource( 4 )]
+position = Vector2( -3.99997, 100 )
+scale = Vector2( 7.6, 12.4 )

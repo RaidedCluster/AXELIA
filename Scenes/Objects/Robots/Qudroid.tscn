@@ -1,22 +1,23 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Sprites/Objects/Robots/Qudroid/Broken/Qudroid-Broken.png" type="Texture" id=1]
 [ext_resource path="res://Sprites/Objects/Robots/Qudroid/Working/Qudroid-1.png" type="Texture" id=2]
 [ext_resource path="res://Sprites/Objects/Robots/Qudroid/Working/Qudroid-2.png" type="Texture" id=3]
 [ext_resource path="res://Sprites/Objects/Robots/Qudroid/Working/Qudroid-3.png" type="Texture" id=4]
 [ext_resource path="res://Scenes/Objects/Robots/Qudroid.gd" type="Script" id=5]
+[ext_resource path="res://UI/VisbilityNotifier/VisibilityNotifier2D.tscn" type="PackedScene" id=6]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 2 ) ],
-"loop": true,
-"name": "working",
-"speed": 10.0
-}, {
 "frames": [ ExtResource( 1 ) ],
 "loop": true,
 "name": "broken",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "working",
+"speed": 10.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -45,3 +46,7 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
 position = Vector2( 0.0995941, 115.266 )
 shape = SubResource( 3 )
+
+[node name="VisibilityNotifier2D" parent="." instance=ExtResource( 6 )]
+position = Vector2( 0, 72 )
+scale = Vector2( 5.6, 8.8 )

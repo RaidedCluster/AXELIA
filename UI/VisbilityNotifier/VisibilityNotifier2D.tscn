@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://UI/VisbilityNotifier/VisibilityNotifier2D.gd" type="Script" id=1]
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D"]
+position = Vector2( 638.5, 360 )
+scale = Vector2( 63.85, 36 )
+script = ExtResource( 1 )
