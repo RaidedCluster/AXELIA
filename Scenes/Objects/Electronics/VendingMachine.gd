@@ -2,6 +2,7 @@ extends StaticBody2D
 
 var outline_enabled = false
 var outline_shader_material = preload("res://UI/UI Sprites/outline.tres")
+var player = null 
 
 func set_outline(enable):
 	if enable and not outline_enabled:
@@ -14,10 +15,11 @@ func set_outline(enable):
 onready var VendingMachineInteraction=$InteractionArea
 
 func _ready():
-	connect("process",self,"_process")
+	player = get_tree().get_root().find_node("Player", true, false)  # Find the player node in the scene
+	connect("process", self, "_process")
 
 func _process(delta):
-	if Input.is_action_just_pressed("ui_accept"):
+	if Input.is_action_just_pressed("ui_accept") and player and not player.watchson_active:  # Check if Watchson is not active
 		var areas=VendingMachineInteraction.get_overlapping_areas()
 		for area in areas:
 			if area.get_name()=="Interaction Area":

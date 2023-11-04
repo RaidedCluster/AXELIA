@@ -11,6 +11,7 @@ enum {
 
 var state = MOVE
 var velocity = Vector2.ZERO
+var watchson_active = false
 
 onready var interactionArea=$"Interaction Pivot/Interaction Area"
 onready var animationPlayer=$AnimationPlayer
@@ -46,3 +47,5 @@ func move():
 func _on_Interaction_Area_body_entered(body):
 	emit_signal("interacted",body)
 
+func set_watchson_active(is_active):
+	watchson_active = is_active

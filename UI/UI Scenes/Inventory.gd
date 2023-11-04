@@ -29,6 +29,10 @@ func show_watchson_gui():
 		watchson_gui_instance.isLogoAnimationPlayed = isLogoAnimationPlayed
 		add_child(watchson_gui_instance)
 		watchson_gui_instance.connect("radar_button_pressed", self, "on_radar_button_pressed")
+		# Find the player node and call set_watchson_active on it
+		var player_node = get_tree().get_root().find_node("Player", true, false)
+		if player_node:
+			player_node.set_watchson_active(true)
 
 func hide_watchson_gui():
 	print("Hide Watchson GUI called.")
@@ -39,7 +43,12 @@ func hide_watchson_gui():
 		print("Fade-out completed.")
 		watchson_gui_instance.queue_free()
 		get_node("Watchson").move_down()
+		# Find the player node and call set_watchson_active on it
+		var player_node = get_tree().get_root().find_node("Player", true, false)
+		if player_node:
+			player_node.set_watchson_active(false)
 
+# Inventory.gd
 
 func perform_action1():
 	if watchswitch == false:

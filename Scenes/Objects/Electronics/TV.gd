@@ -3,6 +3,7 @@ extends StaticBody2D
 onready var TVInteraction=$InteractionArea
 var outline_enabled = false
 var outline_shader_material = preload("res://UI/UI Sprites/outline.tres")
+var player = null
 
 func set_outline(enable):
 	if enable and not outline_enabled:
@@ -13,10 +14,11 @@ func set_outline(enable):
 		outline_enabled = false
 
 func _ready():
+	player = get_tree().get_root().find_node("Player", true, false)
 	connect("interacted",self,"_process")
 
 func _process(delta):
-	if Input.is_action_just_pressed("ui_accept"):
+	if Input.is_action_just_pressed("ui_accept") and player and not player.watchson_active:
 		var areas=TVInteraction.get_overlapping_areas()
 		for area in areas:
 			if area.get_name()=="Interaction Area":

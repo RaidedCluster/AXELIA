@@ -1,11 +1,13 @@
 extends StaticBody2D
 
 signal caught
+signal stream_replay_failed
+var is_stream_replayed = false
 
 var detection_area
 var animated_sprite
 var disable_timer
-
+var stream_replay_single_check_timer
 var isDisabled = false
 var outline_enabled = false
 var outline_shader_material = preload("res://UI/UI Sprites/outline.tres")
@@ -26,7 +28,7 @@ func _ready():
 	animated_sprite = $AnimatedSprite
 	connect("caught", self, "_on_player_caught")
 	detection_area.connect("body_entered", self, "_on_DetectionArea_body_entered")
-	
+
 	# Manually create and configure the timer
 	disable_timer = Timer.new()
 	disable_timer.set_name("DisableTimer")
@@ -34,7 +36,13 @@ func _ready():
 	disable_timer.set_one_shot(true)
 	disable_timer.connect("timeout", self, "_on_DisableTimer_timeout")
 	add_child(disable_timer)
-
+	
+	# Initialize the new timer for Stream Replay check
+	stream_replay_single_check_timer = Timer.new()
+	stream_replay_single_check_timer.set_name("StreamReplaySingleCheckTimer")
+	stream_replay_single_check_timer.set_one_shot(true)
+	stream_replay_single_check_timer.connect("timeout", self, "_on_StreamReplaySingleCheckTimer_timeout")
+	add_child(stream_replay_single_check_timer)
 
 func disable_camera():
 	isDisabled = true
@@ -51,6 +59,7 @@ func disable_camera():
 func _on_DisableTimer_timeout():
 	print("Timer timed out!")  # Debugging print
 	isDisabled = false
+	is_stream_replayed = false
 	detection_area.monitoring = true
 	animated_sprite.animation = "On"
 	animated_sprite.play()
@@ -80,3 +89,22 @@ func get_initial_wait_time():
 	if disable_timer:
 		return disable_timer.wait_time
 	return 0
+
+func stream_replay():  # New function
+	isDisabled = true
+	is_stream_replayed = true
+	detection_area.monitoring = false
+	disable_timer.stop()
+	disable_timer.set_wait_time(30.0)  # Set for 30 seconds
+	disable_timer.start()
+	var random_time = rand_range(0, 30)
+	stream_replay_single_check_timer.set_wait_time(random_time)
+	stream_replay_single_check_timer.start()
+
+func _on_StreamReplaySingleCheckTimer_timeout():  # New function
+	var chance = randf()
+	if chance < 0.08:  # 8% chance of failure
+		isDisabled = false
+		is_stream_replayed = false
+		detection_area.monitoring = true
+		emit_signal("stream_replay_failed")

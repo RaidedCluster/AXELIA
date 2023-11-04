@@ -1,12 +1,14 @@
 extends Sprite
 
 onready var PrinterInteraction=$InteractionArea
+var player = null
 
 func _ready():
+	player = get_tree().get_root().find_node("Player", true, false)
 	connect("interacted",self,"_process")
 
 func _process(delta):
-	if Input.is_action_just_pressed("ui_accept"):
+	if Input.is_action_just_pressed("ui_accept") and player and not player.watchson_active:
 		var areas=PrinterInteraction.get_overlapping_areas()
 		for area in areas:
 			if area.get_name()=="Interaction Area":
