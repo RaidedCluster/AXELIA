@@ -9,6 +9,7 @@ func init(camera):
 	$OnOff.connect("pressed", self, "_on_OnOff_pressed")
 	$ExitButton.connect("pressed", self, "_on_ExitButton_pressed")
 	$FeedSettings.connect("pressed", self, "_on_FeedSettings_pressed")
+	$Network.connect("pressed", self, "_on_Network_pressed")  # Connect the Network button pressed signal
 	camera_node.connect("stream_replay_failed", self, "_on_StreamReplay_failed")
 
 	# Update the UI based on the current state of the camera node
@@ -16,34 +17,31 @@ func init(camera):
 
 func update_ui():
 	var time_left = int(round(camera_node.get_time_left()))
-
 	$OnOffToggleSection/CountdownLabel.text = str(time_left)
 	$FeedSettingsToggleSection/CountdownLabel.text = str(time_left)
+	# No countdown for NetworkToggleSection as per your requirements
 
 	# Determine which UI elements to show based on the camera's state
 	if camera_node.isDisabled:
 		if camera_node.is_stream_replayed:
-			# The camera is in stream replay mode
 			$OnOffToggleSection.visible = false
 			$FeedSettingsToggleSection.visible = true
-			set_process(true)
 		else:
-			# The camera is in regular disable mode
 			$OnOffToggleSection.visible = true
 			$FeedSettingsToggleSection.visible = false
-			set_process(true)
-		# Hide the main buttons when the camera is disabled
+		$NetworkToggleSection.visible = false  # Ensure NetworkToggleSection is not visible when camera is disabled
 		$OnOff.visible = false
 		$FeedSettings.visible = false
 		$Network.visible = false
 	else:
-		# Camera is not disabled, show the main buttons
 		$OnOffToggleSection.visible = false
 		$FeedSettingsToggleSection.visible = false
+		$NetworkToggleSection.visible = false  # Reset NetworkToggleSection visibility when camera is not disabled
 		$OnOff.visible = true
 		$FeedSettings.visible = true
 		$Network.visible = true
-		set_process(false)
+
+	set_process(camera_node.isDisabled || $OnOffToggleSection.visible || $FeedSettingsToggleSection.visible || $NetworkToggleSection.visible)
 
 
 # Called when OnOff button is pressed
@@ -125,3 +123,13 @@ func _ready():
 	warning_timer.set_wait_time(2.0)
 	warning_timer.connect("timeout", self, "_on_WarningTimer_timeout")
 	$FeedSettingsToggleSection.add_child(warning_timer)
+
+# Handler for Network button press
+# Handler for Network button press
+func _on_Network_pressed():
+	print("Network button pressed")
+	$NetworkToggleSection.visible = true  # Show the Network Toggle Section
+	# Hide the other main buttons as well as the Network button
+	$OnOff.visible = false
+	$FeedSettings.visible = false
+	$Network.visible = false  # Hide the Network button itself

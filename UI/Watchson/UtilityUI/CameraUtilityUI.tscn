@@ -183,7 +183,6 @@ custom_fonts/normal_font = SubResource( 6 )
 bbcode_enabled = true
 
 [node name="WarningLabel" type="RichTextLabel" parent="FeedSettingsToggleSection"]
-visible = false
 margin_left = 224.0
 margin_top = 264.0
 margin_right = 1056.0
