@@ -396,7 +396,7 @@ graph_offset = Vector2( 0, 13.0223 )
 [sub_resource type="RectangleShape2D" id=24]
 extents = Vector2( 49.3423, 55.6078 )
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D" groups=["moving_bodies"]]
 position = Vector2( 568, 320 )
 script = ExtResource( 2 )
 

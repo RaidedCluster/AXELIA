@@ -55,8 +55,14 @@ func _on_OnOff_pressed():
 
 
 # Called when ExitButton is pressed
+# Called when ExitButton is pressed
 func _on_ExitButton_pressed():
+	# Inform the Player that the CameraUtility is no longer active
+	var player_node = get_tree().get_root().find_node("Player", true, false)
+	if player_node:
+		player_node.set_watchson_active(false)
 	queue_free()
+
 
 # Called every frame
 func _process(delta):
@@ -110,6 +116,9 @@ func _on_WarningTimer_timeout():
 
 
 func _ready():
+	var player_node = get_tree().get_root().find_node("Player", true, false)
+	if player_node:
+		player_node.set_watchson_active(true)
 	var warning_timer = Timer.new()
 	warning_timer.set_name("WarningTimer")
 	warning_timer.set_one_shot(true)

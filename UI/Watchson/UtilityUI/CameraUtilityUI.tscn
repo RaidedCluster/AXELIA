@@ -127,6 +127,7 @@ bbcode_text = "[center]Network[/center]"
 text = "Network"
 
 [node name="OnOffToggleSection" type="Control" parent="."]
+visible = false
 margin_left = 640.0
 margin_top = 360.0
 margin_right = 680.0
