@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=2]
+[gd_scene load_steps=75 format=2]
 
 [ext_resource path="res://Scenes/Characters/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Sprites/Tileset/BaseTilemap.tres" type="TileSet" id=2]
@@ -21,7 +21,6 @@
 [ext_resource path="res://Scenes/Objects/Electronics/VendingMachine.tscn" type="PackedScene" id=19]
 [ext_resource path="res://Scenes/Objects/Electronics/TableTablet.tscn" type="PackedScene" id=20]
 [ext_resource path="res://Scenes/Objects/Misc/LargeMat.tscn" type="PackedScene" id=21]
-[ext_resource path="res://Sprites/Objects/Electronics/Camera/Camera-Off.png" type="Texture" id=22]
 [ext_resource path="res://Scenes/Objects/Electronics/TimeCardScanner.tscn" type="PackedScene" id=23]
 [ext_resource path="res://Scenes/Objects/Robots/Qudroid.tscn" type="PackedScene" id=24]
 [ext_resource path="res://Scenes/Objects/Furniture/Storage/Cabinet.tscn" type="PackedScene" id=25]
@@ -65,62 +64,13 @@
 [ext_resource path="res://Scenes/SceneTransitionRect.gd" type="Script" id=63]
 [ext_resource path="res://UI/UI Scenes/Inventory.tscn" type="PackedScene" id=64]
 [ext_resource path="res://Scenes/Objects/Electronics/CameraSide.tscn" type="PackedScene" id=65]
-[ext_resource path="res://Sprites/Objects/Electronics/Camera/Camera-On.png" type="Texture" id=66]
-[ext_resource path="res://Scenes/Objects/Electronics/Camera.gd" type="Script" id=67]
-[ext_resource path="res://Sprites/Objects/Electronics/Camera/Camera-Side.png" type="Texture" id=68]
+[ext_resource path="res://Scenes/Objects/Electronics/Camera.tscn" type="PackedScene" id=69]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 40, 24 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 16, 24 )
-
-[sub_resource type="SpriteFrames" id=5]
-animations = [ {
-"frames": [ ExtResource( 22 ) ],
-"loop": true,
-"name": "Off",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 66 ), ExtResource( 22 ) ],
-"loop": true,
-"name": "On",
-"speed": 5.0
-} ]
-
-[sub_resource type="CircleShape2D" id=6]
-radius = 0.76294
-
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 192, 253 )
-
-[sub_resource type="CircleShape2D" id=4]
-radius = 32.0156
-
-[sub_resource type="SpriteFrames" id=19]
-animations = [ {
-"frames": [ ExtResource( 22 ) ],
-"loop": true,
-"name": "Off",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 66 ), ExtResource( 22 ) ],
-"loop": true,
-"name": "On",
-"speed": 5.0
-} ]
-
-[sub_resource type="CircleShape2D" id=20]
-radius = 0.76294
-
-[sub_resource type="RectangleShape2D" id=21]
-extents = Vector2( 192, 256 )
-
-[sub_resource type="CircleShape2D" id=22]
-radius = 32.0156
-
-[sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 328, 372 )
 
 [sub_resource type="Animation" id=8]
 tracks/0/type = "value"
@@ -150,42 +100,20 @@ tracks/0/keys = {
 "values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
 }
 
-[sub_resource type="RectangleShape2D" id=10]
-extents = Vector2( 480, 340 )
+[sub_resource type="RectangleShape2D" id=19]
+extents = Vector2( 318, 300 )
 
-[sub_resource type="SpriteFrames" id=11]
-animations = [ {
-"frames": [ ExtResource( 22 ) ],
-"loop": true,
-"name": "Off",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 66 ), ExtResource( 22 ) ],
-"loop": true,
-"name": "On",
-"speed": 5.0
-} ]
+[sub_resource type="RectangleShape2D" id=20]
+extents = Vector2( 384, 372 )
 
-[sub_resource type="CircleShape2D" id=12]
-radius = 0.76294
+[sub_resource type="RectangleShape2D" id=21]
+extents = Vector2( 601, 256 )
 
-[sub_resource type="RectangleShape2D" id=13]
-extents = Vector2( 384, 496 )
+[sub_resource type="RectangleShape2D" id=22]
+extents = Vector2( 512, 320 )
 
-[sub_resource type="CircleShape2D" id=14]
-radius = 32.0156
-
-[sub_resource type="CircleShape2D" id=15]
-radius = 0.76294
-
-[sub_resource type="RectangleShape2D" id=16]
-extents = Vector2( 624, 248 )
-
-[sub_resource type="CircleShape2D" id=17]
-radius = 48.0104
-
-[sub_resource type="RectangleShape2D" id=18]
-extents = Vector2( 848, 296 )
+[sub_resource type="RectangleShape2D" id=23]
+extents = Vector2( 864, 232 )
 
 [node name="QRF" type="Node2D"]
 
@@ -1370,97 +1298,6 @@ margin_top = 0.0
 margin_right = 904.0
 margin_bottom = 0.0
 
-[node name="Camera" type="StaticBody2D" parent="." groups=["hackable"]]
-position = Vector2( 256, -298 )
-collision_layer = 2
-collision_mask = 2
-script = ExtResource( 67 )
-
-[node name="AnimatedSprite" type="AnimatedSprite" parent="Camera"]
-use_parent_material = true
-scale = Vector2( 0.75, 0.75 )
-frames = SubResource( 5 )
-animation = "On"
-playing = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera"]
-position = Vector2( 7.62939e-06, 0 )
-scale = Vector2( 1e-05, 1e-05 )
-shape = SubResource( 6 )
-
-[node name="DetectionArea" type="Area2D" parent="Camera"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera/DetectionArea"]
-position = Vector2( 0, 391 )
-shape = SubResource( 3 )
-
-[node name="ClickDetection" type="Area2D" parent="Camera"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera/ClickDetection"]
-position = Vector2( 0, -1 )
-shape = SubResource( 4 )
-
-[node name="CameraReceptionRight" type="StaticBody2D" parent="." groups=["hackable"]]
-position = Vector2( 1600, -296 )
-collision_layer = 2
-collision_mask = 2
-script = ExtResource( 67 )
-
-[node name="AnimatedSprite" type="AnimatedSprite" parent="CameraReceptionRight"]
-use_parent_material = true
-scale = Vector2( 0.75, 0.75 )
-frames = SubResource( 19 )
-animation = "On"
-playing = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraReceptionRight"]
-position = Vector2( 7.62939e-06, 0 )
-scale = Vector2( 1e-05, 1e-05 )
-shape = SubResource( 20 )
-
-[node name="DetectionArea" type="Area2D" parent="CameraReceptionRight"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraReceptionRight/DetectionArea"]
-position = Vector2( 0, 384 )
-shape = SubResource( 21 )
-
-[node name="ClickDetection" type="Area2D" parent="CameraReceptionRight"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraReceptionRight/ClickDetection"]
-position = Vector2( 0, -1 )
-shape = SubResource( 22 )
-
-[node name="Camera3" type="StaticBody2D" parent="." groups=["hackable"]]
-position = Vector2( -280, -1637 )
-collision_layer = 2
-collision_mask = 2
-script = ExtResource( 67 )
-
-[node name="AnimatedSprite" type="AnimatedSprite" parent="Camera3"]
-use_parent_material = true
-scale = Vector2( 0.75, 0.75 )
-frames = SubResource( 5 )
-animation = "On"
-frame = 1
-playing = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera3"]
-position = Vector2( 7.62939e-06, 0 )
-scale = Vector2( 1e-05, 1e-05 )
-shape = SubResource( 6 )
-
-[node name="DetectionArea" type="Area2D" parent="Camera3"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera3/DetectionArea"]
-position = Vector2( -32, 369 )
-shape = SubResource( 7 )
-
-[node name="ClickDetection" type="Area2D" parent="Camera3"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera3/ClickDetection"]
-position = Vector2( 0, -1 )
-shape = SubResource( 4 )
-
 [node name="Elevator Extrusion" parent="." instance=ExtResource( 18 )]
 position = Vector2( 927, 950 )
 scale = Vector2( 1.4, 0.8 )
@@ -1488,123 +1325,58 @@ __meta__ = {
 anims/Fade_In = SubResource( 8 )
 anims/Fade_Out = SubResource( 9 )
 
-[node name="Camera4" parent="." instance=ExtResource( 65 )]
+[node name="CameraReceptionRight" parent="." instance=ExtResource( 69 )]
+position = Vector2( 1604, -298 )
+
+[node name="CameraReceptionLeft" parent="." instance=ExtResource( 69 )]
+position = Vector2( 260, -298 )
+
+[node name="CameraBossCabin" parent="." instance=ExtResource( 69 )]
+position = Vector2( -304, -1639 )
+
+[node name="CollisionShape2D" parent="CameraBossCabin/DetectionArea" index="0"]
+position = Vector2( -18, 443 )
+shape = SubResource( 19 )
+
+[node name="CameraFirstSector" parent="." instance=ExtResource( 65 )]
 position = Vector2( 1760, -1920 )
 scale = Vector2( -1, 1 )
 
-[node name="Camera5" type="StaticBody2D" parent="." groups=["hackable"]]
-position = Vector2( 2552, -4840 )
-collision_layer = 2
-collision_mask = 2
-script = ExtResource( 67 )
+[node name="CameraBreakRoom" parent="." instance=ExtResource( 69 )]
+position = Vector2( 3165, -3109 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="Camera5"]
-use_parent_material = true
-scale = Vector2( 0.75, 0.75 )
-frames = SubResource( 5 )
-animation = "On"
-frame = 1
-playing = true
+[node name="CollisionShape2D" parent="CameraBreakRoom/DetectionArea" index="0"]
+position = Vector2( -29, 473 )
+shape = SubResource( 20 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera5"]
-position = Vector2( 7.62939e-06, 0 )
-scale = Vector2( 1e-05, 1e-05 )
-shape = SubResource( 6 )
-
-[node name="DetectionArea" type="Area2D" parent="Camera5"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera5/DetectionArea"]
-position = Vector2( -24, 340 )
-shape = SubResource( 10 )
-
-[node name="ClickDetection" type="Area2D" parent="Camera5"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera5/ClickDetection"]
-position = Vector2( 0, -1 )
-shape = SubResource( 4 )
-
-[node name="Camera6" type="StaticBody2D" parent="." groups=["hackable"]]
-position = Vector2( 3168, -3104 )
-collision_layer = 2
-collision_mask = 2
-script = ExtResource( 67 )
-
-[node name="AnimatedSprite" type="AnimatedSprite" parent="Camera6"]
-use_parent_material = true
-scale = Vector2( 0.75, 0.75 )
-frames = SubResource( 11 )
-animation = "On"
-playing = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera6"]
-position = Vector2( 7.62939e-06, 0 )
-scale = Vector2( 1e-05, 1e-05 )
-shape = SubResource( 12 )
-
-[node name="DetectionArea" type="Area2D" parent="Camera6"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera6/DetectionArea"]
-position = Vector2( -32, 496 )
-shape = SubResource( 13 )
-
-[node name="ClickDetection" type="Area2D" parent="Camera6"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera6/ClickDetection"]
-position = Vector2( 0, -1 )
-shape = SubResource( 14 )
-
-[node name="Camera7" type="StaticBody2D" parent="." groups=["hackable"]]
-position = Vector2( 1760, -3601 )
+[node name="CameraSecondSector" parent="." instance=ExtResource( 65 )]
+position = Vector2( 1760, -3600 )
 scale = Vector2( -1, 1 )
-collision_layer = 2
-collision_mask = 2
-script = ExtResource( 67 )
 
-[node name="Sprite" type="Sprite" parent="Camera7"]
-use_parent_material = true
-texture = ExtResource( 68 )
+[node name="CollisionShape2D" parent="CameraSecondSector/DetectionArea" index="0"]
+position = Vector2( 647, 16 )
+shape = SubResource( 21 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera7"]
-position = Vector2( 7.62939e-06, 0 )
-scale = Vector2( 1e-05, 1e-05 )
-shape = SubResource( 15 )
+[node name="CameraMeetingRoom" parent="." instance=ExtResource( 69 )]
+position = Vector2( 2552, -4840 )
 
-[node name="DetectionArea" type="Area2D" parent="Camera7"]
+[node name="AnimatedSprite" parent="CameraMeetingRoom" index="0"]
+frame = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera7/DetectionArea"]
-position = Vector2( 624, 25 )
-shape = SubResource( 16 )
+[node name="CollisionShape2D" parent="CameraMeetingRoom/DetectionArea" index="0"]
+position = Vector2( 8, 424 )
+shape = SubResource( 22 )
 
-[node name="ClickDetection" type="Area2D" parent="Camera7"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera7/ClickDetection"]
-position = Vector2( 0, -1 )
-shape = SubResource( 17 )
-
-[node name="Camera8" type="StaticBody2D" parent="." groups=["hackable"]]
+[node name="CameraThirdSector" parent="." instance=ExtResource( 65 )]
 position = Vector2( 1760, -5184 )
 scale = Vector2( -1, 1 )
-collision_layer = 2
-collision_mask = 2
-script = ExtResource( 67 )
 
-[node name="Sprite" type="Sprite" parent="Camera8"]
-use_parent_material = true
-texture = ExtResource( 68 )
+[node name="CollisionShape2D" parent="CameraThirdSector/DetectionArea" index="0"]
+position = Vector2( 832, -24 )
+shape = SubResource( 23 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera8"]
-position = Vector2( 7.62939e-06, 0 )
-scale = Vector2( 1e-05, 1e-05 )
-shape = SubResource( 15 )
-
-[node name="DetectionArea" type="Area2D" parent="Camera8"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera8/DetectionArea"]
-position = Vector2( 848, -88 )
-shape = SubResource( 18 )
-
-[node name="ClickDetection" type="Area2D" parent="Camera8"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera8/ClickDetection"]
-position = Vector2( 0, -1 )
-shape = SubResource( 17 )
+[editable path="CameraBossCabin"]
+[editable path="CameraBreakRoom"]
+[editable path="CameraSecondSector"]
+[editable path="CameraMeetingRoom"]
+[editable path="CameraThirdSector"]

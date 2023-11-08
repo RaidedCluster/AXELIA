@@ -229,41 +229,49 @@ bbcode_text = "[center][shake rate=5 level=10]No Signal[/shake][/center]"
 text = "No Signal"
 
 [node name="CameraReceptionRight" type="Sprite" parent="NetworkToggleSection"]
+visible = false
 position = Vector2( 664, 556 )
 scale = Vector2( 0.00756958, 0.00756958 )
 texture = ExtResource( 15 )
 
 [node name="CameraReceptionLeft" type="Sprite" parent="NetworkToggleSection"]
+visible = false
 position = Vector2( 601, 556 )
 scale = Vector2( 0.00756958, 0.00756958 )
 texture = ExtResource( 15 )
 
 [node name="CameraBossCabin" type="Sprite" parent="NetworkToggleSection"]
+visible = false
 position = Vector2( 578, 536 )
 scale = Vector2( 0.00756958, 0.00756958 )
 texture = ExtResource( 15 )
 
 [node name="CameraFirstSector" type="Sprite" parent="NetworkToggleSection"]
+visible = false
 position = Vector2( 669, 527 )
 scale = Vector2( 0.00756958, 0.00756958 )
 texture = ExtResource( 15 )
 
 [node name="CameraBreakRoom" type="Sprite" parent="NetworkToggleSection"]
+visible = false
 position = Vector2( 725, 491 )
 scale = Vector2( 0.00756958, 0.00756958 )
 texture = ExtResource( 15 )
 
 [node name="CameraSecondSector" type="Sprite" parent="NetworkToggleSection"]
+visible = false
 position = Vector2( 667, 474 )
 scale = Vector2( 0.00756958, 0.00756958 )
 texture = ExtResource( 15 )
 
 [node name="CameraMeetingRoom" type="Sprite" parent="NetworkToggleSection"]
+visible = false
 position = Vector2( 695, 440 )
 scale = Vector2( 0.00756958, 0.00756958 )
 texture = ExtResource( 15 )
 
 [node name="CameraThirdSector" type="Sprite" parent="NetworkToggleSection"]
+visible = false
 position = Vector2( 665, 423 )
 scale = Vector2( 0.00756958, 0.00756958 )
 texture = ExtResource( 15 )

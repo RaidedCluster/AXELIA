@@ -26,7 +26,7 @@ extents = Vector2( 192, 256 )
 [sub_resource type="CircleShape2D" id=4]
 radius = 32.0156
 
-[node name="Camera" type="StaticBody2D" groups=["hackable"]]
+[node name="Camera" type="StaticBody2D" groups=["cameras", "hackable"]]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource( 3 )
@@ -36,7 +36,6 @@ use_parent_material = true
 scale = Vector2( 0.75, 0.75 )
 frames = SubResource( 1 )
 animation = "On"
-frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -3,6 +3,9 @@ extends Control
 var camera_node = null
 var showWarning = false  # New variable to control the warning display
 
+# Dictionary to keep track of active timers for each camera
+var flash_timers = {}
+
 # Initialize the script with the camera node
 func init(camera):
 	camera_node = camera
@@ -51,8 +54,6 @@ func _on_OnOff_pressed():
 	$OnOffToggleSection.visible = true  # Make the section visible
 	set_process(true)
 
-
-# Called when ExitButton is pressed
 # Called when ExitButton is pressed
 func _on_ExitButton_pressed():
 	# Inform the Player that the CameraUtility is no longer active
@@ -60,7 +61,6 @@ func _on_ExitButton_pressed():
 	if player_node:
 		player_node.set_watchson_active(false)
 	queue_free()
-
 
 # Called every frame
 func _process(delta):
@@ -123,6 +123,9 @@ func _ready():
 	warning_timer.set_wait_time(2.0)
 	warning_timer.connect("timeout", self, "_on_WarningTimer_timeout")
 	$FeedSettingsToggleSection.add_child(warning_timer)
+	for camera in get_tree().get_nodes_in_group("cameras"):
+		camera.connect("body_detected", self, "_on_Camera_body_detected")
+		camera.connect("body_no_longer_detected", self, "_on_Camera_body_no_longer_detected")
 
 # Handler for Network button press
 func _on_Network_pressed():
@@ -133,3 +136,49 @@ func _on_Network_pressed():
 	$FeedSettings.visible = false
 	$Network.visible = false  # Hide the Network button itself
 	# The Exit button remains visible
+
+# Function to initialize flashing for a specific camera
+func start_camera_flash(camera_name):
+	stop_camera_flash(camera_name)  # Stop any existing timer first
+
+	# Create a new Timer node
+	var new_timer = Timer.new()
+	new_timer.set_wait_time(0.5)  # Set the interval for flashing
+	new_timer.set_one_shot(false)  # Ensure the timer loops
+	new_timer.connect("timeout", self, "_on_FlashTimer_timeout", [camera_name])
+	add_child(new_timer)
+	new_timer.start()
+	flash_timers[camera_name] = new_timer  # Store the timer in the dictionary
+
+	print("Started flash for: ", camera_name)
+
+# Handler for the flashing effect
+func _on_FlashTimer_timeout(camera_name):
+	var camera_sprite = $NetworkToggleSection.get_node(camera_name)
+	if camera_sprite:
+		camera_sprite.visible = !camera_sprite.visible
+
+# When a moving body is detected
+func _on_Camera_body_detected(camera_name):
+	print("Body detected by: ", camera_name)
+	start_camera_flash(camera_name)
+
+func stop_camera_flash(camera_name):
+	if camera_name in flash_timers:
+		var timer = flash_timers[camera_name]
+		if timer and not timer.is_queued_for_deletion():
+			timer.stop()
+			timer.queue_free()
+		flash_timers.erase(camera_name)  # Remove the timer from the dictionary
+
+		# Make sure the sprite is not visible
+		var camera_sprite = $NetworkToggleSection.get_node_or_null(camera_name)
+		if camera_sprite:
+			camera_sprite.visible = false
+
+		print("Stopped flash for: ", camera_name)
+
+
+func _on_Camera_body_no_longer_detected(camera_name):
+	print("Stopping flash for: ", camera_name)
+	stop_camera_flash(camera_name)

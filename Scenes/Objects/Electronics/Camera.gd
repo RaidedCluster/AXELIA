@@ -1,7 +1,10 @@
 extends StaticBody2D
 
 signal caught
+signal body_detected(camera_name)
+signal body_no_longer_detected
 signal stream_replay_failed
+
 var is_stream_replayed = false
 
 var detection_area
@@ -28,6 +31,7 @@ func _ready():
 	animated_sprite = $AnimatedSprite
 	connect("caught", self, "_on_player_caught")
 	detection_area.connect("body_entered", self, "_on_DetectionArea_body_entered")
+	detection_area.connect("body_exited", self, "_on_DetectionArea_body_exited")
 
 	# Manually create and configure the timer
 	disable_timer = Timer.new()
@@ -64,10 +68,20 @@ func _on_DisableTimer_timeout():
 	animated_sprite.animation = "On"
 	animated_sprite.play()
 
-
 func _on_DetectionArea_body_entered(body):
-	if not isDisabled and body.name == "Player":
-		emit_signal("caught")
+	if isDisabled:
+		return  # Do nothing if the camera is disabled
+
+	if body.name == "Player":
+		emit_signal("caught")  # The existing functionality for catching the player
+
+	if body.is_in_group("moving_bodies"):
+		emit_signal("body_detected", self.name)  # Emit a new signal for moving bodies detected
+		print(self.name)
+
+func _on_DetectionArea_body_exited(body):
+	if not isDisabled and "moving_bodies" in body.get_groups():
+		emit_signal("body_no_longer_detected", name)
 
 func utility():
 	var camera_utility_scene = preload("res://UI/Watchson/UtilityUI/CameraUtilityUI.tscn")
