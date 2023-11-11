@@ -34,14 +34,6 @@ collision_mask = 2
 position = Vector2( 0, 36.9231 )
 shape = SubResource( 2 )
 
-[node name="InteractionArea2" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea2"]
-position = Vector2( 0.0995941, 115.266 )
-shape = SubResource( 2 )
-
 [node name="VisibilityNotifier2D" parent="." instance=ExtResource( 3 )]
 position = Vector2( 0, 57.6923 )
 scale = Vector2( 4.30769, 11.4615 )

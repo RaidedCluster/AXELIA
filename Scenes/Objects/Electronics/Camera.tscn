@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Sprites/Objects/Electronics/Camera/Camera-Off.png" type="Texture" id=1]
 [ext_resource path="res://Sprites/Objects/Electronics/Camera/Camera-On.png" type="Texture" id=2]
@@ -23,9 +23,6 @@ radius = 0.76294
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 192, 256 )
 
-[sub_resource type="CircleShape2D" id=4]
-radius = 32.0156
-
 [node name="Camera" type="StaticBody2D" groups=["cameras", "hackable"]]
 collision_layer = 2
 collision_mask = 2
@@ -48,9 +45,3 @@ shape = SubResource( 2 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
 position = Vector2( 0, 384 )
 shape = SubResource( 3 )
-
-[node name="ClickDetection" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickDetection"]
-position = Vector2( 0, -1 )
-shape = SubResource( 4 )

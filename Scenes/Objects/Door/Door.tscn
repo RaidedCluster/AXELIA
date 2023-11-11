@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scenes/Objects/Door/Door.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Objects/Door/Door_Front_1_Closed.png" type="Texture" id=2]
@@ -36,13 +36,16 @@ extents = Vector2( 80.3795, 32.9973 )
 extents = Vector2( 80, 67 )
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 39.7835, 30.6856 )
+extents = Vector2( 39.7835, 30.1897 )
 
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 18.7304, 30.8356 )
 
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 47.8705, 30.9433 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 32, 33 )
 
 [node name="Door" type="Node2D"]
 script = ExtResource( 1 )
@@ -69,11 +72,11 @@ shape = SubResource( 3 )
 position = Vector2( 0, -31.1127 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="PermanentCollision"]
-position = Vector2( -88.1989, 137.419 )
+position = Vector2( -88.1989, 136.923 )
 shape = SubResource( 4 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="PermanentCollision"]
-position = Vector2( 88.5484, 137.578 )
+position = Vector2( 88, 136.113 )
 shape = SubResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PermanentCollision"]
@@ -88,5 +91,18 @@ position = Vector2( 0, 137.827 )
 shape = SubResource( 6 )
 
 [node name="VisibilityNotifier2D" parent="." instance=ExtResource( 5 )]
+visible = false
 position = Vector2( -1.52588e-05, 48 )
 scale = Vector2( 15.2, 18.4 )
+
+[node name="FloorCore Collision" type="StaticBody2D" parent="."]
+collision_layer = 134217728
+collision_mask = 134217728
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FloorCore Collision"]
+position = Vector2( -96, 169 )
+shape = SubResource( 7 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="FloorCore Collision"]
+position = Vector2( 96, 169 )
+shape = SubResource( 7 )

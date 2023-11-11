@@ -10,43 +10,44 @@
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 2 ) ],
-"loop": true,
+"loop": false,
 "name": "down",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 1 ) ],
-"loop": true,
+"loop": false,
 "name": "left",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 3 ) ],
-"loop": true,
+"loop": false,
 "name": "right",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 4 ) ],
-"loop": true,
+"loop": false,
 "name": "up",
 "speed": 5.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=2]
-radius = 4.82007
-height = 51.2442
+radius = 16.1138
+height = 29.5837
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 8.63622, 30.8679 )
 
 [node name="FloorCore B-Room" type="KinematicBody2D" groups=["hackable"]]
 scale = Vector2( 1.3, 1.3 )
-collision_layer = 3
-collision_mask = 3
+collision_layer = 134217731
+collision_mask = 134217731
 script = ExtResource( 5 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 use_parent_material = true
 frames = SubResource( 1 )
 animation = "left"
+playing = true
 offset = Vector2( 0, 150 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

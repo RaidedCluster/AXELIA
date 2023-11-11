@@ -116,3 +116,9 @@ func _on_StreamReplaySingleCheckTimer_timeout():  # New function
 		is_stream_replayed = false
 		detection_area.monitoring = true
 		emit_signal("stream_replay_failed")
+
+func check_for_moving_bodies():
+	for body in detection_area.get_overlapping_bodies():
+		if body.is_in_group("moving_bodies"):
+			emit_signal("body_detected", self.name)
+

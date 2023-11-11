@@ -15,7 +15,7 @@ var isDisabled = false
 var outline_enabled = false
 var outline_shader_material = preload("res://UI/UI Sprites/outline.tres")
 
-# New variable to hold a reference to the UI
+# New variable to hold a referene to the UI
 var camera_utility_ui = null
 
 func set_outline(enable):
@@ -122,3 +122,9 @@ func _on_StreamReplaySingleCheckTimer_timeout():  # New function
 		is_stream_replayed = false
 		detection_area.monitoring = true
 		emit_signal("stream_replay_failed")
+
+func check_for_moving_bodies():
+	for body in detection_area.get_overlapping_bodies():
+		if body.is_in_group("moving_bodies"):
+			emit_signal("body_detected", self.name)
+

@@ -130,6 +130,7 @@ func _ready():
 # Handler for Network button press
 func _on_Network_pressed():
 	print("Network button pressed")
+	camera_node.check_for_moving_bodies()
 	$NetworkToggleSection.visible = true  # Show the Network Toggle Section
 	# Hide the other main buttons but keep the Exit button visible
 	$OnOff.visible = false

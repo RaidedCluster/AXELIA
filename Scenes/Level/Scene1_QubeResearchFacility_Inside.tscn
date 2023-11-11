@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=2]
+[gd_scene load_steps=78 format=2]
 
 [ext_resource path="res://Scenes/Characters/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Sprites/Tileset/BaseTilemap.tres" type="TileSet" id=2]
@@ -71,6 +71,15 @@ extents = Vector2( 40, 24 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 16, 24 )
+
+[sub_resource type="RectangleShape2D" id=25]
+extents = Vector2( 160, 44 )
+
+[sub_resource type="RectangleShape2D" id=26]
+extents = Vector2( 385.5, 44 )
+
+[sub_resource type="RectangleShape2D" id=24]
+extents = Vector2( 876, 28 )
 
 [sub_resource type="Animation" id=8]
 tracks/0/type = "value"
@@ -222,10 +231,10 @@ position = Vector2( 1723.66, 128.598 )
 position = Vector2( 1784, 104 )
 
 [node name="FloorCore B-Room2" parent="YSort" instance=ExtResource( 9 )]
-position = Vector2( 1721, -5491 )
+position = Vector2( 1721.4, -5048 )
 
 [node name="FloorCore B-Room Charger2" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 1784, -5512 )
+position = Vector2( 1784.4, -5069 )
 
 [node name="ChairFront" parent="YSort" instance=ExtResource( 10 )]
 position = Vector2( 1452, 435 )
@@ -670,10 +679,10 @@ scale = Vector2( -1, 1 )
 position = Vector2( 2776, -2341 )
 
 [node name="FloorCore B-Room3" parent="YSort" instance=ExtResource( 9 )]
-position = Vector2( 3459, -3064 )
+position = Vector2( 3459.4, -3000 )
 
 [node name="FloorCore B-Room Charger3" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 3520, -3080 )
+position = Vector2( 3520.4, -3016 )
 
 [node name="Round Table4" parent="YSort" instance=ExtResource( 51 )]
 position = Vector2( 1590, -2280 )
@@ -1289,6 +1298,56 @@ position = Vector2( 392, -12599 )
 [node name="Seraphim Turret Right" parent="YSort" instance=ExtResource( 61 )]
 position = Vector2( 1472, -12600 )
 
+[node name="FloorCore Collision" type="StaticBody2D" parent="YSort"]
+position = Vector2( 504, 211 )
+collision_layer = 134217728
+collision_mask = 134217728
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/FloorCore Collision"]
+position = Vector2( 104, 0 )
+shape = SubResource( 25 )
+
+[node name="FloorCore Collision2" type="StaticBody2D" parent="YSort"]
+position = Vector2( 1008, 422 )
+collision_layer = 134217728
+collision_mask = 134217728
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/FloorCore Collision2"]
+position = Vector2( 241, -212 )
+shape = SubResource( 25 )
+
+[node name="FloorCore Collision3" type="StaticBody2D" parent="YSort"]
+collision_layer = 134217728
+collision_mask = 134217728
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/FloorCore Collision3"]
+position = Vector2( 3136, -2926 )
+shape = SubResource( 26 )
+
+[node name="FloorCore Collision4" type="StaticBody2D" parent="YSort"]
+position = Vector2( 445, -5358 )
+collision_layer = 134217728
+collision_mask = 134217728
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/FloorCore Collision4"]
+position = Vector2( 964, 0 )
+shape = SubResource( 26 )
+
+[node name="FloorCore Collision5" type="StaticBody2D" parent="YSort"]
+position = Vector2( 445, -5358 )
+collision_layer = 134217728
+collision_mask = 134217728
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/FloorCore Collision5"]
+position = Vector2( 4, 2 )
+shape = SubResource( 26 )
+
+[node name="WallExtrusion" type="StaticBody2D" parent="."]
+position = Vector2( 924, 976 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallExtrusion"]
+shape = SubResource( 24 )
+
 [node name="UI" type="CanvasLayer" parent="."]
 layer = 2
 
@@ -1360,9 +1419,6 @@ shape = SubResource( 21 )
 [node name="CameraMeetingRoom" parent="." instance=ExtResource( 69 )]
 position = Vector2( 2552, -4840 )
 
-[node name="AnimatedSprite" parent="CameraMeetingRoom" index="0"]
-frame = 1
-
 [node name="CollisionShape2D" parent="CameraMeetingRoom/DetectionArea" index="0"]
 position = Vector2( 8, 424 )
 shape = SubResource( 22 )
@@ -1372,7 +1428,7 @@ position = Vector2( 1760, -5184 )
 scale = Vector2( -1, 1 )
 
 [node name="CollisionShape2D" parent="CameraThirdSector/DetectionArea" index="0"]
-position = Vector2( 832, -24 )
+position = Vector2( 832, -20 )
 shape = SubResource( 23 )
 
 [editable path="CameraBossCabin"]
