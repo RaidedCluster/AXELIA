@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=2]
+[gd_scene load_steps=79 format=2]
 
 [ext_resource path="res://Scenes/Characters/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Sprites/Tileset/BaseTilemap.tres" type="TileSet" id=2]
@@ -21,6 +21,7 @@
 [ext_resource path="res://Scenes/Objects/Electronics/VendingMachine.tscn" type="PackedScene" id=19]
 [ext_resource path="res://Scenes/Objects/Electronics/TableTablet.tscn" type="PackedScene" id=20]
 [ext_resource path="res://Scenes/Objects/Misc/LargeMat.tscn" type="PackedScene" id=21]
+[ext_resource path="res://UI/UI Scenes/StaminaBar.tscn" type="PackedScene" id=22]
 [ext_resource path="res://Scenes/Objects/Electronics/TimeCardScanner.tscn" type="PackedScene" id=23]
 [ext_resource path="res://Scenes/Objects/Robots/Qudroid.tscn" type="PackedScene" id=24]
 [ext_resource path="res://Scenes/Objects/Furniture/Storage/Cabinet.tscn" type="PackedScene" id=25]
@@ -1356,6 +1357,16 @@ margin_left = 904.0
 margin_top = 0.0
 margin_right = 904.0
 margin_bottom = 0.0
+
+[node name="StaminaBar" parent="UI" instance=ExtResource( 22 )]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -80.0
+margin_top = -62.0
+margin_right = 80.0
+margin_bottom = -38.0
 
 [node name="Elevator Extrusion" parent="." instance=ExtResource( 18 )]
 position = Vector2( 927, 950 )

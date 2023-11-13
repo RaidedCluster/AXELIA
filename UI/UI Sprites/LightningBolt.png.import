@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Player.png-76a3c4e2616db64d5ac7174170aa30fd.stex"
+path="res://.import/LightningBolt.png-a4e643c6b25f81d30f123cbc0c9f32a1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Characters/Player.png"
-dest_files=[ "res://.import/Player.png-76a3c4e2616db64d5ac7174170aa30fd.stex" ]
+source_file="res://UI/UI Sprites/LightningBolt.png"
+dest_files=[ "res://.import/LightningBolt.png-a4e643c6b25f81d30f123cbc0c9f32a1.stex" ]
 
 [params]
 

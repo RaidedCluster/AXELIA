@@ -208,9 +208,9 @@ texture = ExtResource( 16 )
 
 [node name="InfoLabel" type="RichTextLabel" parent="NetworkToggleSection"]
 margin_left = 480.0
-margin_top = 136.0
+margin_top = 145.0
 margin_right = 792.0
-margin_bottom = 184.0
+margin_bottom = 193.0
 custom_fonts/bold_font = ExtResource( 12 )
 custom_fonts/normal_font = ExtResource( 11 )
 bbcode_enabled = true
