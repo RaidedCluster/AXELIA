@@ -60,7 +60,12 @@ func perform_action1():
 		hide_watchson_gui()
 
 func perform_action2():
-	print("Item 2 clicked: Performing action 2")
+	if !watchswitch:  # Check if Watchson UI is not active
+		get_tree().paused = true  # Pause the game
+		var new_dialog = Dialogic.start('BlackBox')  # Start the 'BlackBox' dialogue
+		new_dialog.pause_mode = Node.PAUSE_MODE_PROCESS
+		add_child(new_dialog)
+		new_dialog.connect("timeline_end", self, "on_dialogue_end")
 
 func perform_action3():
 	print("Item 3 clicked: Performing action 3")
@@ -91,3 +96,6 @@ func toggle_radar_visibility():
 				radar.activate_radar()
 			else:
 				radar.deactivate_radar()
+
+func on_dialogue_end(timeline_name):
+	get_tree().paused = false  # Resume the game when dialogue ends

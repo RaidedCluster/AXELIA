@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=2]
+[gd_scene load_steps=77 format=2]
 
 [ext_resource path="res://Scenes/Characters/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Sprites/Tileset/BaseTilemap.tres" type="TileSet" id=2]
@@ -59,8 +59,6 @@
 [ext_resource path="res://Scenes/Objects/Electronics/Computers/QUBE Hybrid Quantum Supercomputer/Terminal Monitor.tscn" type="PackedScene" id=57]
 [ext_resource path="res://Scenes/Objects/Electronics/Computers/QUBE Hybrid Quantum Supercomputer/Terminal Keyboard.tscn" type="PackedScene" id=58]
 [ext_resource path="res://Scenes/Objects/Electronics/Computers/QUBE Hybrid Quantum Supercomputer/Terminal Mouse.tscn" type="PackedScene" id=59]
-[ext_resource path="res://Scenes/Objects/Electronics/Seraphim Turret/Seraphim Turret Left.tscn" type="PackedScene" id=60]
-[ext_resource path="res://Scenes/Objects/Electronics/Seraphim Turret/Seraphim Turret Right.tscn" type="PackedScene" id=61]
 [ext_resource path="res://Sprites/Objects/Furniture/Storage/Cabinet.png" type="Texture" id=62]
 [ext_resource path="res://Scenes/SceneTransitionRect.gd" type="Script" id=63]
 [ext_resource path="res://UI/UI Scenes/Inventory.tscn" type="PackedScene" id=64]
@@ -1292,12 +1290,6 @@ position = Vector2( 928, -12489 )
 
 [node name="Terminal Mouse" parent="YSort" instance=ExtResource( 59 )]
 position = Vector2( 981, -12498 )
-
-[node name="Seraphim Turret Left" parent="YSort" instance=ExtResource( 60 )]
-position = Vector2( 392, -12599 )
-
-[node name="Seraphim Turret Right" parent="YSort" instance=ExtResource( 61 )]
-position = Vector2( 1472, -12600 )
 
 [node name="FloorCore Collision" type="StaticBody2D" parent="YSort"]
 position = Vector2( 504, 211 )

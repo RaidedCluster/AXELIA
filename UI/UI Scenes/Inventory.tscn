@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://UI/UI Scenes/Inventory.gd" type="Script" id=1]
 [ext_resource path="res://UI/UI Sprites/Inventory/Inventory-Base.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://UI/UI Sprites/Inventory/Inventory-Panel-Activated.png" type="Texture" id=5]
 [ext_resource path="res://UI/UI Sprites/Watchson/QUBE Watchson.png" type="Texture" id=6]
 [ext_resource path="res://UI/Watchson/Watchson.tscn" type="PackedScene" id=7]
+[ext_resource path="res://UI/UI Sprites/Inventory/BlackBox.png" type="Texture" id=8]
 
 [node name="Inventory" type="Control"]
 margin_left = 872.0
@@ -14,9 +15,6 @@ margin_top = 32.0
 margin_right = 872.0
 margin_bottom = 32.0
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Base" type="Sprite" parent="."]
 position = Vector2( 179.2, 89.6 )
@@ -72,3 +70,8 @@ texture = ExtResource( 6 )
 
 [node name="Watchson" parent="." instance=ExtResource( 7 )]
 position = Vector2( -872, 672 )
+
+[node name="BlackBox" type="Sprite" parent="."]
+position = Vector2( 176, 92 )
+scale = Vector2( 0.2165, 0.2165 )
+texture = ExtResource( 8 )
