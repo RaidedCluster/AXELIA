@@ -1,0 +1,19 @@
+{
+	"events": [
+		{
+			"character": "character-1700152960.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "There is nothing else at the bottom of the vending machine."
+		},
+		{
+			"event_id": "dialogic_022",
+			"transition_duration": 0.2
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.4.1",
+		"file": "timeline-1700277775.json",
+		"name": "PostHackedVendingMachine"
+	}
+}

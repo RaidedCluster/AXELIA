@@ -1,8 +1,15 @@
 {
 	"events": [
 		{
+			"character": "character-1700152960.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Drank the can of Recharge!"
+		},
+		{
 			"animation": "2-fade_in_up.gd",
-			"animation_length": 0.2,
+			"animation_length": 0,
+			"animation_wait": false,
 			"change_mirror_portrait": false,
 			"change_z_index": false,
 			"character": "character-1663232374.json",
@@ -24,7 +31,7 @@
 			"character": "character-1663232374.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "These e-readers seem to be out of charge."
+			"text": "I needed that."
 		},
 		{
 			"event_id": "dialogic_022",
@@ -33,7 +40,7 @@
 	],
 	"metadata": {
 		"dialogic-version": "1.4.1",
-		"file": "timeline-1663239503.json",
-		"name": "Flippo"
+		"file": "timeline-1700278780.json",
+		"name": "RechargeCan"
 	}
 }

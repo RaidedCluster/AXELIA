@@ -8,9 +8,10 @@ signal interacted(body)
 
 const STAMINA_MAX = 100
 const STAMINA_DRAIN = 30  # The amount of stamina drained per second while running.
-const STAMINA_REGEN = 15  # The amount of stamina regenerated per second when not running.
+const STAMINA_REGEN = 10  # The amount of stamina regenerated per second when not running.
 
 var current_stamina = STAMINA_MAX
+var unlimited_stamina = false
 
 enum {
 	MOVE
@@ -46,7 +47,8 @@ func move_state(delta):
 		animationTree.set("parameters/Walk/blend_position", input_vector)
 
 		if is_running:
-			current_stamina -= STAMINA_DRAIN * delta  # Drain stamina.
+			if not unlimited_stamina:
+				current_stamina -= STAMINA_DRAIN * delta  # Only drain stamina if not in unlimited stamina mode
 			animationTree.set("parameters/Run/blend_position", input_vector)
 			animationState.travel("Run")
 			current_acceleration *= RUN_SPEED_MULTIPLIER
@@ -60,7 +62,7 @@ func move_state(delta):
 
 	# Clamp the stamina to ensure it doesn't go below 0 or above the max.
 	current_stamina = clamp(current_stamina, 0, STAMINA_MAX)
-	
+
 	# Update the stamina bar by finding it from the root node.
 	var stamina_bar = get_tree().root.find_node("StaminaBar", true, false)
 	if stamina_bar:
@@ -96,4 +98,31 @@ func regenerate_stamina(delta):
 	else:
 		print("StaminaBar node not found in the scene tree.")
 
+func update_stamina_bar():
+	var stamina_bar = get_tree().root.find_node("StaminaBar", true, false)
+	if stamina_bar:
+		stamina_bar.update_stamina(current_stamina)
+	else:
+		print("StaminaBar node not found in the scene tree.")
 
+func _ready():
+	# Attempt to find the Inventory node and connect the signal
+	var inventory = get_tree().root.find_node("Inventory", true, false)
+	if inventory:
+		inventory.connect("recharge_drink_consumed", self, "_on_recharge_drink_consumed")
+
+func _on_recharge_drink_consumed():
+	current_stamina = STAMINA_MAX  # Set current stamina to maximum
+	activate_unlimited_stamina(30)  # For example, 30 seconds duration
+
+func activate_unlimited_stamina(duration):
+	unlimited_stamina = true
+	update_stamina_bar_unlimited_status(true)  # Update StaminaBar status
+	yield(get_tree().create_timer(duration), "timeout")
+	unlimited_stamina = false
+	update_stamina_bar_unlimited_status(false)  # Update StaminaBar status
+
+func update_stamina_bar_unlimited_status(status: bool):
+	var stamina_bar = get_tree().root.find_node("StaminaBar", true, false)
+	if stamina_bar:
+		stamina_bar.set_unlimited_stamina_status(status)

@@ -9,7 +9,7 @@ var has_played_hacked_dialogue = false
 var can_dispensed = false
 
 # In VendingMachine.gd
-signal vending_machine_used
+signal vending_machine_front_used
 
 func set_outline(enable):
 	if enable and not outline_enabled:
@@ -39,15 +39,15 @@ func _process(delta):
 							dialog_name = "Handful"
 						else:
 							# If the RechargeCan is not visible, dispense can and play "HackedVendingMachine"
-							emit_signal("vending_machine_used")
-							dialog_name = "HackedVendingMachine"
+							emit_signal("vending_machine_front_used")
+							dialog_name = "HackedVendingMachineFront"
 							can_dispensed = true  # Indicate that this machine has dispensed a can
 					else:
 						# If this machine has already dispensed a can, play "PostHackedVendingMachine"
 						dialog_name = "PostHackedVendingMachine"
 				else:
 					# If the vending machine hasn't been hacked, play "VendingMachine"
-					dialog_name = "VendingMachine"
+					dialog_name = "VendingMachineFront"
 				
 				var new_dialog = Dialogic.start(dialog_name)
 				new_dialog.pause_mode = Node.PAUSE_MODE_PROCESS

@@ -559,10 +559,10 @@ position = Vector2( 3120, -4496 )
 position = Vector2( 1880, -4774 )
 
 [node name="Vending Machine Front" parent="YSort" instance=ExtResource( 42 )]
-position = Vector2( 1957, -3112 )
+position = Vector2( 2133, -3112 )
 
 [node name="Fridge" parent="YSort" instance=ExtResource( 43 )]
-position = Vector2( 2148, -3100 )
+position = Vector2( 1960, -3099 )
 
 [node name="Cabinet8" type="StaticBody2D" parent="YSort"]
 position = Vector2( 2663, -3057 )
@@ -1298,6 +1298,15 @@ collision_mask = 134217728
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/FloorCore Collision"]
 position = Vector2( 104, 0 )
+shape = SubResource( 25 )
+
+[node name="FloorCore Collision6" type="StaticBody2D" parent="YSort"]
+position = Vector2( 504, 211 )
+collision_layer = 134217728
+collision_mask = 134217728
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/FloorCore Collision6"]
+position = Vector2( 424, -1 )
 shape = SubResource( 25 )
 
 [node name="FloorCore Collision2" type="StaticBody2D" parent="YSort"]

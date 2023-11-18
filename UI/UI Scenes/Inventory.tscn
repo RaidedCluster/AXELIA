@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://UI/UI Scenes/Inventory.gd" type="Script" id=1]
 [ext_resource path="res://UI/UI Sprites/Inventory/Inventory-Base.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://UI/UI Sprites/Watchson/QUBE Watchson.png" type="Texture" id=6]
 [ext_resource path="res://UI/Watchson/Watchson.tscn" type="PackedScene" id=7]
 [ext_resource path="res://UI/UI Sprites/Inventory/BlackBox.png" type="Texture" id=8]
+[ext_resource path="res://UI/UI Sprites/Inventory/Recharge Can.png" type="Texture" id=9]
 
 [node name="Inventory" type="Control"]
 margin_left = 872.0
@@ -75,3 +76,9 @@ position = Vector2( -872, 672 )
 position = Vector2( 176, 92 )
 scale = Vector2( 0.2165, 0.2165 )
 texture = ExtResource( 8 )
+
+[node name="RechargeCan" type="Sprite" parent="."]
+visible = false
+position = Vector2( 285, 90 )
+scale = Vector2( 0.154, 0.154 )
+texture = ExtResource( 9 )

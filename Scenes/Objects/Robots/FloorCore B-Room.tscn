@@ -1,11 +1,10 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Sprites/Objects/Robots/Floorcore B-room/Floorcore-b-room-left.png" type="Texture" id=1]
 [ext_resource path="res://Sprites/Objects/Robots/Floorcore B-room/Floorcore-b-room-down.png" type="Texture" id=2]
 [ext_resource path="res://Sprites/Objects/Robots/Floorcore B-room/Floorcore-b-room-right.png" type="Texture" id=3]
 [ext_resource path="res://Sprites/Objects/Robots/Floorcore B-room/Floorcore-b-room-up.png" type="Texture" id=4]
 [ext_resource path="res://Scenes/Objects/Robots/FloorCore B-Room.gd" type="Script" id=5]
-[ext_resource path="res://UI/VisbilityNotifier/VisibilityNotifier2D.tscn" type="PackedScene" id=6]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -62,7 +61,3 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
 position = Vector2( -0.610539, 120.296 )
 shape = SubResource( 3 )
-
-[node name="VisibilityNotifier2D" parent="." instance=ExtResource( 6 )]
-position = Vector2( 2.86102e-06, 132.308 )
-scale = Vector2( 3.69231, 5.23077 )

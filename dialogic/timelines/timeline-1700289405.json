@@ -24,7 +24,7 @@
 			"character": "character-1663232374.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "These e-readers seem to be out of charge."
+			"text": "A pack of potato chips would be nice too."
 		},
 		{
 			"event_id": "dialogic_022",
@@ -33,7 +33,7 @@
 	],
 	"metadata": {
 		"dialogic-version": "1.4.1",
-		"file": "timeline-1663239503.json",
-		"name": "Flippo"
+		"file": "timeline-1700289405.json",
+		"name": "VendingMachineFront"
 	}
 }

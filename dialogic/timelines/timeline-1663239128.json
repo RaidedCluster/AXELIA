@@ -1,7 +1,7 @@
 {
 	"events": [
 		{
-			"animation": "1-fade_in.gd",
+			"animation": "2-fade_in_up.gd",
 			"animation_length": 0.2,
 			"change_mirror_portrait": false,
 			"change_z_index": false,

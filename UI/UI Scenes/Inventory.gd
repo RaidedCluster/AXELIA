@@ -1,6 +1,7 @@
 extends Control
 
 signal radar_button_pressed
+signal recharge_drink_consumed
 
 var watchswitch = false
 var player = preload("res://Scenes/Characters/Player.tscn")
@@ -20,6 +21,8 @@ func _ready():
 	$HBoxContainer/Slot1.connect("pressed", self, "_on_slot_pressed", [0])
 	$HBoxContainer/Slot2.connect("pressed", self, "_on_slot_pressed", [1])
 	$HBoxContainer/Slot3.connect("pressed", self, "_on_slot_pressed", [2])
+	connect_to_vending_machine()
+	connect_to_vending_machine_front()
 
 func show_watchson_gui():
 	if not has_node("watchson_gui_instance"):
@@ -68,7 +71,24 @@ func perform_action2():
 		new_dialog.connect("timeline_end", self, "on_dialogue_end")
 
 func perform_action3():
-	print("Item 3 clicked: Performing action 3")
+	var player_node = get_tree().get_root().find_node("Player", true, false)
+	if player_node and player_node.unlimited_stamina:
+		# If the unlimited stamina effect is active, play a different dialogue
+		var new_dialog = Dialogic.start('RechargeCan2')  # Assuming 'RechargeCan2' is the dialogue for this scenario
+		new_dialog.pause_mode = Node.PAUSE_MODE_PROCESS
+		add_child(new_dialog)
+		new_dialog.connect("timeline_end", self, "on_dialogue_end")
+	elif $RechargeCan.visible:
+		# Regular logic for consuming the RechargeCan
+		$RechargeCan.visible = false
+		get_tree().paused = true
+		var new_dialog = Dialogic.start('RechargeCan')
+		new_dialog.pause_mode = Node.PAUSE_MODE_PROCESS
+		add_child(new_dialog)
+		new_dialog.connect("timeline_end", self, "on_dialogue_end")
+		emit_signal("recharge_drink_consumed")
+	else:
+		print("No RechargeCan in inventory.")
 
 func _on_slot_pressed(slot_index):
 	var item = slots[slot_index]
@@ -99,3 +119,28 @@ func toggle_radar_visibility():
 
 func on_dialogue_end(timeline_name):
 	get_tree().paused = false  # Resume the game when dialogue ends
+
+func connect_to_vending_machine():
+	var vending_machine = get_tree().get_root().find_node("Vending Machine", true, false)
+	if vending_machine:
+		vending_machine.connect("vending_machine_used", self, "_on_vending_machine_used")
+	else:
+		print("VendingMachine node not found!")
+
+func connect_to_vending_machine_front():
+	var vending_machine_front = get_tree().get_root().find_node("Vending Machine Front", true, false)
+	if vending_machine_front:
+		vending_machine_front.connect("vending_machine_front_used", self, "_on_vending_machine_front_used")
+	else:
+		print("VendingMachineFront node not found!")
+
+func _on_vending_machine_used():
+	$RechargeCan.visible = true
+
+func _on_vending_machine_front_used():
+	print("Vending Machine Front used - Signal received in Inventory")
+	$RechargeCan.visible = true
+
+# In Inventory.gd
+func is_recharge_can_visible() -> bool:
+	return $RechargeCan.visible

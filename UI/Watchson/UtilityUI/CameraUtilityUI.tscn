@@ -140,7 +140,8 @@ margin_right = 422.0
 margin_bottom = 46.0
 custom_fonts/bold_font = ExtResource( 12 )
 custom_fonts/normal_font = ExtResource( 11 )
-bbcode_text = "Power back-up will turn the device back on in:"
+bbcode_enabled = true
+bbcode_text = "[center]Power back-up will turn the device back on in:[/center]"
 text = "Power back-up will turn the device back on in:"
 
 [node name="CountdownLabel" type="RichTextLabel" parent="OnOffToggleSection"]

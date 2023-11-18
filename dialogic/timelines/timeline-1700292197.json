@@ -2,7 +2,8 @@
 	"events": [
 		{
 			"animation": "2-fade_in_up.gd",
-			"animation_length": 0.2,
+			"animation_length": 0,
+			"animation_wait": false,
 			"change_mirror_portrait": false,
 			"change_z_index": false,
 			"character": "character-1663232374.json",
@@ -24,7 +25,7 @@
 			"character": "character-1663232374.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "These e-readers seem to be out of charge."
+			"text": "I don't think that's how energy drink math works...\nDrinking 2 of them in a row is not going to make twice as energetic.\nThat's not a very good idea."
 		},
 		{
 			"event_id": "dialogic_022",
@@ -33,7 +34,7 @@
 	],
 	"metadata": {
 		"dialogic-version": "1.4.1",
-		"file": "timeline-1663239503.json",
-		"name": "Flippo"
+		"file": "timeline-1700292197.json",
+		"name": "RechargeCan2"
 	}
 }

@@ -9,12 +9,12 @@
 [ext_resource path="res://Fonts/Dynamic Fonts/JetBrains Mono BOLD.tres" type="DynamicFont" id=7]
 [ext_resource path="res://UI/Watchson/UtilityUI/FloorCore B-Room Utility.gd" type="Script" id=8]
 
-[sub_resource type="DynamicFontData" id=1]
+[sub_resource type="DynamicFontData" id=3]
 font_path = "res://Fonts/JetBrains Mono/JetBrainsMono-Medium.ttf"
 
 [sub_resource type="DynamicFont" id=2]
 size = 22
-font_data = SubResource( 1 )
+font_data = SubResource( 3 )
 
 [node name="FloorCore B-Room Utility" type="Control"]
 anchor_right = 1.0
