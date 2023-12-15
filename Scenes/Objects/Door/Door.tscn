@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scenes/Objects/Door/Door.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Objects/Door/Door_Front_1_Closed.png" type="Texture" id=2]
@@ -47,6 +47,9 @@ extents = Vector2( 47.8705, 30.9433 )
 [sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 32, 33 )
 
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 128, 148 )
+
 [node name="Door" type="Node2D"]
 script = ExtResource( 1 )
 
@@ -70,6 +73,7 @@ shape = SubResource( 3 )
 
 [node name="PermanentCollision" type="StaticBody2D" parent="."]
 position = Vector2( 0, -31.1127 )
+collision_layer = 257
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="PermanentCollision"]
 position = Vector2( -88.1989, 136.923 )
@@ -85,6 +89,7 @@ shape = SubResource( 5 )
 
 [node name="DoorCloseCollision" type="StaticBody2D" parent="."]
 position = Vector2( 0, -31.1127 )
+collision_layer = 257
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DoorCloseCollision"]
 position = Vector2( 0, 137.827 )
@@ -106,3 +111,9 @@ shape = SubResource( 7 )
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="FloorCore Collision"]
 position = Vector2( 96, 169 )
 shape = SubResource( 7 )
+
+[node name="NPCOpenArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NPCOpenArea"]
+position = Vector2( 0, 132 )
+shape = SubResource( 8 )

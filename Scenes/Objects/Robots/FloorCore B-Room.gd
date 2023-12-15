@@ -21,6 +21,7 @@ func set_outline(enable):
 		outline_enabled = false
 
 func _ready():
+	randomize()
 	player = get_tree().get_root().find_node("Player", true, false)
 	connect("interacted", self, "_process")
 

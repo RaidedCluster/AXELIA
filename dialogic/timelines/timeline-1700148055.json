@@ -4,7 +4,7 @@
 			"character": "character-1700152960.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Got a can of Recharge\nIt sounds like the motor is jammed."
+			"text": "Got a can of Recharge!\nIt sounds like the motor is jammed."
 		},
 		{
 			"event_id": "dialogic_022",

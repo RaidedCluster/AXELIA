@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Title BG.png-218c5df6d20d5740f6db210d2d38493a.stex"
+path="res://.import/Haywire-Button_Normal.png-492f6363cfb0bc962e7e52a0c5ee2630.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI/Game/Title BG.png"
-dest_files=[ "res://.import/Title BG.png-218c5df6d20d5740f6db210d2d38493a.stex" ]
+source_file="res://UI/UI Sprites/UilityUI/Kinesys Sentinel/Haywire-Button_Normal.png"
+dest_files=[ "res://.import/Haywire-Button_Normal.png-492f6363cfb0bc962e7e52a0c5ee2630.stex" ]
 
 [params]
 

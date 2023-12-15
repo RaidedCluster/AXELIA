@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/You don't love me anymore.mp3-af62dd31652cad8f5ae359e3957a4e62.mp3str"
+
+[deps]
+
+source_file="res://Audio/You don't love me anymore.mp3"
+dest_files=[ "res://.import/You don't love me anymore.mp3-af62dd31652cad8f5ae359e3957a4e62.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

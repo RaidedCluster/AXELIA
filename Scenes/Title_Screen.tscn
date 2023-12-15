@@ -1,6 +1,5 @@
 [gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://UI/Game/Title BG.png" type="Texture" id=1]
 [ext_resource path="res://UI/Game/axelia.png" type="Texture" id=2]
 [ext_resource path="res://UI/Buttons/PLAY/PLAY.png" type="Texture" id=3]
 [ext_resource path="res://UI/Buttons/PLAY/PLAY Transparent.png" type="Texture" id=4]
@@ -19,6 +18,10 @@ func _on_PLAY_pressed():
 	_transition_rect.transition_to(\"res://Scenes/Level/Scene1_QubeResearchFacility_Inside.tscn\")
 
 "
+
+[sub_resource type="StreamTexture" id=4]
+flags = 4
+load_path = "res://.import/Title BG.png-218c5df6d20d5740f6db210d2d38493a.stex"
 
 [sub_resource type="Animation" id=2]
 resource_name = "Fade_In"
@@ -55,7 +58,7 @@ script = SubResource( 1 )
 
 [node name="Title BG" type="Sprite" parent="."]
 position = Vector2( 640, 360 )
-texture = ExtResource( 1 )
+texture = SubResource( 4 )
 
 [node name="AXELIA" type="Sprite" parent="."]
 position = Vector2( 640, 96 )
