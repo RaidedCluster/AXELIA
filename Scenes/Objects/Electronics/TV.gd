@@ -5,14 +5,6 @@ var outline_enabled = false
 var outline_shader_material = preload("res://UI/UI Sprites/outline.tres")
 var player = null
 
-func set_outline(enable):
-	if enable and not outline_enabled:
-		self.material=outline_shader_material
-		outline_enabled = true
-	elif not enable and outline_enabled:
-		self.material=null
-		outline_enabled = false
-
 func _ready():
 	player = get_tree().get_root().find_node("Player", true, false)
 	connect("interacted",self,"_process")

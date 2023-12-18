@@ -288,7 +288,7 @@ tracks/0/keys = {
 extents = Vector2( 318, 300 )
 
 [sub_resource type="RectangleShape2D" id=20]
-extents = Vector2( 384, 372 )
+extents = Vector2( 348, 372 )
 
 [sub_resource type="RectangleShape2D" id=21]
 extents = Vector2( 601, 256 )
@@ -1763,7 +1763,7 @@ position = Vector2( 3165, -3109 )
 frame = 1
 
 [node name="CollisionShape2D" parent="CameraBreakRoom/DetectionArea" index="0"]
-position = Vector2( -29, 473 )
+position = Vector2( -25, 473 )
 shape = SubResource( 20 )
 
 [node name="CameraSecondSector" parent="." instance=ExtResource( 65 )]
