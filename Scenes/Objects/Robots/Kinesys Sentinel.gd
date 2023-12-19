@@ -42,6 +42,9 @@ func _ready():
 	add_child(random_direction_timer)
 	random_direction_timer.start()
 	
+	for camera in get_tree().get_nodes_in_group("cameras"):
+		camera.connect("caught", self, "_on_Camera_caught")
+	
 	patrol_timer.connect("timeout", self, "_on_patrol_timer_timeout")
 	add_child(patrol_timer)
 	
@@ -203,3 +206,10 @@ func find_player():
 	# Assuming the player node is named "Player" and is active in the scene
 	# Adjust the path or method of finding the player as needed for your game
 	return get_tree().get_root().find_node("Player", true, false)
+
+func _on_Camera_caught():
+	player_detected = true
+	if player == null or not player.is_inside_tree():
+		player = find_player()
+	if player != null:
+		update_path_to_player()
