@@ -1,4 +1,4 @@
-[gd_scene load_steps=113 format=2]
+[gd_scene load_steps=120 format=2]
 
 [ext_resource path="res://Scenes/Characters/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Sprites/Tileset/BaseTilemap.tres" type="TileSet" id=2]
@@ -60,10 +60,13 @@
 [ext_resource path="res://Scenes/Objects/Electronics/Computers/QUBE Hybrid Quantum Supercomputer/Terminal Keyboard.tscn" type="PackedScene" id=58]
 [ext_resource path="res://Scenes/Objects/Electronics/Computers/QUBE Hybrid Quantum Supercomputer/Terminal Mouse.tscn" type="PackedScene" id=59]
 [ext_resource path="res://Scenes/Objects/Robots/Kinesys Sentinel.tscn" type="PackedScene" id=60]
+[ext_resource path="res://Scenes/Objects/Electronics/FLIPPO_e-ReaderStand_Battery.gd" type="Script" id=61]
 [ext_resource path="res://Sprites/Objects/Furniture/Storage/Cabinet.png" type="Texture" id=62]
 [ext_resource path="res://Scenes/SceneTransitionRect.gd" type="Script" id=63]
 [ext_resource path="res://UI/UI Scenes/Inventory.tscn" type="PackedScene" id=64]
 [ext_resource path="res://Scenes/Objects/Electronics/CameraSide.tscn" type="PackedScene" id=65]
+[ext_resource path="res://Sprites/Objects/Electronics/FLIPPO_e-ReaderStand_8.png" type="Texture" id=67]
+[ext_resource path="res://Sprites/Objects/Electronics/FLIPPO_e-ReaderStand_Full.png" type="Texture" id=68]
 [ext_resource path="res://Scenes/Objects/Electronics/Camera.tscn" type="PackedScene" id=69]
 
 [sub_resource type="NavigationPolygon" id=49]
@@ -246,6 +249,28 @@ extents = Vector2( 40, 24 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 16, 24 )
+
+[sub_resource type="SpriteFrames" id=63]
+animations = [ {
+"frames": [ ExtResource( 67 ) ],
+"loop": true,
+"name": "8",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 68 ) ],
+"loop": true,
+"name": "Full",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=64]
+extents = Vector2( 51, 24 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 8.63622, 8 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 56, 32 )
 
 [sub_resource type="RectangleShape2D" id=25]
 extents = Vector2( 160, 44 )
@@ -513,9 +538,11 @@ position = Vector2( 928, 607 )
 
 [node name="Camera2D" type="Camera2D" parent="YSort/Player"]
 pause_mode = 2
+physics_interpolation_mode = 2
 position = Vector2( 4.32134e-07, 97 )
 current = true
 zoom = Vector2( 1.4, 1.4 )
+process_mode = 0
 smoothing_enabled = true
 smoothing_speed = 3.0
 
@@ -1000,8 +1027,37 @@ position = Vector2( 3312, -2645 )
 [node name="Round Stool12" parent="YSort" instance=ExtResource( 50 )]
 position = Vector2( 3423, -2709 )
 
-[node name="FLIPPO e-Reader Stand2" parent="YSort" instance=ExtResource( 16 )]
+[node name="FLIPPO e-Reader Stand2" type="StaticBody2D" parent="YSort"]
 position = Vector2( 2876, -3056 )
+collision_layer = 134217729
+collision_mask = 134217729
+script = ExtResource( 61 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/FLIPPO e-Reader Stand2"]
+frames = SubResource( 63 )
+animation = "Full"
+offset = Vector2( 0, 100 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/FLIPPO e-Reader Stand2"]
+position = Vector2( -1, 120 )
+shape = SubResource( 64 )
+
+[node name="InteractionArea" type="Area2D" parent="YSort/FLIPPO e-Reader Stand2"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/FLIPPO e-Reader Stand2/InteractionArea"]
+position = Vector2( 0, 80 )
+shape = SubResource( 3 )
+
+[node name="B-Room Collision" type="StaticBody2D" parent="YSort/FLIPPO e-Reader Stand2"]
+position = Vector2( -1, 180 )
+collision_layer = 2281701376
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/FLIPPO e-Reader Stand2/B-Room Collision"]
+position = Vector2( 1, -4 )
+shape = SubResource( 4 )
 
 [node name="Work Table8" parent="YSort" instance=ExtResource( 31 )]
 position = Vector2( 2816, -2457 )
@@ -1745,9 +1801,6 @@ position = Vector2( 260, -298 )
 [node name="CameraBossCabin" parent="." instance=ExtResource( 69 )]
 position = Vector2( -304, -1639 )
 
-[node name="AnimatedSprite" parent="CameraBossCabin" index="0"]
-frame = 1
-
 [node name="CollisionShape2D" parent="CameraBossCabin/DetectionArea" index="0"]
 position = Vector2( -16, 439 )
 shape = SubResource( 19 )
@@ -1758,9 +1811,6 @@ scale = Vector2( -1, 1 )
 
 [node name="CameraBreakRoom" parent="." instance=ExtResource( 69 )]
 position = Vector2( 3165, -3109 )
-
-[node name="AnimatedSprite" parent="CameraBreakRoom" index="0"]
-frame = 1
 
 [node name="CollisionShape2D" parent="CameraBreakRoom/DetectionArea" index="0"]
 position = Vector2( -25, 473 )
@@ -1776,9 +1826,6 @@ shape = SubResource( 21 )
 
 [node name="CameraMeetingRoom" parent="." instance=ExtResource( 69 )]
 position = Vector2( 2552, -4840 )
-
-[node name="AnimatedSprite" parent="CameraMeetingRoom" index="0"]
-frame = 1
 
 [node name="CollisionShape2D" parent="CameraMeetingRoom/DetectionArea" index="0"]
 position = Vector2( 8, 424 )
