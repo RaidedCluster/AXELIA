@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://UI/UI Sprites/UilityUI/UtilityBG.png" type="Texture" id=1]
 [ext_resource path="res://UI/UI Sprites/UilityUI/X-ButtonNormal.png" type="Texture" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://Fonts/JetBrains Mono/JetBrainsMono-Bold.ttf" type="DynamicFontData" id=14]
 [ext_resource path="res://UI/UI Sprites/UilityUI/Camera/WhiteSquare.jpg" type="Texture" id=15]
 [ext_resource path="res://UI/UI Sprites/UilityUI/Camera/Map.png" type="Texture" id=16]
+[ext_resource path="res://UI/UI Sprites/UilityUI/Camera/MaintenanceLogo.png" type="Texture" id=17]
 
 [sub_resource type="DynamicFont" id=1]
 size = 25
@@ -276,3 +277,33 @@ visible = false
 position = Vector2( 665, 423 )
 scale = Vector2( 0.00756958, 0.00756958 )
 texture = ExtResource( 15 )
+
+[node name="MaintenanceToggleSection" type="Control" parent="."]
+visible = false
+margin_left = 669.845
+margin_top = 425.725
+margin_right = 709.845
+margin_bottom = 465.725
+
+[node name="InfoLabel" type="RichTextLabel" parent="MaintenanceToggleSection"]
+margin_left = -445.845
+margin_top = -121.725
+margin_right = 386.155
+margin_bottom = -33.725
+custom_fonts/bold_font = ExtResource( 12 )
+custom_fonts/normal_font = ExtResource( 11 )
+bbcode_enabled = true
+bbcode_text = "[center]The camera system is undergoing automated maintenance and will turn back on in:[/center]"
+text = "The camera system is undergoing automated maintenance and will turn back on in:"
+
+[node name="CountdownLabel" type="RichTextLabel" parent="MaintenanceToggleSection"]
+margin_left = -75.0
+margin_right = 13.0
+margin_bottom = 118.0
+custom_fonts/normal_font = SubResource( 5 )
+bbcode_enabled = true
+
+[node name="MaintenanceLogo" type="Sprite" parent="MaintenanceToggleSection"]
+position = Vector2( -29.8447, -185.725 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 17 )
