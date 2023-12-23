@@ -4,6 +4,7 @@ signal caught
 signal body_detected(camera_name)
 signal body_no_longer_detected
 signal stream_replay_failed
+signal disabled(camera_name)
 
 var is_stream_replayed = false
 
@@ -56,6 +57,8 @@ func disable_camera():
 	if disable_timer:
 		disable_timer.stop()  # Ensure it's stopped
 		disable_timer.start()  # Start the timer
+		emit_signal("disabled", name)
+		print("Disabled signal emitted for camera: ", name)
 		print("Timer started with time_left: ", disable_timer.time_left)  # Debugging print
 
 
@@ -128,3 +131,14 @@ func check_for_moving_bodies():
 		if body.is_in_group("moving_bodies"):
 			emit_signal("body_detected", self.name)
 
+func enter_maintenance_mode():
+	isDisabled = true
+	detection_area.monitoring = false
+	animated_sprite.animation = "Off"
+	animated_sprite.play()
+
+func exit_maintenance_mode():
+	isDisabled = false
+	detection_area.monitoring = true
+	animated_sprite.animation = "On"
+	animated_sprite.play()

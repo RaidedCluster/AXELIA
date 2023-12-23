@@ -4,6 +4,7 @@ signal caught
 signal body_detected(camera_name)
 signal body_no_longer_detected
 signal stream_replay_failed
+signal disabled(camera_name)
 
 var is_stream_replayed = false
 
@@ -14,7 +15,7 @@ var isDisabled = false
 var outline_enabled = false
 var outline_shader_material = preload("res://UI/UI Sprites/outline.tres")
 
-# New variable to hold a reference to the UI
+# New variable to hold a referene to the UI
 var camera_utility_ui = null
 
 func set_outline(enable):
@@ -52,6 +53,8 @@ func disable_camera():
 	if disable_timer:
 		disable_timer.stop()  # Ensure it's stopped
 		disable_timer.start()  # Start the timer
+		emit_signal("disabled", name)
+		print("Disabled signal emitted for camera: ", name)
 		print("Timer started with time_left: ", disable_timer.time_left)  # Debugging print
 
 
@@ -121,3 +124,11 @@ func check_for_moving_bodies():
 	for body in detection_area.get_overlapping_bodies():
 		if body.is_in_group("moving_bodies"):
 			emit_signal("body_detected", self.name)
+
+func enter_maintenance_mode():
+	isDisabled = true
+	detection_area.monitoring = false
+
+func exit_maintenance_mode():
+	isDisabled = false
+	detection_area.monitoring = true
