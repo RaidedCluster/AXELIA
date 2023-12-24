@@ -5,6 +5,7 @@ var disabled_cameras = {}
 var maintenance_timer = Timer.new()
 
 func _ready():
+	print(get_tree().get_root().get_path_to(self))
 	var cameras = get_tree().get_nodes_in_group("cameras")
 	for camera in cameras:
 		var error = camera.connect("disabled", self, "_on_Camera_disabled")
@@ -50,3 +51,6 @@ func _on_MaintenanceTimer_timeout():
 	var cameras = get_tree().get_nodes_in_group("cameras")
 	for camera in cameras:
 		camera.exit_maintenance_mode()
+
+func get_maintenance_time_left():
+	return maintenance_timer.time_left

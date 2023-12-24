@@ -5,8 +5,10 @@ signal body_detected(camera_name)
 signal body_no_longer_detected
 signal stream_replay_failed
 signal disabled(camera_name)
+signal maintenance_mode_changed
 
 var is_stream_replayed = false
+var isInMaintenance = false
 
 var detection_area
 var animated_sprite
@@ -132,13 +134,19 @@ func check_for_moving_bodies():
 			emit_signal("body_detected", self.name)
 
 func enter_maintenance_mode():
-	isDisabled = true
+	isDisabled = false  # Ensure the camera is not marked as disabled
+	if disable_timer.is_stopped() == false:
+		disable_timer.stop()  # Stop the disable timer if it's running
+	isInMaintenance = true
+	emit_signal("maintenance_mode_changed")
 	detection_area.monitoring = false
 	animated_sprite.animation = "Off"
 	animated_sprite.play()
 
 func exit_maintenance_mode():
 	isDisabled = false
+	isInMaintenance = false
+	emit_signal("maintenance_mode_changed")
 	detection_area.monitoring = true
 	animated_sprite.animation = "On"
 	animated_sprite.play()

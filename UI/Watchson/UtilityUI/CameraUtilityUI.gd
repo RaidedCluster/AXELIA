@@ -14,38 +14,66 @@ func init(camera):
 	$FeedSettings.connect("pressed", self, "_on_FeedSettings_pressed")
 	$Network.connect("pressed", self, "_on_Network_pressed")  # Connect the Network button pressed signal
 	camera_node.connect("stream_replay_failed", self, "_on_StreamReplay_failed")
+	camera_node.connect("maintenance_mode_changed", self, "update_ui")
 
 	# Update the UI based on the current state of the camera node
 	update_ui()
 
 func update_ui():
-	var time_left = int(round(camera_node.get_time_left()))
-	$OnOffToggleSection/CountdownLabel.text = str(time_left)
-	$FeedSettingsToggleSection/CountdownLabel.text = str(time_left)
-	# No countdown for NetworkToggleSection as per your requirements
+	if not is_inside_tree():
+		return
 
-	# Determine which UI elements to show based on the camera's state
-	if camera_node.isDisabled:
+	var main_controller = get_tree().get_root().find_node("QRF", true, false)
+	if not main_controller:
+		print("Main controller (QRF) not found.")
+		return
+
+	# Fetch the maintenance time left from the main controller
+	var maintenance_time_left = 0
+	if main_controller.has_method("get_maintenance_time_left"):
+		maintenance_time_left = main_controller.call("get_maintenance_time_left")
+	else:
+		print("Method 'get_maintenance_time_left' not found in QRF.")
+		return
+
+	# Assuming maintenance takes precedence over other states, we check it first.
+	if camera_node.isInMaintenance:
+		# Ensure only maintenance section is visible
+		$MaintenanceToggleSection.visible = true
+		$OnOffToggleSection.visible = false
+		$FeedSettingsToggleSection.visible = false
+		$NetworkToggleSection.visible = false
+		$OnOff.visible = false
+		$FeedSettings.visible = false
+		$Network.visible = false
+		$MaintenanceToggleSection/CountdownLabel.bbcode_text = "[center]" + str(int(maintenance_time_left)) + "[/center]"
+	elif camera_node.isDisabled:
+		# Update UI for disabled state
+		var time_left = int(round(camera_node.get_time_left()))
+		$OnOffToggleSection/CountdownLabel.text = str(time_left)
+		$FeedSettingsToggleSection/CountdownLabel.text = str(time_left)
 		if camera_node.is_stream_replayed:
 			$OnOffToggleSection.visible = false
 			$FeedSettingsToggleSection.visible = true
 		else:
 			$OnOffToggleSection.visible = true
 			$FeedSettingsToggleSection.visible = false
-		$NetworkToggleSection.visible = false  # Ensure NetworkToggleSection is not visible when camera is disabled
+		$NetworkToggleSection.visible = false
 		$OnOff.visible = false
 		$FeedSettings.visible = false
 		$Network.visible = false
 	else:
+		# When the camera is neither in maintenance nor disabled, reset all sections to invisible
+		$MaintenanceToggleSection.visible = false
 		$OnOffToggleSection.visible = false
 		$FeedSettingsToggleSection.visible = false
-		$NetworkToggleSection.visible = false  # Reset NetworkToggleSection visibility when camera is not disabled
+		$NetworkToggleSection.visible = false
 		$OnOff.visible = true
 		$FeedSettings.visible = true
 		$Network.visible = true
 
-	set_process(camera_node.isDisabled || $OnOffToggleSection.visible || $FeedSettingsToggleSection.visible || $NetworkToggleSection.visible)
-
+	# Set the processing of the UI based on whether any section is visible
+	set_process($MaintenanceToggleSection.visible || $OnOffToggleSection.visible || $FeedSettingsToggleSection.visible || $NetworkToggleSection.visible)
 
 # Called when OnOff button is pressed
 func _on_OnOff_pressed():
@@ -67,22 +95,53 @@ func _process(delta):
 	if showWarning:
 		return
 
-	if camera_node.isDisabled:
+	# It's better to fetch the main_controller here again in case it changes.
+	var main_controller = get_tree().get_root().find_node("QRF", true, false)
+	if not main_controller:
+		print("Main controller (QRF) not found.")
+		set_process(false)  # Disable the process if we can't find the main controller
+		return
+
+	var maintenance_time_left = 0
+	if main_controller.has_method("get_maintenance_time_left"):
+		maintenance_time_left = main_controller.call("get_maintenance_time_left")
+
+	if camera_node.isInMaintenance:
+		# Only update the countdown label if it's visible (i.e., in maintenance mode)
+		$MaintenanceToggleSection/CountdownLabel.bbcode_text = "[center]" + str(int(maintenance_time_left)) + "[/center]"
+		# Ensure that only the MaintenanceToggleSection is visible
+		$MaintenanceToggleSection.visible = true
+		$OnOffToggleSection.visible = false
+		$FeedSettingsToggleSection.visible = false
+		$NetworkToggleSection.visible = false
+		$OnOff.visible = false
+		$FeedSettings.visible = false
+		$Network.visible = false
+	elif camera_node.isDisabled:
+		# Update the countdown only if the camera is disabled
 		var time_left = int(round(camera_node.get_time_left()))
-		if $OnOffToggleSection.visible:
-			$OnOffToggleSection/CountdownLabel.bbcode_text = "[center]" + str(time_left) + "[/center]"
-		if $FeedSettingsToggleSection.visible:
-			$FeedSettingsToggleSection/CountdownLabel.bbcode_text = "[center]" + str(time_left) + "[/center]"
+		$OnOffToggleSection/CountdownLabel.text = str(time_left)
+		$FeedSettingsToggleSection/CountdownLabel.text = str(time_left)
+		# Only show the OnOffToggleSection if the camera is disabled
+		$OnOffToggleSection.visible = true
+		$FeedSettingsToggleSection.visible = false
+		$NetworkToggleSection.visible = false
 		$OnOff.visible = false
 		$FeedSettings.visible = false
 		$Network.visible = false
 	else:
+		# Hide all toggle sections and show buttons if the camera is active and not in maintenance
+		$MaintenanceToggleSection.visible = false
 		$OnOffToggleSection.visible = false
 		$FeedSettingsToggleSection.visible = false
+		$NetworkToggleSection.visible = false
 		$OnOff.visible = true
 		$FeedSettings.visible = true
 		$Network.visible = true
-		set_process(false)
+
+	# Set processing to true only if the camera is in maintenance or disabled
+	set_process(camera_node.isInMaintenance || camera_node.isDisabled)
+
 
 func _on_FeedSettings_pressed():
 	$FeedSettingsToggleSection.visible = true
@@ -114,6 +173,7 @@ func _on_WarningTimer_timeout():
 
 
 func _ready():
+	update_ui()
 	var player_node = get_tree().get_root().find_node("Player", true, false)
 	if player_node:
 		player_node.set_watchson_active(true)
@@ -183,3 +243,4 @@ func stop_camera_flash(camera_name):
 func _on_Camera_body_no_longer_detected(camera_name):
 	print("Stopping flash for: ", camera_name)
 	stop_camera_flash(camera_name)
+
