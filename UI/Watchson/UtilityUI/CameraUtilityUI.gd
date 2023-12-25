@@ -88,6 +88,7 @@ func _on_ExitButton_pressed():
 	var player_node = get_tree().get_root().find_node("Player", true, false)
 	if player_node:
 		player_node.set_watchson_active(false)
+		player_node.set_watchson_ui_active(false)
 	queue_free()
 
 # Called every frame
@@ -177,6 +178,7 @@ func _ready():
 	var player_node = get_tree().get_root().find_node("Player", true, false)
 	if player_node:
 		player_node.set_watchson_active(true)
+		player_node.set_watchson_ui_active(true)
 	var warning_timer = Timer.new()
 	warning_timer.set_name("WarningTimer")
 	warning_timer.set_one_shot(true)

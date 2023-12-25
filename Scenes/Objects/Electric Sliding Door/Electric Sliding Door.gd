@@ -1,17 +1,46 @@
-extends Node2D
+# ElectricSlidingDoor.gd
+extends StaticBody2D
 
-const PLAYERNAME="Player"
-onready var doorAnimation=$DoorSprite
-onready var doorInteraction=$DoorArea
-onready var doorCollision=$DoorCloseCollision/CollisionShape2D
+# References to necessary nodes
+onready var doorAnimation = $AnimatedSprite
+onready var doorCollision = $DoorCloseCollision/CollisionShape2D
+var outline_enabled = false
+var outline_shader_material = preload("res://UI/UI Sprites/outline.tres")
+var door_opening_initiated = false
 
 func _ready():
-	connect("process",self,"_process")
+	# Additional setup if needed
+	pass
 
-func _process(delta):
-	if Input.is_action_just_pressed("ui_accept"):
-		var bodies=doorInteraction.get_overlapping_bodies()
-		for body in bodies:
-			if body.get_name()==PLAYERNAME:
-				doorAnimation.play("open") if ((doorAnimation.animation=="closed") or (doorAnimation.animation=="close")) else doorAnimation.play("close")
-				doorCollision.disabled = not doorCollision.disabled
+func set_outline(enable):
+	if enable and not outline_enabled:
+		self.material = outline_shader_material
+		outline_enabled = true
+	elif not enable and outline_enabled:
+		self.material = null
+		outline_enabled = false
+
+func open_door():
+	if not door_opening_initiated:
+		door_opening_initiated = true
+		var timer = Timer.new()
+		timer.wait_time = 45  # 45 seconds delay
+		timer.one_shot = true
+		add_child(timer)
+		timer.start()
+		timer.connect("timeout", self, "_on_timer_timeout")
+
+func _on_timer_timeout():
+	doorAnimation.play("open")
+	doorCollision.disabled = true
+
+func close_door():
+	doorAnimation.play("close")
+	doorCollision.disabled = false
+
+# Utility function for UI interaction
+func utility():
+	var slidingDoorUtilityScene = preload("res://UI/Watchson/UtilityUI/Electric Sliding Door Utility.tscn")
+	var slidingDoorUtilityInstance = slidingDoorUtilityScene.instance()
+	slidingDoorUtilityInstance.init(self)
+	get_node("/root/QRF/UI").add_child(slidingDoorUtilityInstance)

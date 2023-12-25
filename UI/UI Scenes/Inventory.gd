@@ -18,6 +18,7 @@ var items = {
 var slots = ['item1', 'item2', 'item3']
 
 func _ready():
+	player = get_tree().get_root().find_node("Player", true, false)
 	$HBoxContainer/Slot1.connect("pressed", self, "_on_slot_pressed", [0])
 	$HBoxContainer/Slot2.connect("pressed", self, "_on_slot_pressed", [1])
 	$HBoxContainer/Slot3.connect("pressed", self, "_on_slot_pressed", [2])
@@ -90,15 +91,20 @@ func perform_action3():
 	else:
 		print("No RechargeCan in inventory.")
 
+#CHECK THIS PART NOT TOO SURE
 func _on_slot_pressed(slot_index):
 	var item = slots[slot_index]
 	match items[item]:
 		'action1':
-			perform_action1()
+			if not player.watchson_ui_active:
+				perform_action1()
 		'action2':
-			perform_action2()
+			if not player.watchson_ui_active:  # Only perform action2 if Watchson is not active
+				perform_action2()
 		'action3':
-			perform_action3()
+			if not player.watchson_ui_active:  # Only perform action3 if Watchson is not active
+				perform_action3()
+
 
 func on_radar_button_pressed():
 	watchswitch = false

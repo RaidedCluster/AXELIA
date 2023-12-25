@@ -3,6 +3,10 @@ extends Control
 var sentinel_node = null
 
 func _ready():
+	var player_node = get_tree().get_root().find_node("Player", true, false)
+	if player_node:
+		player_node.set_watchson_active(true)
+		player_node.set_watchson_ui_active(true)
 	$ExitButton.connect("pressed", self, "_on_ExitButton_pressed")
 	$HaywireButton.connect("pressed", self, "_on_HaywireButton_pressed")
 	update_ui()
@@ -13,6 +17,10 @@ func _on_HaywireButton_pressed():
 		update_ui()
 
 func _on_ExitButton_pressed():
+	var player_node = get_tree().get_root().find_node("Player", true, false)
+	if player_node:
+		player_node.set_watchson_active(false)
+		player_node.set_watchson_ui_active(false)
 	queue_free()
 
 func update_ui():

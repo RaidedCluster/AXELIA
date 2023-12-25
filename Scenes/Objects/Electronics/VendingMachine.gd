@@ -62,7 +62,7 @@ func resume(timeline_name):
 
 # Utility function
 func utility():
-	var vendingMachineUtilityScene = preload("res://Scenes/Objects/Electronics/VendingMachineUtilityUI.tscn")
+	var vendingMachineUtilityScene = preload("res://UI/Watchson/VendingMachineUtilityUI.tscn")
 	var vendingMachineUtilityInstance = vendingMachineUtilityScene.instance()
 	vendingMachineUtilityInstance.init(self)
 	get_node("/root/QRF/UI").add_child(vendingMachineUtilityInstance)  # Make sure this path is correct

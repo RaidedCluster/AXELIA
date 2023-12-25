@@ -287,9 +287,9 @@ margin_bottom = 465.725
 
 [node name="InfoLabel" type="RichTextLabel" parent="MaintenanceToggleSection"]
 margin_left = -445.845
-margin_top = -121.725
+margin_top = -97.725
 margin_right = 386.155
-margin_bottom = -33.725
+margin_bottom = -9.72501
 custom_fonts/bold_font = ExtResource( 12 )
 custom_fonts/normal_font = ExtResource( 11 )
 bbcode_enabled = true

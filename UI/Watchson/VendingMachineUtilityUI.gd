@@ -5,6 +5,10 @@ var vending_machine = null
 
 # Ready function to connect signals and initialize the UI
 func _ready():
+	var player_node = get_tree().get_root().find_node("Player", true, false)
+	if player_node:
+		player_node.set_watchson_active(true)
+		player_node.set_watchson_ui_active(true)
 	$StartMotorButton.connect("pressed", self, "_on_StartMotorButton_pressed")
 	$ExitButton.connect("pressed", self, "_on_ExitButton_pressed")
 	update_ui()
@@ -26,6 +30,10 @@ func update_ui():
 		# No need to set the InfoLabel text here since it should show the default text set in the editor.
 # Function called when the Exit button is pressed
 func _on_ExitButton_pressed():
+	var player_node = get_tree().get_root().find_node("Player", true, false)
+	if player_node:
+		player_node.set_watchson_active(false)
+		player_node.set_watchson_ui_active(false)
 	queue_free()
 
 # Initialization function to set the Vending Machine reference

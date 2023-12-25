@@ -1,0 +1,85 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://UI/Watchson/UtilityUI/Electric Sliding Door Utility.gd" type="Script" id=1]
+[ext_resource path="res://UI/UI Sprites/UilityUI/X-ButtonHover.PNG" type="Texture" id=2]
+[ext_resource path="res://UI/UI Sprites/UilityUI/UtilityBG.png" type="Texture" id=3]
+[ext_resource path="res://UI/UI Sprites/UilityUI/X-ButtonNormal.png" type="Texture" id=4]
+[ext_resource path="res://Fonts/Dynamic Fonts/JetBrains Mono BOLD.tres" type="DynamicFont" id=5]
+[ext_resource path="res://Fonts/Dynamic Fonts/JetBrains Mono MEDIUM.tres" type="DynamicFont" id=6]
+[ext_resource path="res://UI/UI Sprites/UilityUI/Sliding Door/SlidingDoor-ButtonHover.PNG" type="Texture" id=7]
+[ext_resource path="res://UI/UI Sprites/UilityUI/Sliding Door/SlidingDoor-ButtonNormal.PNG" type="Texture" id=8]
+
+[sub_resource type="DynamicFontData" id=3]
+font_path = "res://Fonts/JetBrains Mono/JetBrainsMono-Medium.ttf"
+
+[sub_resource type="DynamicFont" id=4]
+size = 22
+font_data = SubResource( 3 )
+
+[node name="Electric Sliding Door Utility" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 640, 368 )
+texture = ExtResource( 3 )
+
+[node name="ExitButton" type="TextureButton" parent="."]
+margin_left = 1083.0
+margin_top = 53.0
+margin_right = 1133.0
+margin_bottom = 103.0
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 2 )
+texture_hover = ExtResource( 2 )
+
+[node name="OpenButton" type="TextureButton" parent="."]
+margin_left = 532.0
+margin_top = 244.0
+margin_right = 682.0
+margin_bottom = 394.0
+rect_scale = Vector2( 1.5, 1.5 )
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 7 )
+texture_hover = ExtResource( 7 )
+
+[node name="OpenLabel" type="RichTextLabel" parent="OpenButton"]
+margin_left = -24.0
+margin_top = 150.0
+margin_right = 171.0
+margin_bottom = 214.0
+grow_horizontal = 2
+custom_fonts/bold_font = ExtResource( 5 )
+custom_fonts/normal_font = SubResource( 4 )
+bbcode_enabled = true
+bbcode_text = "[center]Open[/center]"
+text = "Open"
+
+[node name="ToggleSection" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -32.0
+margin_bottom = -32.0
+mouse_filter = 2
+
+[node name="Open Door Icon" type="Sprite" parent="ToggleSection"]
+position = Vector2( 642, 336 )
+texture = ExtResource( 7 )
+
+[node name="infoLabel" type="RichTextLabel" parent="ToggleSection"]
+margin_left = 286.0
+margin_top = 421.0
+margin_right = 1006.0
+margin_bottom = 600.0
+grow_horizontal = 2
+custom_fonts/bold_font = ExtResource( 5 )
+custom_fonts/normal_font = ExtResource( 6 )
+bbcode_enabled = true
+bbcode_text = "[center]Trying to utilise an emergency fire-exit vulnerability.
+
+The door will open in about 45 seconds.[/center]"
+text = "Trying to utilise an emergency fire-exit vulnerability.
+
+The door will open in about 45 seconds."
