@@ -159,6 +159,7 @@ ui_run={
 
 2d_physics/layer_1="Environment Collisions"
 2d_physics/layer_2="Interaction"
+2d_physics/layer_9="Wall Observation Collision"
 
 [physics]
 

@@ -51,6 +51,11 @@ func _on_MaintenanceTimer_timeout():
 	var cameras = get_tree().get_nodes_in_group("cameras")
 	for camera in cameras:
 		camera.exit_maintenance_mode()
+	reset_disabled_cameras()  # Reset the state of disabled cameras
 
 func get_maintenance_time_left():
 	return maintenance_timer.time_left
+
+func reset_disabled_cameras():
+	disabled_cameras.clear()
+

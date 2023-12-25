@@ -1,9 +1,10 @@
-extends Node2D
+extends StaticBody2D
 
 onready var doorSprite = $DoorSprite
 onready var doorInteraction = $DoorArea
 onready var npcTriggerArea = $NPCOpenArea  # This needs to be the path to your NPC's Area2D node
 onready var doorCollision = $DoorCloseCollision/CollisionShape2D
+onready var doorOcclusion = $DynamicOcclusion
 
 var door_is_open = false
 var npc_in_area = false  # Flag to indicate if the NPC is within the trigger area
@@ -28,11 +29,13 @@ func toggle_door():
 		door_is_open = true
 		yield(get_tree().create_timer(doorSprite.frames.get_frame_count("open") / doorSprite.frames.get_animation_speed("open")), "timeout")
 		doorCollision.disabled = true
+		doorOcclusion.disabled = true
 	else:
 		doorSprite.play("close")
 		door_is_open = false
 		yield(get_tree().create_timer(doorSprite.frames.get_frame_count("close") / doorSprite.frames.get_animation_speed("close")), "timeout")
 		doorCollision.disabled = false
+		doorOcclusion.disabled = false
 		# If the NPC is still in the area and the door gets closed, allow them to open it again
 		if npc_in_area:
 			_on_NPCOpenArea_body_entered()
@@ -45,6 +48,7 @@ func _on_NPCOpenArea_body_entered(body = null):
 			door_is_open = true
 			yield(get_tree().create_timer(doorSprite.frames.get_frame_count("open") / doorSprite.frames.get_animation_speed("open")), "timeout")
 			doorCollision.disabled = true
+			doorOcclusion.disabled = true
 
 func _on_NPCOpenArea_body_exited(body):
 	if body.name == "Kinesys Sentinel":

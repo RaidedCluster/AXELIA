@@ -1,4 +1,4 @@
-extends Node2D
+extends StaticBody2D
 
 const PLAYERNAME = "Player"
 const NPCNAME = "Kinesys Sentinel"
@@ -7,6 +7,7 @@ onready var doorInteraction = $DoorArea
 onready var npcTriggerArea = $NPCOpenArea
 onready var doorCloseCollision = $DoorCloseCollision/Close
 onready var doorOpenCollision = $DoorCloseCollision/Open
+onready var doorCloseOcclusion = $DynamicOcclusion
 
 var door_is_open = false
 var npc_in_area = false  # Flag to indicate if the NPC is within the trigger area
@@ -32,12 +33,14 @@ func toggle_door():
 		yield(get_tree().create_timer(doorSprite.frames.get_frame_count("open") / doorSprite.frames.get_animation_speed("open")), "timeout")
 		doorCloseCollision.disabled = true
 		doorOpenCollision.disabled = false
+		doorCloseOcclusion.disabled = true
 	else:
 		doorSprite.play("close")
 		door_is_open = false
 		yield(get_tree().create_timer(doorSprite.frames.get_frame_count("close") / doorSprite.frames.get_animation_speed("close")), "timeout")
 		doorCloseCollision.disabled = false
 		doorOpenCollision.disabled = true
+		doorCloseOcclusion.disabled = false
 		if npc_in_area:
 			_on_NPCOpenArea_body_entered()
 
@@ -50,6 +53,7 @@ func _on_NPCOpenArea_body_entered(body = null):
 			yield(get_tree().create_timer(doorSprite.frames.get_frame_count("open") / doorSprite.frames.get_animation_speed("open")), "timeout")
 			doorCloseCollision.disabled = true
 			doorOpenCollision.disabled = false
+			doorCloseOcclusion.disabled = true
 
 func _on_NPCOpenArea_body_exited(body):
 	if body.name == NPCNAME:

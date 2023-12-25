@@ -50,14 +50,18 @@ func update_ui():
 	elif camera_node.isDisabled:
 		# Update UI for disabled state
 		var time_left = int(round(camera_node.get_time_left()))
-		$OnOffToggleSection/CountdownLabel.text = str(time_left)
-		$FeedSettingsToggleSection/CountdownLabel.text = str(time_left)
+		
 		if camera_node.is_stream_replayed:
-			$OnOffToggleSection.visible = false
+			# Show FeedSettingsToggleSection for stream replay
 			$FeedSettingsToggleSection.visible = true
+			$FeedSettingsToggleSection/CountdownLabel.bbcode_text = "[center]" + str(int(time_left)) + "[/center]"
+			$OnOffToggleSection.visible = false
 		else:
+			# Show OnOffToggleSection for standard disable
 			$OnOffToggleSection.visible = true
+			$OnOffToggleSection/CountdownLabel.bbcode_text = "[center]" + str(int(time_left)) + "[/center]"
 			$FeedSettingsToggleSection.visible = false
+
 		$NetworkToggleSection.visible = false
 		$OnOff.visible = false
 		$FeedSettings.visible = false
@@ -119,13 +123,19 @@ func _process(delta):
 		$FeedSettings.visible = false
 		$Network.visible = false
 	elif camera_node.isDisabled:
-		# Update the countdown only if the camera is disabled
 		var time_left = int(round(camera_node.get_time_left()))
-		$OnOffToggleSection/CountdownLabel.text = str(time_left)
-		$FeedSettingsToggleSection/CountdownLabel.text = str(time_left)
-		# Only show the OnOffToggleSection if the camera is disabled
-		$OnOffToggleSection.visible = true
-		$FeedSettingsToggleSection.visible = false
+
+		if camera_node.is_stream_replayed:
+			# Show FeedSettingsToggleSection for stream replay
+			$FeedSettingsToggleSection.visible = true
+			$FeedSettingsToggleSection/CountdownLabel.bbcode_text = "[center]" + str(int(time_left)) + "[/center]"
+			$OnOffToggleSection.visible = false
+		else:
+			# Show OnOffToggleSection for standard disable
+			$OnOffToggleSection.visible = true
+			$OnOffToggleSection/CountdownLabel.bbcode_text = "[center]" + str(int(time_left)) + "[/center]"
+			$FeedSettingsToggleSection.visible = false
+
 		$NetworkToggleSection.visible = false
 		$OnOff.visible = false
 		$FeedSettings.visible = false
@@ -245,4 +255,3 @@ func stop_camera_flash(camera_name):
 func _on_Camera_body_no_longer_detected(camera_name):
 	print("Stopping flash for: ", camera_name)
 	stop_camera_flash(camera_name)
-
