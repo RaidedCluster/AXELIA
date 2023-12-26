@@ -3,16 +3,23 @@ extends Node2D
 # Dictionary to keep track of cameras
 var disabled_cameras = {}
 var maintenance_timer = Timer.new()
+onready var alarmSound = $AlarmSound
 
 func _ready():
 	print(get_tree().get_root().get_path_to(self))
 	var cameras = get_tree().get_nodes_in_group("cameras")
+
 	for camera in cameras:
+		# Connect the 'disabled' signal as before
 		var error = camera.connect("disabled", self, "_on_Camera_disabled")
 		if error == OK:
 			print("Successfully connected disabled signal for camera: ", camera.name)
 		else:
 			print("Failed to connect disabled signal for camera: ", camera.name, " Error: ", error)
+
+		# Connect the 'caught' signal to a new function
+		camera.connect("caught", self, "_on_Camera_Caught")
+
 	maintenance_timer.set_wait_time(60.0)  # Set for 60 seconds
 	maintenance_timer.set_one_shot(true)
 	maintenance_timer.connect("timeout", self, "_on_MaintenanceTimer_timeout")
@@ -59,3 +66,7 @@ func get_maintenance_time_left():
 func reset_disabled_cameras():
 	disabled_cameras.clear()
 
+func _on_Camera_Caught():
+	# Play the alarm sound
+	if alarmSound and not alarmSound.playing:
+		alarmSound.play()

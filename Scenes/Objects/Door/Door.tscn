@@ -1,10 +1,12 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Scenes/Objects/Door/Door.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Objects/Door/Door_Front_1_Closed.png" type="Texture" id=2]
 [ext_resource path="res://Sprites/Objects/Door/Door_Front_2_Open.png" type="Texture" id=3]
 [ext_resource path="res://Sprites/Objects/Door/Door_Front_3_Mid.png" type="Texture" id=4]
 [ext_resource path="res://UI/VisbilityNotifier/VisibilityNotifier2D.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Audio/SFX/Door-Close.wav" type="AudioStream" id=6]
+[ext_resource path="res://Audio/SFX/Door-Open.wav" type="AudioStream" id=7]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -139,3 +141,11 @@ shape = SubResource( 9 )
 [node name="DynamicOcclusion" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 104 )
 shape = SubResource( 10 )
+
+[node name="DoorCloseSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 6 )
+volume_db = -10.0
+
+[node name="DoorOpenSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 7 )
+volume_db = -10.0

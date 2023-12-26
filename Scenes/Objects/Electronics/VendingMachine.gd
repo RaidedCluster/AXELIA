@@ -71,3 +71,4 @@ func activate_motor():
 	if not motor_activated:
 		# Logic to start the motor and dispense a drink
 		motor_activated = true
+		$CanDrop.play()

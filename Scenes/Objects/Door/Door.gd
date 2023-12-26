@@ -25,12 +25,14 @@ func handle_door_interaction():
 
 func toggle_door():
 	if not door_is_open:
+		$DoorOpenSound.play()
 		doorSprite.play("open")
 		door_is_open = true
 		yield(get_tree().create_timer(doorSprite.frames.get_frame_count("open") / doorSprite.frames.get_animation_speed("open")), "timeout")
 		doorCollision.disabled = true
 		doorOcclusion.disabled = true
 	else:
+		$DoorCloseSound.play()
 		doorSprite.play("close")
 		door_is_open = false
 		yield(get_tree().create_timer(doorSprite.frames.get_frame_count("close") / doorSprite.frames.get_animation_speed("close")), "timeout")
@@ -44,6 +46,7 @@ func _on_NPCOpenArea_body_entered(body = null):
 	if not body or body.name == "Kinesys Sentinel":
 		npc_in_area = true
 		if not door_is_open:
+			$DoorOpenSound.play()
 			doorSprite.play("open")
 			door_is_open = true
 			yield(get_tree().create_timer(doorSprite.frames.get_frame_count("open") / doorSprite.frames.get_animation_speed("open")), "timeout")

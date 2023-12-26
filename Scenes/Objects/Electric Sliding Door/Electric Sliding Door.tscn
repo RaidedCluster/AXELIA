@@ -41,6 +41,7 @@ extents = Vector2( 73.4271, 34.5548 )
 extents = Vector2( 96, 69.6708 )
 
 [sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 160, 140 )
 
 [node name="Electric Sliding Door" type="StaticBody2D" groups=["hackable"]]
 collision_layer = 2
@@ -85,5 +86,5 @@ position = Vector2( 4, 84 )
 scale = Vector2( 19.6, 22 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -128, 104 )
+position = Vector2( 0, 60 )
 shape = SubResource( 5 )

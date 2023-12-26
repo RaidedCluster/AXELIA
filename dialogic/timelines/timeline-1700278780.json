@@ -1,6 +1,14 @@
 {
 	"events": [
 		{
+			"audio": "play",
+			"audio_bus": "Master",
+			"event_id": "dialogic_030",
+			"event_name": "AudioEvent",
+			"file": "res://Audio/SFX/Can-Opening.wav",
+			"volume": 0
+		},
+		{
 			"character": "character-1700152960.json",
 			"event_id": "dialogic_001",
 			"portrait": "",

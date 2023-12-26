@@ -82,6 +82,7 @@ func _update_recent_directions(new_direction):
 
 func start_free_roam_mode():
 	if not is_free_roaming:
+		$Vacuuming.play()
 		is_free_roaming = true
 		_change_direction()  # Set initial direction
 		add_to_group("moving_bodies")
