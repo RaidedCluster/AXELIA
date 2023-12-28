@@ -15,8 +15,7 @@ script/source = "extends Control
 onready var _transition_rect = $SceneTransitionRect
 
 func _on_PLAY_pressed():
-	_transition_rect.transition_to(\"res://Scenes/Level/Scene1_QubeResearchFacility_Inside.tscn\")
-
+	_transition_rect.transition_to(\"res://Scenes/Intro_Cutscene.tscn\")
 "
 
 [sub_resource type="StreamTexture" id=4]

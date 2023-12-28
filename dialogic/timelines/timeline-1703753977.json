@@ -1,11 +1,11 @@
 {
 	"events": [
 		{
-			"animation": "2-fade_in_up.gd",
+			"animation": "1-fade_in.gd",
 			"animation_length": 0.2,
 			"change_mirror_portrait": false,
 			"change_z_index": false,
-			"character": "character-1663232374.json",
+			"character": "character-1703754160.json",
 			"event_id": "dialogic_002",
 			"mirror_portrait": false,
 			"portrait": "Default",
@@ -24,16 +24,16 @@
 			"character": "character-1663232374.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "QUDROID. QUBE's receptionist bot. \nLooks like its been through some hard times.\n(Just like me fr)"
+			"text": "Things change so fast.\nOne minute you're going through this monotonous routine and the next everything's different."
 		},
 		{
 			"event_id": "dialogic_022",
-			"transition_duration": 0.7
+			"transition_duration": 0.2
 		}
 	],
 	"metadata": {
 		"dialogic-version": "1.4.1",
-		"file": "timeline-1663233553.json",
-		"name": "Qudroid"
+		"file": "timeline-1703753977.json",
+		"name": "IntroPt1"
 	}
 }

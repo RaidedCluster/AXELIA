@@ -1,0 +1,75 @@
+{
+	"events": [
+		{
+			"animation": "2-fade_in_up.gd",
+			"animation_length": 0.2,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1703668076.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "Default",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			},
+			"type": 0,
+			"z_index": 0
+		},
+		{
+			"character": "character-1703668076.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Good evening, Noah.\nHow is the authorized red-team exercise for testing your facility's physical security progressing?"
+		},
+		{
+			"character": "character-1663232374.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Uh\n yeah\nit's going...\nalright.\nLook, I'm not really in the time and place for small talk."
+		},
+		{
+			"character": "character-1703668076.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "I apologize. Can I help you in any way?"
+		},
+		{
+			"character": "character-1663232374.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "I haven't slept so I've got this bad headache.\nCan you give me a quick rundown of how this whole setup works again?"
+		},
+		{
+			"character": "character-1703668076.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Oh, I'm sorry to hear that. \nIt's important to take care of your health!\nMaybe you should take a brief res-"
+		},
+		{
+			"character": "character-1663232374.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Can you just shut up and get to the point, please."
+		},
+		{
+			"character": "character-1703668076.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Of course. Let's begin."
+		},
+		{
+			"event_id": "dialogic_022",
+			"transition_duration": 0.7
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.4.1",
+		"file": "timeline-1703668150.json",
+		"name": "Tutorial"
+	}
+}

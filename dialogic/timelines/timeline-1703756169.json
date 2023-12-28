@@ -1,0 +1,39 @@
+{
+	"events": [
+		{
+			"animation": "1-fade_in.gd",
+			"animation_length": 0.2,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1703754160.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "Default",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			},
+			"type": 0,
+			"z_index": 0
+		},
+		{
+			"character": "character-1663232374.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Our team spent years on that AI.\nIt's not like I like my job.\nI don't get paid enough to like it.\nIt's just... \nWhen you pour so much into something, it's tough to see it tossed aside in a weekend.\nAnd now, I'm reassigned to Cybersecurity.\nEveryone knows what 'reassigned' means at QUBE.\nIt's just a layover to a layoff.\nThe job market for Machine Learning engineers isn't exactly booming either.\nSo, what do I have to lose?\nMight as well find out what's really going on with AXELIA and what 'maintenance' they're doing at the old facility.\nIf someone catches me sneaking around, I'll just say:\n\"Was just checking if I forgot something back there.\""
+		},
+		{
+			"event_id": "dialogic_022",
+			"transition_duration": 0.2
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.4.1",
+		"file": "timeline-1703756169.json",
+		"name": "IntroPt2"
+	}
+}
