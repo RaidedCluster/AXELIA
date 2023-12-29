@@ -13,6 +13,8 @@ const STAMINA_REGEN = 10  # The amount of stamina regenerated per second when no
 var current_stamina = STAMINA_MAX
 var unlimited_stamina = false
 
+var can_interact = true
+
 enum {
 	MOVE
 }
@@ -28,11 +30,15 @@ onready var currentAnimation = animationPlayer.current_animation
 onready var animationTree = $AnimationTree
 onready var animationState = animationTree.get("parameters/playback")
 
+# Player.gd
 func _physics_process(delta):
-	match state:
-		MOVE:
-			move_state(delta)
-	regenerate_stamina(delta)
+	if can_interact:
+		match state:
+			MOVE:
+				move_state(delta)
+		regenerate_stamina(delta)
+	# Do not process movement or stamina regeneration if can_interact is false
+
 
 func move_state(delta):
 	var input_vector = Vector2.ZERO
@@ -130,3 +136,11 @@ func update_stamina_bar_unlimited_status(status: bool):
 	var stamina_bar = get_tree().root.find_node("StaminaBar", true, false)
 	if stamina_bar:
 		stamina_bar.set_unlimited_stamina_status(status)
+
+func disable_interaction():
+	can_interact = false
+	print("Player interaction disabled")
+
+func enable_interaction():
+	can_interact = true
+	print("Player interaction enabled")

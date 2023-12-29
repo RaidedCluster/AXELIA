@@ -1,8 +1,8 @@
 {
 	"color": "#ffffffff",
 	"description": "",
-	"display_name": "",
-	"display_name_bool": false,
+	"display_name": "Watchson.ai",
+	"display_name_bool": true,
 	"id": "character-1703668076.json",
 	"mirror_portraits": false,
 	"name": "Watchson",

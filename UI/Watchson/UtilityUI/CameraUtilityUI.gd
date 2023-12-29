@@ -185,6 +185,7 @@ func _on_WarningTimer_timeout():
 
 func _ready():
 	update_ui()
+	check_and_show_arrow()
 	var player_node = get_tree().get_root().find_node("Player", true, false)
 	if player_node:
 		player_node.set_watchson_active(true)
@@ -255,3 +256,21 @@ func stop_camera_flash(camera_name):
 func _on_Camera_body_no_longer_detected(camera_name):
 	print("Stopping flash for: ", camera_name)
 	stop_camera_flash(camera_name)
+
+func check_and_show_arrow():
+	var main_controller = get_tree().get_root().find_node("QRF", true, false)
+	if main_controller and not main_controller.arrow_shown:
+		show_arrow_to_network_button()
+		disable_other_buttons()
+		main_controller.arrow_shown = true
+
+func show_arrow_to_network_button():
+	# Logic to show an arrow pointing to the network button
+	# You would typically set `visible` to true on a Sprite node representing the arrow
+	$Network/Arrow.visible = true
+
+func disable_other_buttons():
+	# Disable the 'Disable' and 'Stream Replay' buttons
+	$OnOff.disabled = true
+	$FeedSettings.disabled = true
+	# You may also want to change their appearance to reflect the disabled state visually

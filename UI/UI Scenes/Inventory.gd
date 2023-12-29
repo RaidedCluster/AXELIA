@@ -8,6 +8,9 @@ var player = preload("res://Scenes/Characters/Player.tscn")
 var watchson_gui = preload("res://UI/UI Scenes/WatchsonUI.tscn")
 var isLogoAnimationPlayed = false
 
+var can_interact_with_inventory = true
+var tutorial3_played = false
+
 var items = {
 	'item1': 'action1',
 	'item2': 'action2',
@@ -93,17 +96,18 @@ func perform_action3():
 
 #CHECK THIS PART NOT TOO SURE
 func _on_slot_pressed(slot_index):
-	var item = slots[slot_index]
-	match items[item]:
-		'action1':
-			if not player.watchson_ui_active:
-				perform_action1()
-		'action2':
-			if not player.watchson_ui_active:  # Only perform action2 if Watchson is not active
-				perform_action2()
-		'action3':
-			if not player.watchson_ui_active:  # Only perform action3 if Watchson is not active
-				perform_action3()
+	if can_interact_with_inventory:
+		var item = slots[slot_index]
+		match items[item]:
+			'action1':
+				if not player.watchson_ui_active:
+					perform_action1()
+			'action2':
+				if not player.watchson_ui_active:  # Only perform action2 if Watchson is not active
+					perform_action2()
+			'action3':
+				if not player.watchson_ui_active:  # Only perform action3 if Watchson is not active
+					perform_action3()
 
 
 func on_radar_button_pressed():
@@ -111,6 +115,22 @@ func on_radar_button_pressed():
 	toggle_radar_visibility()
 	hide_watchson_gui()
 	get_node("Watchson").move_down()
+	
+	if not tutorial3_played:
+		disable_inventory_interaction()  # Disable inventory interaction
+		var tutorial3_dialog = Dialogic.start('Tutorial3')
+		tutorial3_dialog.pause_mode = Node.PAUSE_MODE_PROCESS
+		add_child(tutorial3_dialog)
+		tutorial3_dialog.connect("timeline_end", self, "on_tutorial3_dialogue_end")
+		tutorial3_played = true
+
+func on_tutorial3_dialogue_end(timeline_name):
+	enable_inventory_interaction()  # Re-enable inventory interaction
+	# Any additional logic you want to execute after the dialogue ends
+	var player = get_tree().get_root().find_node("Player", true, false)
+	if player:
+		player.enable_interaction()
+
 
 func toggle_radar_visibility():
 	var player = get_tree().get_root().find_node("Player", true, false)
@@ -150,3 +170,11 @@ func _on_vending_machine_front_used():
 # In Inventory.gd
 func is_recharge_can_visible() -> bool:
 	return $RechargeCan.visible
+
+func disable_inventory_interaction():
+	can_interact_with_inventory = false
+	print("Inventory interaction disabled")
+
+func enable_inventory_interaction():
+	can_interact_with_inventory = true
+	print("Inventory interaction enabled")

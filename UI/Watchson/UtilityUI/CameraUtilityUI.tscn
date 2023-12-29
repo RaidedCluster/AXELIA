@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://UI/UI Sprites/UilityUI/UtilityBG.png" type="Texture" id=1]
 [ext_resource path="res://UI/UI Sprites/UilityUI/X-ButtonNormal.png" type="Texture" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://UI/UI Sprites/UilityUI/Camera/WhiteSquare.jpg" type="Texture" id=15]
 [ext_resource path="res://UI/UI Sprites/UilityUI/Camera/Map.png" type="Texture" id=16]
 [ext_resource path="res://UI/UI Sprites/UilityUI/Camera/MaintenanceLogo.png" type="Texture" id=17]
+[ext_resource path="res://UI/Game/Indication Arrow.png" type="Texture" id=18]
 
 [sub_resource type="DynamicFont" id=1]
 size = 25
@@ -70,6 +71,7 @@ margin_bottom = 406.0
 texture_normal = ExtResource( 6 )
 texture_pressed = ExtResource( 8 )
 texture_hover = ExtResource( 8 )
+texture_disabled = ExtResource( 6 )
 
 [node name="Disable" type="RichTextLabel" parent="OnOff"]
 margin_left = 12.0
@@ -90,6 +92,7 @@ margin_bottom = 406.0
 texture_normal = ExtResource( 7 )
 texture_pressed = ExtResource( 10 )
 texture_hover = ExtResource( 10 )
+texture_disabled = ExtResource( 7 )
 
 [node name="FeedSettingsText" type="RichTextLabel" parent="FeedSettings"]
 margin_left = -22.0
@@ -115,6 +118,7 @@ rect_scale = Vector2( 1.2, 1.2 )
 texture_normal = ExtResource( 5 )
 texture_pressed = ExtResource( 9 )
 texture_hover = ExtResource( 9 )
+texture_disabled = ExtResource( 5 )
 
 [node name="NetworkText" type="RichTextLabel" parent="Network"]
 margin_left = 9.33329
@@ -126,6 +130,12 @@ custom_fonts/normal_font = SubResource( 1 )
 bbcode_enabled = true
 bbcode_text = "[center]Network[/center]"
 text = "Network"
+
+[node name="Arrow" type="Sprite" parent="Network"]
+visible = false
+position = Vector2( 72.5024, -17.5004 )
+scale = Vector2( 0.0969236, 0.0969236 )
+texture = ExtResource( 18 )
 
 [node name="OnOffToggleSection" type="Control" parent="."]
 visible = false

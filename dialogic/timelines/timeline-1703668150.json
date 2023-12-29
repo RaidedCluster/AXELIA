@@ -1,7 +1,7 @@
 {
 	"events": [
 		{
-			"animation": "2-fade_in_up.gd",
+			"animation": "[Default]",
 			"animation_length": 0.2,
 			"change_mirror_portrait": false,
 			"change_z_index": false,
@@ -27,16 +27,36 @@
 			"text": "Good evening, Noah.\nHow is the authorized red-team exercise for testing your facility's physical security progressing?"
 		},
 		{
+			"animation": "2-fade_in_up.gd",
+			"animation_length": 0.2,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1663232374.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "Default",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			},
+			"type": 0,
+			"z_index": 0
+		},
+		{
 			"character": "character-1663232374.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Uh\n yeah\nit's going...\nalright.\nLook, I'm not really in the time and place for small talk."
+			"text": "Uh\nyeah\nit's going...\nalright.\nLook, I'm not really in the time and place for small talk."
 		},
 		{
 			"character": "character-1703668076.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "I apologize. Can I help you in any way?"
+			"text": "I apologize. \nCan I help you in any way?"
 		},
 		{
 			"character": "character-1663232374.json",
