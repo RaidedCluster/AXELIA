@@ -85,13 +85,13 @@ func update_raycast_to_player():
 		ray_to_player.force_raycast_update()
 
 func check_raycast_collision():
-	if ray_to_player.is_colliding():
-		# If there is any collision, assume an obstruction and do not chase
-		player_detected = false
-	else:
+	if not ray_to_player.is_colliding():
 		# No collision detected, start or continue chasing the player
 		player_detected = true
 		random_direction_timer.stop()
+	elif not player_detected:
+		# If the player has not been detected yet and there is a collision, do not chase
+		player_detected = false
 
 
 

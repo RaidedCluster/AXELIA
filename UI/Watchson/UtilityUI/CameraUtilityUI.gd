@@ -206,6 +206,9 @@ func _on_Network_pressed():
 	if main_controller and not main_controller.bot_instanced:
 		instance_bot_at_position(Vector2(949, -5137))
 		main_controller.bot_instanced = true
+		var guardrail_nodes = get_tree().get_nodes_in_group("guardrails")  # Assuming they're in a group named 'guardrails'
+		for guardrail_node in guardrail_nodes:
+			guardrail_node.queue_free()
 	print("Network button pressed")
 	camera_node.check_for_moving_bodies()
 	$NetworkToggleSection.visible = true  # Show the Network Toggle Section

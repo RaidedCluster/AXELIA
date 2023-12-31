@@ -1,4 +1,4 @@
-[gd_scene load_steps=134 format=2]
+[gd_scene load_steps=136 format=2]
 
 [ext_resource path="res://Scenes/Characters/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Sprites/Tileset/BaseTilemap.tres" type="TileSet" id=2]
@@ -289,6 +289,12 @@ extents = Vector2( 216, 20 )
 
 [sub_resource type="RectangleShape2D" id=72]
 extents = Vector2( 24.5, 260.5 )
+
+[sub_resource type="RectangleShape2D" id=73]
+extents = Vector2( 200.5, 33 )
+
+[sub_resource type="RectangleShape2D" id=74]
+extents = Vector2( 33, 36.5 )
 
 [sub_resource type="RectangleShape2D" id=24]
 extents = Vector2( 876, 28 )
@@ -1793,6 +1799,32 @@ shape = SubResource( 72 )
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="YSort/OccluderBathroomReception"]
 position = Vector2( 41, 704 )
 shape = SubResource( 72 )
+
+[node name="GuardrailLeft" type="StaticBody2D" parent="YSort" groups=["guardrails"]]
+collision_layer = 1048576
+collision_mask = 1048576
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/GuardrailLeft"]
+position = Vector2( 255.5, 328 )
+shape = SubResource( 73 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="YSort/GuardrailLeft"]
+position = Vector2( 424, 259.5 )
+shape = SubResource( 74 )
+
+[node name="GuardrailRight" type="StaticBody2D" parent="YSort" groups=["guardrails"]]
+position = Vector2( 1864, 0 )
+scale = Vector2( -1, 1 )
+collision_layer = 1048576
+collision_mask = 1048576
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/GuardrailRight"]
+position = Vector2( 255.5, 328 )
+shape = SubResource( 73 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="YSort/GuardrailRight"]
+position = Vector2( 424, 259.5 )
+shape = SubResource( 74 )
 
 [node name="WallExtrusion" type="StaticBody2D" parent="."]
 position = Vector2( 924, 976 )

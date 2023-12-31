@@ -15,6 +15,10 @@ var unlimited_stamina = false
 
 var can_interact = true
 
+onready var sight_area = $SightArea
+# Flag to ensure dialogue only plays once
+var has_seen_bot = false
+
 enum {
 	MOVE
 }
@@ -81,7 +85,24 @@ func move():
 	velocity = move_and_slide(velocity)
 
 func _on_Interaction_Area_body_entered(body):
-	emit_signal("interacted", body)
+	if body.name in ["GuardrailLeft","GuardrailRight"]:  # Replace with your guardrail's identifying property
+		disable_interaction()  # Disable player movement and interaction
+		var inventory = get_tree().get_root().find_node("Inventory", true, false)
+		if inventory:
+			inventory.disable_inventory_interaction()
+		play_guardrail_warning_dialogue()  # Start the guardrail warning dialogue
+	else:
+		emit_signal("interacted", body)
+
+func play_guardrail_warning_dialogue():
+	var dialogue = Dialogic.start("TutorialWarn")
+	dialogue.pause_mode = Node.PAUSE_MODE_PROCESS
+	get_parent().add_child(dialogue)  # You might need to adjust the path to where you want to add the dialogue
+	yield(dialogue, "tree_exited")  # Wait for the dialogue to finish
+	enable_interaction()  # Re-enable player movement and interaction
+	var inventory = get_tree().get_root().find_node("Inventory", true, false)
+	if inventory:
+		inventory.enable_inventory_interaction()
 
 func set_watchson_active(is_active):
 	watchson_active = is_active
@@ -117,6 +138,7 @@ func update_stamina_bar():
 
 func _ready():
 	# Attempt to find the Inventory node and connect the signal
+	sight_area.connect("body_entered", self, "_on_SightArea_body_entered")
 	var inventory = get_tree().root.find_node("Inventory", true, false)
 	if inventory:
 		inventory.connect("recharge_drink_consumed", self, "_on_recharge_drink_consumed")
@@ -144,3 +166,19 @@ func disable_interaction():
 func enable_interaction():
 	can_interact = true
 	print("Player interaction enabled")
+
+func _on_SightArea_body_entered(body):
+	if body.name == "Kinesys Sentinel" and not has_seen_bot:
+		# Play the dialogue using Dialogic
+		var dialogue = Dialogic.start('Kinesys')
+		dialogue.pause_mode = Node.PAUSE_MODE_PROCESS
+		add_child(dialogue)
+		has_seen_bot = true  # Set the flag so it doesn't play again
+		# You may want to disable player movement while dialogue is playing
+		var inventory = get_tree().get_root().find_node("Inventory", true, false)
+		if inventory:
+			inventory.disable_inventory_interaction()
+		yield(dialogue, "tree_exited")  # Wait for the dialogue to finish
+		# Re-enable player movement after dialogue
+		if inventory:
+			inventory.enable_inventory_interaction()
