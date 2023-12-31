@@ -1,4 +1,3 @@
-# ElectricSlidingDoor.gd
 extends StaticBody2D
 
 # References to necessary nodes
@@ -21,6 +20,12 @@ func set_outline(enable):
 		outline_enabled = false
 
 func open_door():
+	# Access the main level controller's instance and check if the player is caught
+	var main_controller = get_tree().get_root().find_node("QRF", true, false)
+	if main_controller and main_controller.player_caught:
+		print("Player is caught. Door stays closed.")
+		return
+
 	if not door_opening_initiated:
 		door_opening_initiated = true
 		var timer = Timer.new()

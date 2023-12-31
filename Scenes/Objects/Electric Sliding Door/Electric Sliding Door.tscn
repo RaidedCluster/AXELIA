@@ -78,7 +78,7 @@ position = Vector2( -0.447511, 239.146 )
 shape = SubResource( 4 )
 
 [node name="InteractionAreaBack" type="CollisionShape2D" parent="DoorArea"]
-position = Vector2( 0, 31.1127 )
+position = Vector2( 0, -15.8873 )
 shape = SubResource( 4 )
 
 [node name="VisibilityNotifier2D" parent="." instance=ExtResource( 7 )]

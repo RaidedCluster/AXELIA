@@ -5,6 +5,7 @@ var showWarning = false  # New variable to control the warning display
 
 # Dictionary to keep track of active timers for each camera
 var flash_timers = {}
+var dialogue_timer = Timer.new()
 
 # Initialize the script with the camera node
 func init(camera):
@@ -196,6 +197,10 @@ func _ready():
 	warning_timer.set_wait_time(2.0)
 	warning_timer.connect("timeout", self, "_on_WarningTimer_timeout")
 	$FeedSettingsToggleSection.add_child(warning_timer)
+	dialogue_timer.set_wait_time(10)  # Set the timer to 5 seconds
+	dialogue_timer.set_one_shot(true)  # The timer should only run once
+	dialogue_timer.connect("timeout", self, "_on_DialogueTimer_timeout")
+	add_child(dialogue_timer)
 	for camera in get_tree().get_nodes_in_group("cameras"):
 		camera.connect("body_detected", self, "_on_Camera_body_detected")
 		camera.connect("body_no_longer_detected", self, "_on_Camera_body_no_longer_detected")
@@ -209,6 +214,7 @@ func _on_Network_pressed():
 		var guardrail_nodes = get_tree().get_nodes_in_group("guardrails")  # Assuming they're in a group named 'guardrails'
 		for guardrail_node in guardrail_nodes:
 			guardrail_node.queue_free()
+		dialogue_timer.start()
 	print("Network button pressed")
 	camera_node.check_for_moving_bodies()
 	$NetworkToggleSection.visible = true  # Show the Network Toggle Section
@@ -292,3 +298,11 @@ func instance_bot_at_position(position):
 		ysort_node.add_child(bot_instance)  # Add the bot to the YSort node
 	else:
 		print("YSort node not found. Bot not added.")
+
+func _on_DialogueTimer_timeout():
+	# This function will be called 5 seconds after the network button is pressed
+	var player_node = get_tree().get_root().find_node("Player", true, false)
+	if player_node and not player_node.has_seen_bot:
+		player_node.show_bot_approach_dialogue()
+	_on_ExitButton_pressed()
+

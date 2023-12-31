@@ -1913,7 +1913,6 @@ use_parent_material = true
 scale = Vector2( 0.75, 0.75 )
 frames = SubResource( 65 )
 animation = "On"
-frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraReceptionRight"]
@@ -1938,7 +1937,6 @@ use_parent_material = true
 scale = Vector2( 0.75, 0.75 )
 frames = SubResource( 65 )
 animation = "On"
-frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraReceptionLeft"]
@@ -1963,6 +1961,7 @@ use_parent_material = true
 scale = Vector2( 0.75, 0.75 )
 frames = SubResource( 65 )
 animation = "On"
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraBossCabin"]
@@ -2015,6 +2014,7 @@ use_parent_material = true
 scale = Vector2( 0.75, 0.75 )
 frames = SubResource( 65 )
 animation = "On"
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraBreakRoom"]
@@ -2067,6 +2067,7 @@ use_parent_material = true
 scale = Vector2( 0.75, 0.75 )
 frames = SubResource( 65 )
 animation = "On"
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraMeetingRoom"]

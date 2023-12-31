@@ -182,3 +182,10 @@ func _on_SightArea_body_entered(body):
 		# Re-enable player movement after dialogue
 		if inventory:
 			inventory.enable_inventory_interaction()
+
+func show_bot_approach_dialogue():
+	if not has_seen_bot:
+		var dialogue = Dialogic.start('Approach')  # Replace 'BotApproach' with your actual dialogue event
+		dialogue.pause_mode = Node.PAUSE_MODE_PROCESS
+		add_child(dialogue)
+		yield(dialogue, "tree_exited")

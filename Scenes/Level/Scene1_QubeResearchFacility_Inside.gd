@@ -3,6 +3,7 @@ extends Node2D
 # Dictionary to keep track of cameras
 var disabled_cameras = {}
 var maintenance_timer = Timer.new()
+var player_caught = false
 onready var alarmSound = $AlarmSound
 
 var arrow_shown = false
@@ -88,6 +89,7 @@ func reset_disabled_cameras():
 	disabled_cameras.clear()
 
 func _on_Camera_Caught():
+	player_caught = true
 	# Play the alarm sound
 	if alarmSound and not alarmSound.playing:
 		alarmSound.play()
