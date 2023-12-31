@@ -789,7 +789,6 @@ texture = ExtResource( 1 )
 offset = Vector2( 0, 105 )
 hframes = 9
 vframes = 2
-frame = 5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Dancing = SubResource( 26 )
@@ -811,6 +810,11 @@ active = true
 parameters/playback = SubResource( 23 )
 parameters/Idle/blend_position = Vector2( -0.00132799, 0.0172414 )
 parameters/Walk/blend_position = Vector2( -0.00398403, 0.00948286 )
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2( 0, 12 )
+enabled = true
+collision_mask = 256
 
 [node name="DetectionPivot" type="Position2D" parent="."]
 position = Vector2( 0, 12 )
@@ -837,14 +841,13 @@ shape = SubResource( 24 )
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 avoidance_enabled = true
 
-[node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2( 0, 12 )
-cast_to = Vector2( 0, 884 )
-collision_mask = 256
-
 [node name="Do You Love Me\?" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 3 )
 
 [node name="Servo" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 4 )
 volume_db = -5.0
+
+[node name="RayCast2D2" type="RayCast2D" parent="."]
+cast_to = Vector2( 0, 100 )
+collision_mask = 256

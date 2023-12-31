@@ -202,6 +202,10 @@ func _ready():
 
 # Handler for Network button press
 func _on_Network_pressed():
+	var main_controller = get_tree().get_root().find_node("QRF", true, false)
+	if main_controller and not main_controller.bot_instanced:
+		instance_bot_at_position(Vector2(949, -5137))
+		main_controller.bot_instanced = true
 	print("Network button pressed")
 	camera_node.check_for_moving_bodies()
 	$NetworkToggleSection.visible = true  # Show the Network Toggle Section
@@ -274,3 +278,14 @@ func disable_other_buttons():
 	$OnOff.disabled = true
 	$FeedSettings.disabled = true
 	# You may also want to change their appearance to reflect the disabled state visually
+
+func instance_bot_at_position(position):
+	var bot_scene = preload("res://Scenes/Objects/Robots/Kinesys Sentinel.tscn")
+	var bot_instance = bot_scene.instance()
+	bot_instance.global_position = position
+	
+	var ysort_node = get_tree().get_root().find_node("YSort", true, false)
+	if ysort_node:
+		ysort_node.add_child(bot_instance)  # Add the bot to the YSort node
+	else:
+		print("YSort node not found. Bot not added.")

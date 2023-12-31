@@ -19,13 +19,17 @@ var current_direction = Vector2.ZERO
 var path = PoolVector2Array()
 var path_index = 0
 
+var player_in_detection_area = false
+
 var haywire_executed = false
 
 onready var animation_tree: AnimationTree = $AnimationTree
 onready var animation_state: AnimationNodeStateMachinePlayback = animation_tree.get("parameters/playback")
 onready var detection_area: Area2D = $DetectionPivot/DetectionArea
 onready var navigation2D: Navigation2D = get_tree().get_root().find_node("Navigation2D", true, false)
+
 onready var ray_to_player = $RayCast2D
+
 # Patrol points and state
 var patrol_points = [Vector2(984, -5128), Vector2(2104, -4352), Vector2(1152, -4464), Vector2(1184, -2752), Vector2(3160, -2304), Vector2(984, -1368), Vector2(-216, -1192), Vector2(936, 528)]
 var patrol_index = 0
@@ -34,6 +38,8 @@ var is_patrolling = false  # New variable to check if currently patrolling
 
 var outline_enabled = false
 var outline_shader_material = preload("res://UI/UI Sprites/outline.tres")
+
+
 
 func _ready():
 	randomize()
@@ -51,9 +57,17 @@ func _ready():
 	animation_tree.active = true
 	detection_area.connect("body_entered", self, "_on_Body_entered")
 	detection_area.connect("body_exited", self, "_on_Body_exited")
-	calculate_next_patrol_point()  # Initialize the first patrol point
+
+	# Set the initial path to the specific point for the cutscene
+	path = navigation2D.get_simple_path(global_position, Vector2(936, 528), false)
+	path_index = 0
+	is_patrolling = true  # Start moving towards the point immediately
+
 
 func _physics_process(delta):
+	if player_in_detection_area:
+		update_raycast_to_player()
+		check_raycast_collision()
 	if player_detected and player:
 		if player.global_position.distance_to(last_known_player_position) > PLAYER_UPDATE_THRESHOLD:
 			update_path_to_player()
@@ -64,6 +78,22 @@ func _physics_process(delta):
 	velocity = move_and_slide(velocity)
 	update_animation(velocity)
 	update()
+
+func update_raycast_to_player():
+	if player:
+		ray_to_player.cast_to = player.global_position - global_position
+		ray_to_player.force_raycast_update()
+
+func check_raycast_collision():
+	if ray_to_player.is_colliding():
+		# If there is any collision, assume an obstruction and do not chase
+		player_detected = false
+	else:
+		# No collision detected, start or continue chasing the player
+		player_detected = true
+		random_direction_timer.stop()
+
+
 
 func calculate_next_patrol_point():
 	path = navigation2D.get_simple_path(global_position, patrol_points[patrol_index], false)
@@ -84,14 +114,21 @@ func update_path_to_player():
 func follow_path(delta):
 	if path_index < path.size():
 		var target = path[path_index] + Vector2(0, sprite_height / 2)
-		var direction = (target - global_position). normalized()
+		var direction = (target - global_position).normalized()
 		velocity = direction * SPEED
 		if global_position.distance_to(target) < TARGET_REACHED_THRESHOLD:
 			path_index += 1
-			if path_index >= path.size() and not player_detected:
-				calculate_next_patrol_point()
+			if path_index >= path.size():
+				if is_initial_point_reached():
+					calculate_next_patrol_point()  # Resume normal patrol behavior
+				elif not player_detected:
+					calculate_next_patrol_point()
 	else:
 		velocity = Vector2.ZERO
+
+func is_initial_point_reached():
+	return global_position.distance_to(Vector2(936, 528)) < 20
+
 
 func update_animation(velocity: Vector2):
 	var target_direction = velocity.normalized()
@@ -114,35 +151,21 @@ func _on_random_direction_timer_timeout():
 	random_direction_timer.start()
 
 func _on_Body_entered(body):
-	if body.name == "Player":
-		ray_to_player.cast_to = body.global_position - global_position
-		ray_to_player.force_raycast_update()  # Update the raycast to get the latest collision information
-		
-		if not ray_to_player.is_colliding():
-			player = body
-			player_detected = true
-			random_direction_timer.stop()
-		else:
-			var collider = ray_to_player.get_collider()
-			if collider is TileMap:  # Or check if collider is part of "Walls" group or layer
-				# There is a wall between the player and the bot, don't chase
-				pass
-			else:
-				# It's not a wall, so chase the player
-				player = body
-				player_detected = true
-				random_direction_timer.stop()
+	if body.name != "Player":
+		return
+	player_in_detection_area = true
+	player = body
 
 
 func _on_Body_exited(body):
 	if body.name == "Player":
-		# Keep chasing the player after they exit the detection area
-		pass
+		player_in_detection_area = false   
 
 func _on_patrol_timer_timeout():
 	is_patrolling = false  # Patrol finished at current point
 
 func _draw():
+	# Existing path drawing logic
 	if path.size() > 1:
 		var local_from
 		var local_to
@@ -150,6 +173,20 @@ func _draw():
 			local_from = to_local(path[i])
 			local_to = to_local(path[i + 1])
 			draw_line(local_from, local_to, Color(1, 0, 0), 2)
+	if ray_to_player.is_enabled():
+		var ray_start_position = to_local(global_position)
+		var ray_end_position = to_local(global_position) + ray_to_player.cast_to
+		var color = Color(0, 0, 1)  # Blue by default
+
+		if ray_to_player.is_colliding():
+			var collider = ray_to_player.get_collider()
+			if collider and "TileMap" in collider.get_class() and collider.get_collision_layer_bit(9):
+				color = Color(1, 0, 0)  # Red if hitting the wall (obstacle)
+			else:
+				color = Color(0, 1, 0)  # Green if hitting the player (clear path)
+		draw_line(ray_start_position, ray_end_position, color, 2)
+
+
 
 func set_outline(enable):
 	if enable and not outline_enabled:

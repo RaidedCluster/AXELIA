@@ -6,6 +6,7 @@ var maintenance_timer = Timer.new()
 onready var alarmSound = $AlarmSound
 
 var arrow_shown = false
+var bot_instanced = false
 
 func _ready():
 	print(get_tree().get_root().get_path_to(self))
