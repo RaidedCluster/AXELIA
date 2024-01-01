@@ -161,6 +161,8 @@ func update_stamina_bar_unlimited_status(status: bool):
 
 func disable_interaction():
 	can_interact = false
+	velocity = Vector2.ZERO
+	animationState.travel("Idle")
 	print("Player interaction disabled")
 
 func enable_interaction():

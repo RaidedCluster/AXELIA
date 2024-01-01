@@ -23,6 +23,9 @@ var player_in_detection_area = false
 
 var haywire_executed = false
 
+var stop_position = Vector2(928, -11840)
+var stop_threshold = 50.0
+
 onready var animation_tree: AnimationTree = $AnimationTree
 onready var animation_state: AnimationNodeStateMachinePlayback = animation_tree.get("parameters/playback")
 onready var detection_area: Area2D = $DetectionPivot/DetectionArea
@@ -75,6 +78,8 @@ func _physics_process(delta):
 		follow_path(delta)
 	elif not player_detected:
 		follow_path(delta)
+	if global_position.distance_to(stop_position) <= stop_threshold:
+		stop_bot()
 	velocity = move_and_slide(velocity)
 	update_animation(velocity)
 	update()
@@ -250,3 +255,17 @@ func _on_Camera_caught():
 		player = find_player()
 	if player != null:
 		update_path_to_player()
+
+func teleport_and_detect_player(new_position: Vector2):
+	yield(get_tree().create_timer(10.0), "timeout")
+	global_position = new_position  # Teleport the bot
+	player = find_player()  # Find the player
+	if player != null:
+		player_detected = true
+		update_path_to_player()  # Update the path to chase the player
+		is_patrolling = false  # Stop patrolling
+
+func stop_bot():
+	velocity = Vector2.ZERO  # Stop movement
+	animation_state.travel("Idle")  # Switch to idle animation
+	set_physics_process(false)  # Optionally, stop further physics processing if no more actions are required

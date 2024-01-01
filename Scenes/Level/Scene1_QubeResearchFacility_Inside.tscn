@@ -1,4 +1,4 @@
-[gd_scene load_steps=136 format=2]
+[gd_scene load_steps=140 format=2]
 
 [ext_resource path="res://Scenes/Characters/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Sprites/Tileset/BaseTilemap.tres" type="TileSet" id=2]
@@ -59,6 +59,7 @@
 [ext_resource path="res://Scenes/Objects/Electronics/Computers/QUBE Hybrid Quantum Supercomputer/Terminal Monitor.tscn" type="PackedScene" id=57]
 [ext_resource path="res://Scenes/Objects/Electronics/Computers/QUBE Hybrid Quantum Supercomputer/Terminal Keyboard.tscn" type="PackedScene" id=58]
 [ext_resource path="res://Scenes/Objects/Electronics/Computers/QUBE Hybrid Quantum Supercomputer/Terminal Mouse.tscn" type="PackedScene" id=59]
+[ext_resource path="res://Scenes/Level/AxeliaEncounterArea.gd" type="Script" id=60]
 [ext_resource path="res://Scenes/Objects/Electronics/FLIPPO_e-ReaderStand_Battery.gd" type="Script" id=61]
 [ext_resource path="res://Sprites/Objects/Furniture/Storage/Cabinet.png" type="Texture" id=62]
 [ext_resource path="res://Scenes/SceneTransitionRect.gd" type="Script" id=63]
@@ -74,6 +75,58 @@
 [ext_resource path="res://Audio/SFX/Camera Alarm.wav" type="AudioStream" id=73]
 [ext_resource path="res://UI/UI Sprites/Controls.png" type="Texture" id=74]
 [ext_resource path="res://UI/Game/Indication Arrow.png" type="Texture" id=75]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 40, 24 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 16, 24 )
+
+[sub_resource type="SpriteFrames" id=63]
+animations = [ {
+"frames": [ ExtResource( 67 ) ],
+"loop": true,
+"name": "8",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 68 ) ],
+"loop": true,
+"name": "Full",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=64]
+extents = Vector2( 51, 24 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 8.63622, 8 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 56, 32 )
+
+[sub_resource type="RectangleShape2D" id=25]
+extents = Vector2( 160, 44 )
+
+[sub_resource type="RectangleShape2D" id=26]
+extents = Vector2( 385.5, 44 )
+
+[sub_resource type="RectangleShape2D" id=71]
+extents = Vector2( 216, 20 )
+
+[sub_resource type="RectangleShape2D" id=72]
+extents = Vector2( 24.5, 260.5 )
+
+[sub_resource type="RectangleShape2D" id=73]
+extents = Vector2( 200.5, 33 )
+
+[sub_resource type="RectangleShape2D" id=74]
+extents = Vector2( 33, 36.5 )
+
+[sub_resource type="RectangleShape2D" id=75]
+extents = Vector2( 96.25, 3368 )
+
+[sub_resource type="RectangleShape2D" id=76]
+extents = Vector2( 160, 84 )
 
 [sub_resource type="NavigationPolygon" id=49]
 vertices = PoolVector2Array( 424, 328, 448, 320, 448, 952, 64, 952, 64, 882.474, 112, 792, 64, 736, 64, 704, 112, 616, 64, 544, 128, 488, 64, 432, 64, 384, 168, 384, 424, 288, 168, 296, 192, 0, 64, 296, 64, 24, 432, 32, 432, 200, 288, 0, 248, -64, 208, -64 )
@@ -250,51 +303,10 @@ vertices = PoolVector2Array( 1792, -2704, 1840, -2704, 1840, -2664, 1792, -2664 
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 outlines = [ PoolVector2Array( 1792, -2704, 1840, -2704, 1840, -2664, 1792, -2664 ) ]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 40, 24 )
-
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 16, 24 )
-
-[sub_resource type="SpriteFrames" id=63]
-animations = [ {
-"frames": [ ExtResource( 67 ) ],
-"loop": true,
-"name": "8",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 68 ) ],
-"loop": true,
-"name": "Full",
-"speed": 5.0
-} ]
-
-[sub_resource type="RectangleShape2D" id=64]
-extents = Vector2( 51, 24 )
-
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 8.63622, 8 )
-
-[sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 56, 32 )
-
-[sub_resource type="RectangleShape2D" id=25]
-extents = Vector2( 160, 44 )
-
-[sub_resource type="RectangleShape2D" id=26]
-extents = Vector2( 385.5, 44 )
-
-[sub_resource type="RectangleShape2D" id=71]
-extents = Vector2( 216, 20 )
-
-[sub_resource type="RectangleShape2D" id=72]
-extents = Vector2( 24.5, 260.5 )
-
-[sub_resource type="RectangleShape2D" id=73]
-extents = Vector2( 200.5, 33 )
-
-[sub_resource type="RectangleShape2D" id=74]
-extents = Vector2( 33, 36.5 )
+[sub_resource type="NavigationPolygon" id=77]
+vertices = PoolVector2Array( 856, -11904, 1024, -11904, 1024, -11136, 856, -11136 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+outlines = [ PoolVector2Array( 856, -11904, 1024, -11904, 1024, -11136, 856, -11136 ) ]
 
 [sub_resource type="RectangleShape2D" id=24]
 extents = Vector2( 876, 28 )
@@ -420,158 +432,6 @@ rotation = 1.5708
 
 [node name="YSort" type="YSort" parent="."]
 
-[node name="Navigation" type="Node" parent="YSort"]
-
-[node name="Navigation2D" type="Navigation2D" parent="YSort/Navigation"]
-edge_connection_margin = 10.0
-
-[node name="ReceptionLeftHallwayNavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
-navpoly = SubResource( 49 )
-
-[node name="ReceptionCenterNavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
-navpoly = SubResource( 50 )
-
-[node name="ReceptionCarpet1NavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
-navpoly = SubResource( 51 )
-
-[node name="ReceptionCarpet2NavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
-navpoly = SubResource( 52 )
-
-[node name="ReceptionCarpet3NavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
-navpoly = SubResource( 53 )
-
-[node name="ReceptionCarpet4NavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
-navpoly = SubResource( 54 )
-
-[node name="ReceptionRightHallwayNavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
-navpoly = SubResource( 55 )
-
-[node name="BossCabinNavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
-navpoly = SubResource( 28 )
-
-[node name="Sector0-1NavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
-navpoly = SubResource( 29 )
-
-[node name="Sector0-2NavigationPolygonInstance2" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
-navpoly = SubResource( 56 )
-
-[node name="Sector0-3NavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
-navpoly = SubResource( 57 )
-
-[node name="Sector1NavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
-navpoly = SubResource( 30 )
-
-[node name="Sector1o5NavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
-navpoly = SubResource( 31 )
-
-[node name="Sector2-1NavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
-navpoly = SubResource( 32 )
-
-[node name="Sector2-2NavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
-navpoly = SubResource( 58 )
-
-[node name="Sector2o5NavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
-navpoly = SubResource( 33 )
-
-[node name="Sector3NavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
-navpoly = SubResource( 34 )
-
-[node name="BreakRoomNavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
-navpoly = SubResource( 35 )
-
-[node name="BreakRoomCarpet1NavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
-position = Vector2( 1723, -2497 )
-navpoly = SubResource( 51 )
-
-[node name="BreakRoomCarpet2NavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
-position = Vector2( 1723, -2497 )
-navpoly = SubResource( 52 )
-
-[node name="BreakRoomCarpet3NavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
-position = Vector2( 1723, -2497 )
-navpoly = SubResource( 53 )
-
-[node name="BreakRoomCarpet4NavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
-position = Vector2( 1723, -2497 )
-navpoly = SubResource( 54 )
-
-[node name="BreakRoom2NavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
-position = Vector2( 1723, -2497 )
-navpoly = SubResource( 61 )
-
-[node name="MeetingRoom1NavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
-navpoly = SubResource( 36 )
-
-[node name="MeetingRoom2NavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
-navpoly = SubResource( 59 )
-
-[node name="ReceptionBathroomNavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
-navpoly = SubResource( 37 )
-
-[node name="Sector0WashroomNavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
-navpoly = SubResource( 38 )
-
-[node name="Sector0BathroomTopNavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
-navpoly = SubResource( 39 )
-
-[node name="Sector0BathroomBottomNavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
-navpoly = SubResource( 40 )
-
-[node name="KitchenNavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
-navpoly = SubResource( 41 )
-
-[node name="Kitchen2NavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
-navpoly = SubResource( 62 )
-
-[node name="Cubicle1NavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
-navpoly = SubResource( 42 )
-
-[node name="Cubicle2NavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
-position = Vector2( 0, -640 )
-navpoly = SubResource( 42 )
-
-[node name="Cubicle3NavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
-position = Vector2( 0, -1280 )
-navpoly = SubResource( 42 )
-
-[node name="Cubicle4NavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
-position = Vector2( 0, -1920 )
-navpoly = SubResource( 42 )
-
-[node name="Cubicle5NavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
-position = Vector2( 0, -2560 )
-navpoly = SubResource( 42 )
-
-[node name="ReceptionDoorLeftNavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
-navpoly = SubResource( 43 )
-
-[node name="ReceptionDoorRightNavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
-navpoly = SubResource( 44 )
-
-[node name="Sector0BathroomDoorTopNavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
-navpoly = SubResource( 45 )
-
-[node name="Sector0BathroomDoorBottomNavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
-navpoly = SubResource( 46 )
-
-[node name="ReceptionBathroomDoorNavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
-position = Vector2( 8, -32 )
-navpoly = SubResource( 47 )
-
-[node name="Sector0WashroomDoorNavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
-position = Vector2( 1776, -1856 )
-navpoly = SubResource( 47 )
-
-[node name="BossCabinDoorNavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
-navpoly = SubResource( 48 )
-
-[node name="BreakRoomDoorNavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
-navpoly = SubResource( 60 )
-
-[node name="MeetingRoomDoorNavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
-position = Vector2( 1776, -3200 )
-navpoly = SubResource( 48 )
-
 [node name="WallTilemap" type="TileMap" parent="YSort"]
 tile_set = ExtResource( 4 )
 cell_y_sort = true
@@ -592,10 +452,6 @@ zoom = Vector2( 1.4, 1.4 )
 process_mode = 0
 smoothing_enabled = true
 smoothing_speed = 3.0
-
-[node name="PosPlaceholder" type="Node2D" parent="YSort/Player"]
-position = Vector2( 0, 97 )
-z_index = 1
 
 [node name="Door" parent="YSort" instance=ExtResource( 5 )]
 position = Vector2( 257.549, -266.047 )
@@ -1826,6 +1682,186 @@ shape = SubResource( 73 )
 position = Vector2( 424, 259.5 )
 shape = SubResource( 74 )
 
+[node name="HallwayLeftGuardrail" type="StaticBody2D" parent="YSort"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/HallwayLeftGuardrail"]
+position = Vector2( 672.25, -8984 )
+shape = SubResource( 75 )
+
+[node name="HallwayRightGuardrail2" type="StaticBody2D" parent="YSort"]
+position = Vector2( 512, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/HallwayRightGuardrail2"]
+position = Vector2( 672.25, -8984 )
+shape = SubResource( 75 )
+
+[node name="AxeliaEncounterArea" type="Area2D" parent="YSort"]
+position = Vector2( 512, -43 )
+script = ExtResource( 60 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/AxeliaEncounterArea"]
+position = Vector2( 416, -12116 )
+shape = SubResource( 76 )
+
+[node name="Navigation" type="Node" parent="YSort"]
+
+[node name="Navigation2D" type="Navigation2D" parent="YSort/Navigation"]
+edge_connection_margin = 10.0
+
+[node name="ReceptionLeftHallwayNavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
+navpoly = SubResource( 49 )
+
+[node name="ReceptionCenterNavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
+navpoly = SubResource( 50 )
+
+[node name="ReceptionCarpet1NavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
+navpoly = SubResource( 51 )
+
+[node name="ReceptionCarpet2NavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
+navpoly = SubResource( 52 )
+
+[node name="ReceptionCarpet3NavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
+navpoly = SubResource( 53 )
+
+[node name="ReceptionCarpet4NavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
+navpoly = SubResource( 54 )
+
+[node name="ReceptionRightHallwayNavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
+navpoly = SubResource( 55 )
+
+[node name="BossCabinNavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
+navpoly = SubResource( 28 )
+
+[node name="Sector0-1NavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
+navpoly = SubResource( 29 )
+
+[node name="Sector0-2NavigationPolygonInstance2" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
+navpoly = SubResource( 56 )
+
+[node name="Sector0-3NavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
+navpoly = SubResource( 57 )
+
+[node name="Sector1NavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
+navpoly = SubResource( 30 )
+
+[node name="Sector1o5NavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
+navpoly = SubResource( 31 )
+
+[node name="Sector2-1NavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
+navpoly = SubResource( 32 )
+
+[node name="Sector2-2NavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
+navpoly = SubResource( 58 )
+
+[node name="Sector2o5NavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
+navpoly = SubResource( 33 )
+
+[node name="Sector3NavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
+navpoly = SubResource( 34 )
+
+[node name="BreakRoomNavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
+navpoly = SubResource( 35 )
+
+[node name="BreakRoomCarpet1NavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
+position = Vector2( 1723, -2497 )
+navpoly = SubResource( 51 )
+
+[node name="BreakRoomCarpet2NavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
+position = Vector2( 1723, -2497 )
+navpoly = SubResource( 52 )
+
+[node name="BreakRoomCarpet3NavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
+position = Vector2( 1723, -2497 )
+navpoly = SubResource( 53 )
+
+[node name="BreakRoomCarpet4NavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
+position = Vector2( 1723, -2497 )
+navpoly = SubResource( 54 )
+
+[node name="BreakRoom2NavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
+position = Vector2( 1723, -2497 )
+navpoly = SubResource( 61 )
+
+[node name="MeetingRoom1NavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
+navpoly = SubResource( 36 )
+
+[node name="MeetingRoom2NavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
+navpoly = SubResource( 59 )
+
+[node name="ReceptionBathroomNavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
+navpoly = SubResource( 37 )
+
+[node name="Sector0WashroomNavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
+navpoly = SubResource( 38 )
+
+[node name="Sector0BathroomTopNavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
+navpoly = SubResource( 39 )
+
+[node name="Sector0BathroomBottomNavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
+navpoly = SubResource( 40 )
+
+[node name="KitchenNavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
+navpoly = SubResource( 41 )
+
+[node name="Kitchen2NavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
+navpoly = SubResource( 62 )
+
+[node name="Cubicle1NavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
+navpoly = SubResource( 42 )
+
+[node name="Cubicle2NavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
+position = Vector2( 0, -640 )
+navpoly = SubResource( 42 )
+
+[node name="Cubicle3NavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
+position = Vector2( 0, -1280 )
+navpoly = SubResource( 42 )
+
+[node name="Cubicle4NavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
+position = Vector2( 0, -1920 )
+navpoly = SubResource( 42 )
+
+[node name="Cubicle5NavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
+position = Vector2( 0, -2560 )
+navpoly = SubResource( 42 )
+
+[node name="ReceptionDoorLeftNavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
+navpoly = SubResource( 43 )
+
+[node name="ReceptionDoorRightNavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
+navpoly = SubResource( 44 )
+
+[node name="Sector0BathroomDoorTopNavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
+navpoly = SubResource( 45 )
+
+[node name="Sector0BathroomDoorBottomNavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
+navpoly = SubResource( 46 )
+
+[node name="ReceptionBathroomDoorNavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
+position = Vector2( 8, -32 )
+navpoly = SubResource( 47 )
+
+[node name="Sector0WashroomDoorNavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
+position = Vector2( 1776, -1856 )
+navpoly = SubResource( 47 )
+
+[node name="BossCabinDoorNavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
+navpoly = SubResource( 48 )
+
+[node name="BreakRoomDoorNavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
+navpoly = SubResource( 60 )
+
+[node name="MeetingRoomDoorNavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
+position = Vector2( 1776, -3200 )
+navpoly = SubResource( 48 )
+
+[node name="HallwayNavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
+navpoly = SubResource( 77 )
+
+[node name="PosPlaceholder" type="Node2D" parent="."]
+position = Vector2( 936, -11840 )
+z_index = 1
+
 [node name="WallExtrusion" type="StaticBody2D" parent="."]
 position = Vector2( 924, 976 )
 
@@ -1913,6 +1949,7 @@ use_parent_material = true
 scale = Vector2( 0.75, 0.75 )
 frames = SubResource( 65 )
 animation = "On"
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraReceptionRight"]
@@ -1937,6 +1974,7 @@ use_parent_material = true
 scale = Vector2( 0.75, 0.75 )
 frames = SubResource( 65 )
 animation = "On"
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraReceptionLeft"]
@@ -1961,7 +1999,6 @@ use_parent_material = true
 scale = Vector2( 0.75, 0.75 )
 frames = SubResource( 65 )
 animation = "On"
-frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraBossCabin"]
@@ -2014,7 +2051,6 @@ use_parent_material = true
 scale = Vector2( 0.75, 0.75 )
 frames = SubResource( 65 )
 animation = "On"
-frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraBreakRoom"]
@@ -2067,7 +2103,6 @@ use_parent_material = true
 scale = Vector2( 0.75, 0.75 )
 frames = SubResource( 65 )
 animation = "On"
-frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraMeetingRoom"]

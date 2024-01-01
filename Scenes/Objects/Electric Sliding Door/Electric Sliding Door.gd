@@ -8,8 +8,9 @@ var outline_shader_material = preload("res://UI/UI Sprites/outline.tres")
 var door_opening_initiated = false
 
 func _ready():
-	# Additional setup if needed
-	pass
+	var main_controller = get_tree().get_root().find_node("QRF", true, false)
+	if main_controller:
+		main_controller.connect("player_caught_changed", self, "_on_Player_Caught_Changed")
 
 func set_outline(enable):
 	if enable and not outline_enabled:
@@ -36,8 +37,15 @@ func open_door():
 		timer.connect("timeout", self, "_on_timer_timeout")
 
 func _on_timer_timeout():
-	doorAnimation.play("open")
-	doorCollision.disabled = true
+	# Check if the player has been caught when the timer expires
+	var main_controller = get_tree().get_root().find_node("QRF", true, false)
+	if main_controller and not main_controller.player_caught:
+		doorAnimation.play("open")
+		doorCollision.disabled = true
+	else:
+		print("Player is caught. Keeping the door closed.")
+	# Reset door_opening_initiated regardless of whether the door opens or not
+	door_opening_initiated = false
 
 func close_door():
 	doorAnimation.play("close")
@@ -49,3 +57,7 @@ func utility():
 	var slidingDoorUtilityInstance = slidingDoorUtilityScene.instance()
 	slidingDoorUtilityInstance.init(self)
 	get_node("/root/QRF/UI").add_child(slidingDoorUtilityInstance)
+
+func _on_Player_Caught_Changed(is_caught):
+	if is_caught and doorAnimation.animation == "open":
+		close_door()

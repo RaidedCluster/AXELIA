@@ -9,6 +9,8 @@ onready var alarmSound = $AlarmSound
 var arrow_shown = false
 var bot_instanced = false
 
+signal player_caught_changed(is_caught)
+
 func _ready():
 	print(get_tree().get_root().get_path_to(self))
 	var cameras = get_tree().get_nodes_in_group("cameras")
@@ -90,6 +92,7 @@ func reset_disabled_cameras():
 
 func _on_Camera_Caught():
 	player_caught = true
+	emit_signal("player_caught_changed", player_caught)
 	# Play the alarm sound
 	if alarmSound and not alarmSound.playing:
 		alarmSound.play()
