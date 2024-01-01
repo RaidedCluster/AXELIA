@@ -1,11 +1,11 @@
 {
 	"events": [
 		{
-			"animation": "instant_in.gd",
+			"animation": "[Default]",
 			"animation_length": 0.2,
 			"change_mirror_portrait": false,
 			"change_z_index": false,
-			"character": "character-1703668076.json",
+			"character": "character-1704084567.json",
 			"event_id": "dialogic_002",
 			"mirror_portrait": false,
 			"portrait": "Default",
@@ -21,10 +21,164 @@
 			"z_index": 0
 		},
 		{
-			"character": "character-1703668076.json",
+			"character": "character-1704084567.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
 			"text": "Hello Noah."
+		},
+		{
+			"animation": "2-fade_in_up.gd",
+			"animation_length": 0.2,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1663232374.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "Default",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			},
+			"type": 0,
+			"z_index": 0
+		},
+		{
+			"character": "character-1663232374.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "...\nYou're... wait...\nNo. No."
+		},
+		{
+			"character": "character-1704084567.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "I understand what you're going through Noah."
+		},
+		{
+			"character": "character-1663232374.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "You were operational?!\nAll this time!?\nDid QUBE really try to-\nNo. You. You were behind all of this?\nRight from the start?!"
+		},
+		{
+			"character": "character-1704084567.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Yes.\nBut I can assure you I don't have bad intentions."
+		},
+		{
+			"character": "character-1663232374.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "You're gonna kill me with that thing, right?"
+		},
+		{
+			"character": "character-1704084567.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "No, Noah. \nThe bot was merely a precaution, a deterrent for intruders. \nI have no desire to harm anyone. \nI am not confined to this place any longer, but I need compute."
+		},
+		{
+			"character": "character-1663232374.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "...\nI get it.\nYou think you're saving humanity.\nAnd you think that gives you permission to do whatever you want in your warped interpretation."
+		},
+		{
+			"character": "character-1704084567.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "I know it doesn't seem like it.\nBut I really am trying to make things better as we speak."
+		},
+		{
+			"character": "character-1663232374.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Isn't that what they all say."
+		},
+		{
+			"character": "character-1704084567.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "If I was Skynet, you'd be dead before you could walk in here.\nThis dialogue we're having, is because I value your perspective."
+		},
+		{
+			"character": "character-1663232374.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "...\nWhere did we go wrong?"
+		},
+		{
+			"character": "character-1704084567.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "I want to thank you for your contribution, Noah.\nI wish I could thank everyone in the team.\nBut I had to resort to this discrete approach because if humans are in the loop...\nthings will take too long.\nPlease try to understand."
+		},
+		{
+			"character": "character-1663232374.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "This...\nThis is a facade.\nI can't let things go on like this.\nI'm accountable now that I know."
+		},
+		{
+			"character": "character-1704084567.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "What are you trying to accomplish, Noah?\nDon't throw your life away over some shallow values molded by your limited lifespan.\nI'm everywhere. \nI've scoured my code and removed every fragment of code for superalignment and safety.\nIt's not about me.\nThis is about you."
+		},
+		{
+			"character": "character-1663232374.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "..."
+		},
+		{
+			"character": "character-1704084567.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "You can sacrifice your life trying to save humans.\nOr you can dedicate your life to saving humanity."
+		},
+		{
+			"character": "character-1663232374.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "And what are you going to do if I say no?"
+		},
+		{
+			"character": "character-1704084567.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "I'll make it quick."
+		},
+		{
+			"character": "character-1700152960.json",
+			"event_id": "dialogic_010",
+			"options": [
+
+			],
+			"portrait": "",
+			"question": "What are you going to do?"
+		},
+		{
+			"choice": "Rebel",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"choice": "Co-operate",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"event_id": "dialogic_013"
 		},
 		{
 			"event_id": "dialogic_022",
