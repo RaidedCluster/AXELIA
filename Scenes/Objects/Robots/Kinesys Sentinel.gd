@@ -170,27 +170,27 @@ func _on_Body_exited(body):
 func _on_patrol_timer_timeout():
 	is_patrolling = false  # Patrol finished at current point
 
-func _draw():
-	# Existing path drawing logic
-	if path.size() > 1:
-		var local_from
-		var local_to
-		for i in range(path.size() - 1):
-			local_from = to_local(path[i])
-			local_to = to_local(path[i + 1])
-			draw_line(local_from, local_to, Color(1, 0, 0), 2)
-	if ray_to_player.is_enabled():
-		var ray_start_position = to_local(global_position)
-		var ray_end_position = to_local(global_position) + ray_to_player.cast_to
-		var color = Color(0, 0, 1)  # Blue by default
-
-		if ray_to_player.is_colliding():
-			var collider = ray_to_player.get_collider()
-			if collider and "TileMap" in collider.get_class() and collider.get_collision_layer_bit(9):
-				color = Color(1, 0, 0)  # Red if hitting the wall (obstacle)
-			else:
-				color = Color(0, 1, 0)  # Green if hitting the player (clear path)
-		draw_line(ray_start_position, ray_end_position, color, 2)
+#func _draw():
+#    # Existing path drawing logic
+#    if path.size() > 1:
+#        var local_from
+#        var local_to
+#        for i in range(path.size() - 1):
+#            local_from = to_local(path[i])
+#            local_to = to_local(path[i + 1])
+#            draw_line(local_from, local_to, Color(1, 0, 0), 2)
+#    if ray_to_player.is_enabled():
+#        var ray_start_position = to_local(global_position)
+#        var ray_end_position = to_local(global_position) + ray_to_player.cast_to
+#        var color = Color(0, 0, 1)  # Blue by default
+#
+#        if ray_to_player.is_colliding():
+#            var collider = ray_to_player.get_collider()
+#            if collider and "TileMap" in collider.get_class() and collider.get_collision_layer_bit(9):
+#                color = Color(1, 0, 0)  # Red if hitting the wall (obstacle)
+#            else:
+#                color = Color(0, 1, 0)  # Green if hitting the player (clear path)
+#        draw_line(ray_start_position, ray_end_position, color, 2)
 
 
 
@@ -259,6 +259,9 @@ func _on_Camera_caught():
 
 func teleport_and_detect_player(new_position: Vector2):
 	yield(get_tree().create_timer(10.0), "timeout")
+	var catch_area = $DetectionPivot/CatchArea
+	if catch_area:
+		catch_area.queue_free()
 	global_position = new_position  # Teleport the bot
 	player = find_player()  # Find the player
 	if player != null:

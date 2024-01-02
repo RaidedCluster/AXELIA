@@ -775,7 +775,7 @@ start_node = "Idle"
 extents = Vector2( 192, 441.75 )
 
 [sub_resource type="RectangleShape2D" id=28]
-extents = Vector2( 100, 127 )
+extents = Vector2( 81.8502, 107 )
 
 [node name="Kinesys Sentinel" type="KinematicBody2D" groups=["hackable", "moving_bodies"]]
 collision_layer = 3
@@ -845,16 +845,16 @@ shape = SubResource( 24 )
 [node name="CatchArea" type="Area2D" parent="DetectionPivot"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionPivot/CatchArea"]
-position = Vector2( 0, 117 )
+position = Vector2( 0, 97 )
 shape = SubResource( 28 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="DetectionPivot/CatchArea"]
-position = Vector2( -33, 111 )
+position = Vector2( -27.4686, 103.698 )
 rotation = 0.261799
 shape = SubResource( 28 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="DetectionPivot/CatchArea"]
-position = Vector2( 33, 111 )
+position = Vector2( 29, 105 )
 rotation = -0.261799
 shape = SubResource( 28 )
 

@@ -1,13 +1,10 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Fonts/Dynamic Fonts/JetBrains Mono BOLD.tres" type="DynamicFont" id=1]
 [ext_resource path="res://UI/Game/axelia.png" type="Texture" id=2]
 [ext_resource path="res://UI/Buttons/PLAY/PLAY.png" type="Texture" id=3]
 [ext_resource path="res://UI/Buttons/PLAY/PLAY Transparent.png" type="Texture" id=4]
 [ext_resource path="res://UI/Buttons/PLAY/PLAY click.png" type="Texture" id=5]
-[ext_resource path="res://UI/Buttons/SETTINGS/SETTINGS.png" type="Texture" id=6]
-[ext_resource path="res://UI/Buttons/SETTINGS/SETTINGS Transparent.png" type="Texture" id=7]
-[ext_resource path="res://UI/Buttons/SETTINGS/SETTINGS click.png" type="Texture" id=8]
 [ext_resource path="res://Scenes/SceneTransitionRect.gd" type="Script" id=9]
 [ext_resource path="res://Fonts/Dynamic Fonts/JetBrains Mono MEDIUM.tres" type="DynamicFont" id=10]
 
@@ -67,7 +64,19 @@ position = Vector2( 640, 96 )
 scale = Vector2( 0.52459, 0.52459 )
 texture = ExtResource( 2 )
 
-[node name="FeedSettingsText" type="RichTextLabel" parent="."]
+[node name="Version" type="RichTextLabel" parent="."]
+margin_left = 14.0
+margin_top = 673.0
+margin_right = 195.0
+margin_bottom = 709.0
+grow_horizontal = 2
+custom_fonts/bold_font = ExtResource( 1 )
+custom_fonts/normal_font = ExtResource( 10 )
+bbcode_enabled = true
+bbcode_text = "[b][center]v0.1 Alpha[/center][/b]"
+text = "v0.1 Alpha"
+
+[node name="Demo" type="RichTextLabel" parent="."]
 margin_left = 597.0
 margin_top = 159.0
 margin_right = 697.0
@@ -80,28 +89,13 @@ bbcode_text = "[b][center]DEMO[/center][/b]"
 text = "DEMO"
 
 [node name="PLAY" type="TextureButton" parent="."]
-margin_left = 584.0
-margin_top = 320.0
-margin_right = 704.0
-margin_bottom = 384.0
+margin_left = 585.0
+margin_top = 365.0
+margin_right = 705.0
+margin_bottom = 429.0
 texture_normal = ExtResource( 4 )
 texture_pressed = ExtResource( 5 )
 texture_hover = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="SETTINGS" type="TextureButton" parent="."]
-margin_left = 528.0
-margin_top = 448.0
-margin_right = 754.0
-margin_bottom = 512.0
-texture_normal = ExtResource( 7 )
-texture_pressed = ExtResource( 8 )
-texture_hover = ExtResource( 6 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="SceneTransitionRect" type="CanvasLayer" parent="."]
 script = ExtResource( 9 )

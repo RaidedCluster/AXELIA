@@ -1,4 +1,4 @@
-[gd_scene load_steps=140 format=2]
+[gd_scene load_steps=144 format=2]
 
 [ext_resource path="res://Scenes/Characters/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Sprites/Tileset/BaseTilemap.tres" type="TileSet" id=2]
@@ -75,11 +75,19 @@
 [ext_resource path="res://Audio/SFX/Camera Alarm.wav" type="AudioStream" id=73]
 [ext_resource path="res://UI/UI Sprites/Controls.png" type="Texture" id=74]
 [ext_resource path="res://UI/Game/Indication Arrow.png" type="Texture" id=75]
+[ext_resource path="res://UI/VisbilityNotifier/VisibilityNotifier2D.tscn" type="PackedScene" id=76]
+[ext_resource path="res://Scenes/Level/CabinetEzra.gd" type="Script" id=77]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 40, 24 )
 
 [sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 16, 24 )
+
+[sub_resource type="RectangleShape2D" id=78]
+extents = Vector2( 40, 24 )
+
+[sub_resource type="RectangleShape2D" id=79]
 extents = Vector2( 16, 24 )
 
 [sub_resource type="SpriteFrames" id=63]
@@ -662,8 +670,29 @@ position = Vector2( 436, -4824 )
 [node name="Work Table5" parent="YSort" instance=ExtResource( 31 )]
 position = Vector2( 129, -4576 )
 
-[node name="Cabinet6" parent="YSort" instance=ExtResource( 25 )]
+[node name="Cabinet6" type="StaticBody2D" parent="YSort"]
 position = Vector2( 105, -4832 )
+script = ExtResource( 77 )
+
+[node name="Sprite" type="Sprite" parent="YSort/Cabinet6"]
+texture = ExtResource( 62 )
+offset = Vector2( 0, 170 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Cabinet6"]
+position = Vector2( 0, 152 )
+shape = SubResource( 1 )
+
+[node name="InteractionArea" type="Area2D" parent="YSort/Cabinet6"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Cabinet6/InteractionArea"]
+position = Vector2( 0, 144 )
+shape = SubResource( 2 )
+
+[node name="VisibilityNotifier2D" parent="YSort/Cabinet6" instance=ExtResource( 76 )]
+position = Vector2( 2.38419e-06, 168.364 )
+scale = Vector2( 5.6, 7.96364 )
 
 [node name="Swivel Chair Side5" parent="YSort" instance=ExtResource( 32 )]
 position = Vector2( 249, -4576 )
@@ -836,7 +865,7 @@ offset = Vector2( 0, 170 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Cabinet8"]
 position = Vector2( 0, 152 )
-shape = SubResource( 1 )
+shape = SubResource( 78 )
 
 [node name="InteractionArea" type="Area2D" parent="YSort/Cabinet8"]
 collision_layer = 2
@@ -844,7 +873,7 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Cabinet8/InteractionArea"]
 position = Vector2( 0, 144 )
-shape = SubResource( 2 )
+shape = SubResource( 79 )
 
 [node name="Microwave" parent="YSort" instance=ExtResource( 44 )]
 position = Vector2( 2304, -3000 )
@@ -1014,7 +1043,7 @@ offset = Vector2( 0, 170 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Cabinet9"]
 position = Vector2( 0, 152 )
-shape = SubResource( 1 )
+shape = SubResource( 78 )
 
 [node name="InteractionArea" type="Area2D" parent="YSort/Cabinet9"]
 collision_layer = 2
@@ -1022,7 +1051,7 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Cabinet9/InteractionArea"]
 position = Vector2( 0, 144 )
-shape = SubResource( 2 )
+shape = SubResource( 79 )
 
 [node name="Cup Dispenser2" parent="YSort" instance=ExtResource( 47 )]
 position = Vector2( 356, -1648 )
@@ -1921,7 +1950,6 @@ tile_data = PoolIntArray( -5963776, 5, 0, -5963748, 4, 0, -5767168, 20, 0, -5767
 script = ExtResource( 63 )
 
 [node name="SceneTransitionRect" type="ColorRect" parent="SceneTransitionRect"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2

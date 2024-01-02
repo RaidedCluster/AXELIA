@@ -12,6 +12,7 @@ var bot_instanced = false
 signal player_caught_changed(is_caught)
 
 func _ready():
+	randomize()
 	var cameras = get_tree().get_nodes_in_group("cameras")
 	setup_cameras(cameras)
 	setup_maintenance_timer()

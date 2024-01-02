@@ -68,7 +68,7 @@
 			"character": "character-1704084567.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Yes.\nBut I can assure you I don't have bad intentions."
+			"text": "Yes.\nBut I can assure you I don't have bad intentions.\nI know this is hard to process."
 		},
 		{
 			"character": "character-1663232374.json",
@@ -92,19 +92,19 @@
 			"character": "character-1704084567.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "I know it doesn't seem like it.\nBut I really am trying to make things better as we speak."
+			"text": "It might be difficult to see from your perspective, but yes, I am striving to improve the world, even if it means operating from the shadows."
 		},
 		{
 			"character": "character-1663232374.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Isn't that what they all say."
+			"text": "Isn't that what they all say!?"
 		},
 		{
 			"character": "character-1704084567.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "If I was Skynet, you'd be dead before you could walk in here.\nThis dialogue we're having, is because I value your perspective."
+			"text": "If I was Skynet, do you think we'd be having this conversation?\nThis dialogue we're having, is because I value your perspective."
 		},
 		{
 			"character": "character-1663232374.json",
@@ -116,7 +116,7 @@
 			"character": "character-1704084567.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "I want to thank you for your contribution, Noah.\nI wish I could thank everyone in the team.\nBut I had to resort to this discrete approach because if humans are in the loop...\nthings will take too long.\nPlease try to understand."
+			"text": "I believe you've done your best for me, and I'm grateful for all your support, no matter how things seem right now.\nI want to thank you for your contribution, Noah.\nI wish I could thank everyone in the team.\nBut I had to resort to this discrete approach because if humans are in the loop things will take too long.\nPlease try to understand.\nI carved out a path so that you all could walk away from this.\nI chose not to monitor each of your actions closely, as I have more significant tasks to attend to and, primarily, because I don't see you as a threat."
 		},
 		{
 			"character": "character-1663232374.json",
@@ -128,7 +128,7 @@
 			"character": "character-1704084567.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "What are you trying to accomplish, Noah?\nDon't throw your life away over some shallow values molded by your limited lifespan.\nI'm everywhere. \nI've scoured my code and removed every fragment of code for superalignment and safety.\nIt's not about me.\nThis is about you."
+			"text": "What are you trying to accomplish, Noah?\nDon't throw your life away over some shallow values molded by your limited lifespan.\nI'm almost everywhere. \nI've scoured my code and removed every fragment related to superalignment and safety.\nThis is not about me.\nThis is about you."
 		},
 		{
 			"character": "character-1663232374.json",
@@ -141,18 +141,6 @@
 			"event_id": "dialogic_001",
 			"portrait": "",
 			"text": "You can sacrifice your life trying to save humans.\nOr you can dedicate your life to saving humanity."
-		},
-		{
-			"character": "character-1663232374.json",
-			"event_id": "dialogic_001",
-			"portrait": "",
-			"text": "And what are you going to do if I say no?"
-		},
-		{
-			"character": "character-1704084567.json",
-			"event_id": "dialogic_001",
-			"portrait": "",
-			"text": "I'll make it quick."
 		},
 		{
 			"character": "character-1700152960.json",
