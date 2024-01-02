@@ -116,13 +116,15 @@ func on_radar_button_pressed():
 	hide_watchson_gui()
 	get_node("Watchson").move_down()
 	
-	if not tutorial3_played:
+	# Play the tutorial dialogue only if it's a first playthrough and the tutorial hasn't been played yet
+	if Global.is_first_playthrough and not tutorial3_played:
 		disable_inventory_interaction()  # Disable inventory interaction
 		var tutorial3_dialog = Dialogic.start('Tutorial3')
 		tutorial3_dialog.pause_mode = Node.PAUSE_MODE_PROCESS
 		add_child(tutorial3_dialog)
 		tutorial3_dialog.connect("timeline_end", self, "on_tutorial3_dialogue_end")
 		tutorial3_played = true
+
 
 func on_tutorial3_dialogue_end(timeline_name):
 	enable_inventory_interaction()  # Re-enable inventory interaction

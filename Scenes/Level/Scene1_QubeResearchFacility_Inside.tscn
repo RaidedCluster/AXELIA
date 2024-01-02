@@ -1858,10 +1858,6 @@ navpoly = SubResource( 48 )
 [node name="HallwayNavigationPolygonInstance" type="NavigationPolygonInstance" parent="YSort/Navigation/Navigation2D"]
 navpoly = SubResource( 77 )
 
-[node name="PosPlaceholder" type="Node2D" parent="."]
-position = Vector2( 936, -11840 )
-z_index = 1
-
 [node name="WallExtrusion" type="StaticBody2D" parent="."]
 position = Vector2( 924, 976 )
 
@@ -1949,7 +1945,6 @@ use_parent_material = true
 scale = Vector2( 0.75, 0.75 )
 frames = SubResource( 65 )
 animation = "On"
-frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraReceptionRight"]
@@ -1974,7 +1969,6 @@ use_parent_material = true
 scale = Vector2( 0.75, 0.75 )
 frames = SubResource( 65 )
 animation = "On"
-frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraReceptionLeft"]
@@ -1999,6 +1993,7 @@ use_parent_material = true
 scale = Vector2( 0.75, 0.75 )
 frames = SubResource( 65 )
 animation = "On"
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraBossCabin"]
@@ -2051,6 +2046,7 @@ use_parent_material = true
 scale = Vector2( 0.75, 0.75 )
 frames = SubResource( 65 )
 animation = "On"
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraBreakRoom"]
@@ -2103,6 +2099,7 @@ use_parent_material = true
 scale = Vector2( 0.75, 0.75 )
 frames = SubResource( 65 )
 animation = "On"
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraMeetingRoom"]
@@ -2143,6 +2140,10 @@ shape = SubResource( 23 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraThirdSector/ClickDetection"]
 position = Vector2( 0, -1 )
 shape = SubResource( 70 )
+
+[node name="PosPlaceholder" type="Node2D" parent="."]
+position = Vector2( -384, 136 )
+z_index = 1
 
 [node name="AlarmSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 73 )

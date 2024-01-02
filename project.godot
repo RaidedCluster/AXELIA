@@ -84,6 +84,10 @@ config/name="AXELIA"
 run/main_scene="res://Scenes/Title_Screen.tscn"
 config/icon="res://UI/Game/icon.png"
 
+[autoload]
+
+Global="*res://Global.gd"
+
 [debug]
 
 settings/fps/force_fps=60
