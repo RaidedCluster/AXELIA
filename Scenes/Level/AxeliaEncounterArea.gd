@@ -27,6 +27,8 @@ func trigger_turing_test_dialogue():
 	var dialogue = Dialogic.start('TuringTest')  # Replace 'TuringTest' with your dialogue's name
 	dialogue.pause_mode = Node.PAUSE_MODE_PROCESS
 	get_tree().root.add_child(dialogue)  # Add the dialogue to the scene tree
+	yield(dialogue, "tree_exited")  # Wait for the dialogue to finish
+	change_to_end_scene()  # Change to the end scene
 
 func trigger_terminal_monitor_animation():
 	var terminal_monitor = get_tree().get_root().find_node("Terminal Monitor", true, false)
@@ -37,3 +39,6 @@ func teleport_and_activate_bot():
 	var bot = get_tree().get_root().find_node("Kinesys Sentinel", true, false)
 	if bot:
 		bot.teleport_and_detect_player(Vector2(928, -11304))
+
+func change_to_end_scene():
+	get_tree().change_scene("res://Scenes/End.tscn") 

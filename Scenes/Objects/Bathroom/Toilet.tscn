@@ -4,8 +4,8 @@
 [ext_resource path="res://UI/VisbilityNotifier/VisibilityNotifier2D.tscn" type="PackedScene" id=2]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 18.3138
-height = 94.5455
+radius = 27.7524
+height = 81.6635
 
 [node name="Toilet" type="StaticBody2D"]
 

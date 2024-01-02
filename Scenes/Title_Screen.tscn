@@ -1,5 +1,6 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
+[ext_resource path="res://Fonts/Dynamic Fonts/JetBrains Mono BOLD.tres" type="DynamicFont" id=1]
 [ext_resource path="res://UI/Game/axelia.png" type="Texture" id=2]
 [ext_resource path="res://UI/Buttons/PLAY/PLAY.png" type="Texture" id=3]
 [ext_resource path="res://UI/Buttons/PLAY/PLAY Transparent.png" type="Texture" id=4]
@@ -8,6 +9,7 @@
 [ext_resource path="res://UI/Buttons/SETTINGS/SETTINGS Transparent.png" type="Texture" id=7]
 [ext_resource path="res://UI/Buttons/SETTINGS/SETTINGS click.png" type="Texture" id=8]
 [ext_resource path="res://Scenes/SceneTransitionRect.gd" type="Script" id=9]
+[ext_resource path="res://Fonts/Dynamic Fonts/JetBrains Mono MEDIUM.tres" type="DynamicFont" id=10]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Control
@@ -53,6 +55,7 @@ tracks/0/keys = {
 }
 
 [node name="Title_Screen" type="Control"]
+rect_pivot_offset = Vector2( -670, -86 )
 script = SubResource( 1 )
 
 [node name="Title BG" type="Sprite" parent="."]
@@ -63,6 +66,18 @@ texture = SubResource( 4 )
 position = Vector2( 640, 96 )
 scale = Vector2( 0.52459, 0.52459 )
 texture = ExtResource( 2 )
+
+[node name="FeedSettingsText" type="RichTextLabel" parent="."]
+margin_left = 597.0
+margin_top = 159.0
+margin_right = 697.0
+margin_bottom = 195.0
+grow_horizontal = 2
+custom_fonts/bold_font = ExtResource( 1 )
+custom_fonts/normal_font = ExtResource( 10 )
+bbcode_enabled = true
+bbcode_text = "[b][center]DEMO[/center][/b]"
+text = "DEMO"
 
 [node name="PLAY" type="TextureButton" parent="."]
 margin_left = 584.0
