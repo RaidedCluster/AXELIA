@@ -19,6 +19,9 @@ onready var sight_area = $SightArea
 # Flag to ensure dialogue only plays once
 var has_seen_bot = false
 
+var has_played_guardrail_warning = false
+
+
 enum {
 	MOVE
 }
@@ -85,14 +88,16 @@ func move():
 	velocity = move_and_slide(velocity)
 
 func _on_Interaction_Area_body_entered(body):
-	if body.name in ["GuardrailLeft","GuardrailRight"]:  # Replace with your guardrail's identifying property
+	if body.name in ["GuardrailLeft","GuardrailRight"] and not has_played_guardrail_warning and Global.is_first_playthrough:
 		disable_interaction()  # Disable player movement and interaction
 		var inventory = get_tree().get_root().find_node("Inventory", true, false)
 		if inventory:
 			inventory.disable_inventory_interaction()
 		play_guardrail_warning_dialogue()  # Start the guardrail warning dialogue
+		has_played_guardrail_warning = true  # Set the flag so it doesn't play again
 	else:
 		emit_signal("interacted", body)
+
 
 func play_guardrail_warning_dialogue():
 	var dialogue = Dialogic.start("TutorialWarn")
@@ -170,13 +175,12 @@ func enable_interaction():
 	print("Player interaction enabled")
 
 func _on_SightArea_body_entered(body):
-	if body.name == "Kinesys Sentinel" and not has_seen_bot:
+	if body.name == "Kinesys Sentinel" and not has_seen_bot and Global.is_first_playthrough:
 		# Play the dialogue using Dialogic
 		var dialogue = Dialogic.start('Kinesys')
 		dialogue.pause_mode = Node.PAUSE_MODE_PROCESS
 		add_child(dialogue)
 		has_seen_bot = true  # Set the flag so it doesn't play again
-		# You may want to disable player movement while dialogue is playing
 		var inventory = get_tree().get_root().find_node("Inventory", true, false)
 		if inventory:
 			inventory.disable_inventory_interaction()
@@ -185,9 +189,10 @@ func _on_SightArea_body_entered(body):
 		if inventory:
 			inventory.enable_inventory_interaction()
 
+
 func show_bot_approach_dialogue():
 	if not has_seen_bot:
-		var dialogue = Dialogic.start('Approach')  # Replace 'BotApproach' with your actual dialogue event
+		var dialogue = Dialogic.start('Approach')
 		dialogue.pause_mode = Node.PAUSE_MODE_PROCESS
 		add_child(dialogue)
 		yield(dialogue, "tree_exited")

@@ -117,3 +117,28 @@ func _on_Tutorial2Dialogue_end():
 	var inventory = get_tree().get_root().find_node("Inventory", true, false)
 	if inventory:
 		inventory.enable_inventory_interaction()
+
+	# Make the arrow visible
+	var arrow = get_node("UI/Tutorial/Arrow-to-Watchson")
+	arrow.visible = true
+	var arrow_animation_player = get_node("UI/Tutorial/Arrow-to-Watchson/AnimationPlayer")
+	arrow_animation_player.play("ArrowAnimation")
+	# Create a timer to hide the arrow after 3 seconds
+	var arrow_timer = Timer.new()
+	arrow_timer.set_wait_time(3.0)  # 3 seconds
+	arrow_timer.set_one_shot(true)
+	arrow_timer.connect("timeout", self, "_on_ArrowTimer_timeout", [arrow])
+	add_child(arrow_timer)
+	arrow_timer.start()
+
+func _on_ArrowTimer_timeout(arrow: Node):
+	var arrow_animation_player = arrow.get_node("AnimationPlayer")
+	arrow_animation_player.stop()
+	arrow.visible = false
+	arrow.queue_free()  # Optionally, remove the arrow node if it's no longer needed
+
+func get_maintenance_time_left():
+	if maintenance_timer.is_stopped():
+		return 0
+	else:
+		return maintenance_timer.time_left

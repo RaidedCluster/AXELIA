@@ -1,0 +1,103 @@
+{
+	"events": [
+		{
+			"animation": "instant_in.gd",
+			"animation_length": 0.2,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1703668076.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "Default",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			},
+			"type": 0,
+			"z_index": 0
+		},
+		{
+			"character": "character-1703668076.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Do you need anything Noah? I assumed this was not a good time to talk."
+		},
+		{
+			"character": "character-1700152960.json",
+			"event_id": "dialogic_010",
+			"options": [
+
+			],
+			"portrait": "",
+			"question": "Is this a good time to talk?"
+		},
+		{
+			"choice": "Yes",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"character": "character-1663232374.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Yeah.\nUh. Tell me more about yourself."
+		},
+		{
+			"character": "character-1703668076.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "I'm Watchson! I'm QUBE's handheld watch's AI companion.\nI was developed by QUBE's Cybersecurity department for red-teaming purposes."
+		},
+		{
+			"character": "character-1663232374.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "How exactly do you work again?\nI know you told me this, but I don't really remember."
+		},
+		{
+			"character": "character-1703668076.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "I work in unison with some supercomputers used for pen-testing and patching vulnerabilties in QUBE's HQ.\nRight now I'm only connected to one of computers which seems to have some hardware issues.\nCurrently, I'm in WLAN mode.\nI act as an intermediary between a local device and QUBE's supercomputer No. 7 which has an instance of Unsherlock, an AI designed for pen-testing, running on it.\nUnsherlock scans devices for vulnerabilities and reports it.\nIt's that simple."
+		},
+		{
+			"character": "character-1663232374.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Oh okay. Cool.\nBye."
+		},
+		{
+			"event_id": "dialogic_022",
+			"transition_duration": 0.2
+		},
+		{
+			"choice": "No",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"event_id": "dialogic_022",
+			"transition_duration": 0.2
+		},
+		{
+			"event_id": "dialogic_013"
+		},
+		{
+			"event_id": "dialogic_022",
+			"transition_duration": 0.2
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.4.1",
+		"file": "timeline-1705040699.json",
+		"name": "WatchsonChat"
+	}
+}

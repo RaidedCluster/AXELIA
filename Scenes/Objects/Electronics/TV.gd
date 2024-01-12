@@ -1,8 +1,6 @@
 extends StaticBody2D
 
 onready var TVInteraction=$InteractionArea
-var outline_enabled = false
-var outline_shader_material = preload("res://UI/UI Sprites/outline.tres")
 var player = null
 
 func _ready():

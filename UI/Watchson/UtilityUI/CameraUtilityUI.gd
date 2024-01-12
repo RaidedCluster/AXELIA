@@ -276,6 +276,10 @@ func check_and_show_arrow():
 		show_arrow_to_network_button()
 		disable_other_buttons()
 		main_controller.arrow_shown = true
+		# Start the animation
+		var arrow_animation_player = $Network/Arrow.get_node("AnimationPlayer")
+		arrow_animation_player.play("ArrowBounce")
+
 
 func show_arrow_to_network_button():
 	# Logic to show an arrow pointing to the network button

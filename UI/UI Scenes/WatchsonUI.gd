@@ -2,6 +2,7 @@ extends Control
 
 signal radar_button_pressed
 signal fade_out_completed
+signal question_button_pressed
 
 enum Mode {RADAR, QUESTION}
 var active_mode = Mode.RADAR
@@ -76,6 +77,7 @@ func _ready():
 	$Question.connect("mouse_entered", self, "on_question_mouse_entered")
 	$Question.connect("mouse_exited", self, "on_question_mouse_exited")
 	$Radar.connect("pressed", self, "on_radar_button_pressed")
+	$Question.connect("pressed", self, "on_question_button_pressed")
 
 func on_radar_mouse_entered():
 	$Radar.modulate = Color(1, 1, 1, 1)
@@ -88,3 +90,9 @@ func on_question_mouse_entered():
 
 func on_question_mouse_exited():
 	$Question.modulate = Color(1, 1, 1, 0.7)
+
+func on_question_button_pressed():
+	emit_signal("question_button_pressed")
+	var dialogue = Dialogic.start('WatchsonChat')
+	dialogue.pause_mode = Node.PAUSE_MODE_PROCESS
+	add_child(dialogue)

@@ -33,13 +33,21 @@ func show_watchson_gui():
 		var watchson_gui_instance = watchson_gui.instance()
 		watchson_gui_instance.name = "watchson_gui_instance"
 		watchson_gui_instance.rect_position = Vector2(-140, 400)
-		watchson_gui_instance.isLogoAnimationPlayed = isLogoAnimationPlayed
 		add_child(watchson_gui_instance)
+
+		if not isLogoAnimationPlayed:
+			watchson_gui_instance.play_qube_fade()
+			yield(watchson_gui_instance.get_node("AnimationPlayer"), "animation_finished")
+			isLogoAnimationPlayed = true
+
+		watchson_gui_instance.play_radar_fade_in()
 		watchson_gui_instance.connect("radar_button_pressed", self, "on_radar_button_pressed")
-		# Find the player node and call set_watchson_active on it
+		watchson_gui_instance.connect("question_button_pressed", self, "on_question_button_pressed")
+
 		var player_node = get_tree().get_root().find_node("Player", true, false)
 		if player_node:
 			player_node.set_watchson_active(true)
+
 
 func hide_watchson_gui():
 	print("Hide Watchson GUI called.")
@@ -180,3 +188,10 @@ func disable_inventory_interaction():
 func enable_inventory_interaction():
 	can_interact_with_inventory = true
 	print("Inventory interaction enabled")
+
+
+func on_question_button_pressed():
+	hide_watchson_gui()
+	var dialogue = Dialogic.start('WatchsonChat')
+	dialogue.pause_mode = Node.PAUSE_MODE_PROCESS
+	add_child(dialogue)

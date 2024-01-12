@@ -771,11 +771,11 @@ start_node = "Idle"
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=23]
 
+[sub_resource type="RectangleShape2D" id=28]
+extents = Vector2( 120, 150 )
+
 [sub_resource type="RectangleShape2D" id=24]
 extents = Vector2( 192, 441.75 )
-
-[sub_resource type="RectangleShape2D" id=28]
-extents = Vector2( 81.8502, 107 )
 
 [node name="Kinesys Sentinel" type="KinematicBody2D" groups=["hackable", "moving_bodies"]]
 collision_layer = 3
@@ -819,6 +819,13 @@ position = Vector2( 0, 12 )
 enabled = true
 collision_mask = 256
 
+[node name="CatchArea" type="Area2D" parent="."]
+position = Vector2( 0, 12 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CatchArea"]
+position = Vector2( 0, 97 )
+shape = SubResource( 28 )
+
 [node name="DetectionPivot" type="Position2D" parent="."]
 position = Vector2( 0, 12 )
 
@@ -841,22 +848,6 @@ shape = SubResource( 24 )
 position = Vector2( -187, 304 )
 rotation = 0.436332
 shape = SubResource( 24 )
-
-[node name="CatchArea" type="Area2D" parent="DetectionPivot"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionPivot/CatchArea"]
-position = Vector2( 0, 97 )
-shape = SubResource( 28 )
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="DetectionPivot/CatchArea"]
-position = Vector2( -27.4686, 103.698 )
-rotation = 0.261799
-shape = SubResource( 28 )
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="DetectionPivot/CatchArea"]
-position = Vector2( 29, 105 )
-rotation = -0.261799
-shape = SubResource( 28 )
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 avoidance_enabled = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://UI/UI Sprites/UilityUI/UtilityBG.png" type="Texture" id=1]
 [ext_resource path="res://UI/UI Sprites/UilityUI/X-ButtonNormal.png" type="Texture" id=2]
@@ -22,6 +22,38 @@
 [sub_resource type="DynamicFont" id=1]
 size = 25
 font_data = ExtResource( 13 )
+
+[sub_resource type="Animation" id=7]
+resource_name = "ArrowBounce"
+loop = true
+step = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 72.5024, -17.5004 ), Vector2( 72.502, -40 ), Vector2( 72.5024, -17.5004 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 72.5024, -17.5004 ) ]
+}
 
 [sub_resource type="DynamicFont" id=5]
 resource_local_to_scene = true
@@ -136,6 +168,10 @@ visible = false
 position = Vector2( 72.5024, -17.5004 )
 scale = Vector2( 0.0969236, 0.0969236 )
 texture = ExtResource( 18 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Network/Arrow"]
+anims/ArrowBounce = SubResource( 7 )
+anims/RESET = SubResource( 8 )
 
 [node name="OnOffToggleSection" type="Control" parent="."]
 visible = false

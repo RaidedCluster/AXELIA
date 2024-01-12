@@ -60,7 +60,7 @@ func _ready():
 	animation_tree.active = true
 	detection_area.connect("body_entered", self, "_on_Body_entered")
 	detection_area.connect("body_exited", self, "_on_Body_exited")
-	$DetectionPivot/CatchArea.connect("body_entered", self, "_on_CatchArea_body_entered")
+	$CatchArea.connect("body_entered", self, "_on_CatchArea_body_entered")
 
 	# Set the initial path to the specific point for the cutscene
 	path = navigation2D.get_simple_path(global_position, Vector2(936, 528), false)

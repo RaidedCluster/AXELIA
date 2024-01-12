@@ -1,13 +1,18 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Sprites/Objects/Bathroom/Toilet.png" type="Texture" id=1]
 [ext_resource path="res://UI/VisbilityNotifier/VisibilityNotifier2D.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Objects/Bathroom/Toilet.gd" type="Script" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 27.7524
 height = 81.6635
 
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 12, 12 )
+
 [node name="Toilet" type="StaticBody2D"]
+script = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
@@ -21,3 +26,11 @@ shape = SubResource( 1 )
 [node name="VisibilityNotifier2D" parent="." instance=ExtResource( 2 )]
 position = Vector2( 4, 76 )
 scale = Vector2( 9.2, 10 )
+
+[node name="InteractionArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2( 24, 80 )
+shape = SubResource( 2 )
