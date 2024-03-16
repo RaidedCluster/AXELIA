@@ -792,6 +792,7 @@ texture = ExtResource( 1 )
 offset = Vector2( 0, 105 )
 hframes = 9
 vframes = 2
+frame = 10
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Dancing = SubResource( 26 )
@@ -830,7 +831,6 @@ shape = SubResource( 28 )
 position = Vector2( 0, 12 )
 
 [node name="DetectionArea" type="Area2D" parent="DetectionPivot"]
-visible = false
 position = Vector2( 0, 96 )
 collision_layer = 128
 collision_mask = 128
@@ -854,6 +854,7 @@ avoidance_enabled = true
 
 [node name="Do You Love Me\?" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 3 )
+volume_db = 3.467
 
 [node name="Servo" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 4 )

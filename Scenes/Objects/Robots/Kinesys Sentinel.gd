@@ -207,26 +207,43 @@ func go_haywire():
 	if haywire_executed:
 		return
 	haywire_executed = true
-	var will_dance = randi() % 42 == 0
-	var animation_name = "Dancing" if will_dance else "Glitching"
-	
-	$AnimationPlayer.play(animation_name)
-	var haywire_duration = 40.0 if will_dance else 10.0
-	
-	set_physics_process(false)
-	yield(get_tree().create_timer(haywire_duration), "timeout")
-
-	# Stop any animation that might be playing in AnimationPlayer
+	velocity = Vector2.ZERO
 	$AnimationPlayer.stop()
+	animation_tree.set_active(false)  # Temporarily disable the animation tree
+	set_physics_process(false)
+
+	var will_dance = randi() % 42 == 0
+	var animation_name = ""
+	var haywire_duration = 0.0
 	
-	if player == null or not player.is_inside_tree():
-		player = find_player()  # Implement this method to find and return the player
-	if player != null:
+	# Using proper GDScript syntax for conditional assignment
+	if will_dance:
+		animation_name = "Dancing"
+		haywire_duration = $AnimationPlayer.get_animation(animation_name).length  # Assumes this is correctly set for the dancing animation
+	else:
+		animation_name = "Glitching"
+		haywire_duration = 10.0  # Explicitly setting glitching animation to last 10 seconds
+	
+	# Play the selected animation
+	$AnimationPlayer.play(animation_name)
+	
+	# Wait for the specified duration
+	yield(get_tree().create_timer(haywire_duration), "timeout")
+	
+	# Resume normal operations after the haywire event
+	$AnimationPlayer.stop()
+	animation_tree.set_active(true)  # Re-enable the animation tree
+	set_physics_process(true)
+	haywire_executed = false
+	animation_state.travel("Idle")  # Transition back to the Idle state
+
+	if player != null and player.is_inside_tree():
 		player_detected = true
 		update_path_to_player()
-	
-	set_physics_process(true)
-	reset_blend_position()
+
+
+
+
 
 func utility():
 	var sentinelUtilityScene = preload("res://UI/Watchson/UtilityUI/Kinesys Sentinel Utility UI.tscn")

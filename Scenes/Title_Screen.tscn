@@ -73,8 +73,8 @@ grow_horizontal = 2
 custom_fonts/bold_font = ExtResource( 1 )
 custom_fonts/normal_font = ExtResource( 10 )
 bbcode_enabled = true
-bbcode_text = "[b][center]v0.1 Alpha[/center][/b]"
-text = "v0.1 Alpha"
+bbcode_text = "[b][center]v0.1 Beta[/center][/b]"
+text = "v0.1 Beta"
 
 [node name="Demo" type="RichTextLabel" parent="."]
 margin_left = 597.0
